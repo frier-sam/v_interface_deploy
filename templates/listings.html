@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="utf-8">
+  <title>Home</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="{% static 'lib/PapaParse/papaparse.js' %}"></script>
+  <script src="{% static 'lib/PapaParse/papaparse.min.js'%}"></script>
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <link href="{% static 'images/favicon.png'%}" rel="icon">
+  <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
+
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/mobile-nav/mobile-nav.js' %}"></script>
+  <script src="{% static 'lib/wow/wow.min.js'%}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js'%}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'js/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</head>
+  <body>
+
+  <section id="services" class="section-bg">
+    <div class="container">
+
+      <header class="section-header">
+        <h3>Services</h3>
+        <p>We believe success is all about getting something in the hands of a client. We have helped clients across the globe create new digital-native business models and services in collaboration with disruptive FinTechs, HealthTechs, TelecomTechs, and InsureTechs..</p>
+      </header>
+
+      <div class="row">
+          {% if models %}
+             {%  for item in models %}
+             <div class="col-md-6 col-lg-4 mb-4 wow bounceInUp" data-wow-duration="1.4s">
+              <div class="card mb-3">
+                   <img class="card-img-top img-fluid" src="{{model.image.url}}" alt="">
+                   <div class="card-body">
+                       <h4 class="title"><a href="">{{item.title}}</a></h4>
+                       <p class="description">{{item.summary}}</p>
+
+                   </div>
+               </div>
+             </div>
+             {% endfor %}
+             {% else %}
+             <div class="col-md-12">
+                 <p>No Models</p>
+
+             </div>
+               {% endif %}
+
+  </div>
+
+
+    </div>
+  </section>
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>VirtusaCorp</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+
+        Designed by <a href="https://www.virtusa.com">xLabs</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+
+
+</body>
+</html>

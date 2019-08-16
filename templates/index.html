@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="utf-8">
+  <title>Home</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="{% static 'lib/PapaParse/papaparse.js' %}"></script>
+  <script src="{% static 'lib/PapaParse/papaparse.min.js'%}"></script>
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <link href="{% static 'images/favicon.png'%}" rel="icon">
+  <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
+
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/mobile-nav/mobile-nav.js' %}"></script>
+  <script src="{% static 'lib/wow/wow.min.js'%}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js'%}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'js/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+
+</head>
+  <body>
+
+  <!--==========================
+  Header
+  ============================-->
+
+  <header id="header" class="fixed-top ">
+    <div class="container">
+
+      <div class="logo float-left ">
+
+       <a href="#intro" class="scrollto"><img src="static/images/logo.png"  alt="" class="img-fluid "></a>
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block ">
+        <ul>
+          <li ><a href ="#Home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <section id="intro" class="clearfix">
+    <div class="container">
+      <div class="intro-img">
+        <img src="" alt="" class="img-fluid">
+      </div>
+
+      <div class="intro-info">
+        <h2>We provide<br><span>solutions</span><br>for your business!</h2>
+        <div>
+          <a href="#about" class="btn-get-started scrollto">Get Started</a>
+          <a href="#services" class="btn-services scrollto">Our Services</a>
+        </div>
+
+      </div>
+   </div>
+
+  </section>
+   <!-- #intro -->
+
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+        <div class="container">
+          <header class="section-header">
+            <h3>About Us</h3>
+            <p>xLabs: The digital innovation hub within Virtusa.</p>
+          </header>
+
+          <div class="row about-container">
+               <div class="col-lg-6 content order-lg-1 order-2">
+                  <p>
+                   Virtusa Corporation is a global provider of Digital Buisness Transformation, Digital Engineering and Information Technology(IT) outsourcing services that accelerates our client's journey to Digital Future.
+                   We work with clients to accelerate and optimize their tech-enabled innovation programs, focusing on three stages:
+                  </p>
+
+
+                  <div class="icon-box wow fadeInUp">
+                    <div class="icon"><i class="fa fa-search"></i></div>
+                    <h4 class="title"><a href="">Explore</a></h4>
+                    <p class="description">Horizon scanning, to identify relevant emerging technologies.Identify and track emerging technologies that are relevant and disruptive.</p>
+                  </div>
+
+                  <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="icon"><i class="fa fa-flask"></i></div>
+                    <h4 class="title"><a href="">Experiment</a></h4>
+                    <p class="description">Use a design thinking tool to ideate and prototype potential solutions.Focus on key tech and evaluate how your business could benefit.</p>
+                  </div>
+
+                 <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="icon"><i class="fa fa-thumbs-up"></i></div>
+                    <h4 class="title"><a href="">Exploit</a></h4>
+                    <p class="description">Assure that good ideas are implemented and generate value.Transition prototypes into production and measure value delivery.</p>
+                </div>
+             </div>
+
+             <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+                <img src="static/images/intro.png" class="img-fluid" alt="">
+            </div>
+        </div>
+
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp">
+            <img src="static/images/about-extra-1.svg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+          <p>
+            Virtusa xLabs is a unique blend of passionate designers and digital engineers.
+            We believe success is all about getting something in the hands of a client. We have helped clients across the globe create new digital-native business models and services in collaboration with disruptive FinTechs, HealthTechs, TelecomTechs, and InsureTechs. Applying first principles, we build our solutions from scratch. Our success relies on our clients' satisfaction.</h4>
+          </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #about -->
+
+    <!--==========================
+      Services Section
+    ============================-->
+    <section id="services" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Services</h3>
+          <p>We believe success is all about getting something in the hands of a client. We have helped clients across the globe create new digital-native business models and services in collaboration with disruptive FinTechs, HealthTechs, TelecomTechs, and InsureTechs..</p>
+        </header>
+
+        <div class="row">
+            {% if models %}
+               {%  for item in models %}
+               <div class="col-md-6 col-lg-4 mb-4 wow bounceInUp" data-wow-duration="1.4s">
+                <div class="card mb-3">
+                     <img class="card-img-top img-fluid" src="{{item.image.url}}" alt="">
+                     <div class="card-body">
+                         <h4 class="title"><a href="http://kihjfbvcsadz.com/modelview?name= ">{{item.name.url}}</a></h4>
+                         <p class="description">{{item.summary}}</p>
+
+                     </div>
+                 </div>
+               </div>
+               {% endfor %}
+               {% else %}
+               <div class="col-md-12">
+                   <p>No Models</p>
+
+               </div>
+                 {% endif %}
+
+    </div>
+
+
+      </div>
+    </section>
+    <!-- #services -->
+    <!--==========================
+    Footer
+    ============================-->
+     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+     <!--==========================
+       Footer
+     ============================-->
+     <footer id="footer">
+
+
+       <div class="container">
+         <div class="copyright">
+           &copy; Copyright <strong>VirtusaCorp</strong>. All Rights Reserved
+         </div>
+         <div class="credits">
+
+           Designed by <a href="https://www.virtusa.com">xLabs</a>
+         </div>
+       </div>
+     </footer><!-- #footer -->
+
+
+
+  </body>
+  </html>
