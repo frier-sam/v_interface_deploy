@@ -20,8 +20,11 @@ from virtusa import urls as vu
 from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
+    path('',vview.home,name='index'),
+    # path('services/',vview.modelview),
     path('admin/', admin.site.urls),
-    path('models/', include(vu)),
+    path('services/', vview.services,name='services'),
+    path('model/', vview.model,name='model'),
 ]
 if settings.DEBUG: # new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

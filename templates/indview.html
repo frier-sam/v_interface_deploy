@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,46 +6,70 @@
 
   <meta charset="utf-8">
   <title>Home</title>
+  <!-- <meta id="my-data" data-name="" data-other={{model.inputs_csv}}> -->
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <script src="static/lib/PapaParse/papaparse.js"></script>
-  <script src="static/lib/PapaParse/papaparse.min.js"></script>
-  <script src="static/lib/jquery/jquery.min.js"></script>
-  <script src="static/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="{% static 'lib/PapaParse/papaparse.js' %}"></script>
+  <script src="{% static 'lib/PapaParse/papaparse.min.js'%}"></script>
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
   <meta content="" name="keywords">
   <meta content="" name="description">
-
-
-  <!-- Favicons -->
-  <link href="static/images/favicon.png" rel="icon">
-  <link href="static/images/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
+  <link href="{% static 'images/favicon.png'%}" rel="icon">
+  <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="static/lib/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="static/lib/bootstrap/css/bootstrap-responsive.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantifi.css' %}">
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
 
 
   <!-- Libraries CSS Files -->
-  <link href="static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="static/lib/animate/animate.min.css" rel="stylesheet">
-  <link href="static/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="static/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/mobile-nav/mobile-nav.js' %}"></script>
+  <script src="{% static 'lib/wow/wow.min.js'%}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js'%}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'js/contactform.js' %}"></script>
 
 
-   <!-- Main Stylesheet File -->
-  <link rel="stylesheet" type="text/css" href="static/css/risk_quantifi.css">
+
   <script>
 
            function init(){
+             var djangoData = $('#my-data').data();
+             console.log(djangoData);
+             debugger;
+              var djangoData = $('#my-data').data()
                document.getElementById('upload').addEventListener('change', handleFileSelect, false);
+            //   var tableData = "{{model.inps}}"
+               var html = arrayToTable(tableData);
+               $('#table_data').html(table_data);
+               $("#table_data").css("display", "block");
+               $("#Submit").css("display", "block");
+
               }
 
            function arrayToTable(tableData) {
-             debugger;
+
                data =tableData;
                var table = $('<table></table>');
                for (i = 0; i < data.length; i = i + 1) {
@@ -75,21 +100,29 @@
 
            $(window).load(function(){
               debugger;
-               var table_data;
-               $("#table-wrapper").css("display", "none");
-               $("#table-scroll").css("display", "none");
-               $("#table_data").css("display", "none");
-               $("#Submit").css("display", "none");
+              var bigfile =  "{{model.inputs_csv}}"
+              var host =window.location.host;
+              var url = host + bigfile;
 
-            $.ajax({
-                 url:"/background_process_test",
-                 type:"POST",
-                 success:function(resp){
-                   debugger;
-                   table_data=resp;
+              // Papa.parse(bigfile, {
+              //     complete: function(results) {
+              //        debugger
+              //        $('#table_data').html(arrayToTable(results.data));
+              //        $("#table_data").css("display", "block");
+              //        $("#Submit").css("display", "block");
+              //   }
+              // })
 
-               }
-                 });
+
+            // $.ajax({
+            //      url:"/background_process_test",
+            //      type:"POST",
+            //      success:function(resp){
+            //        debugger;
+            //        table_data=resp;
+            //
+            //    }
+            //      });
 
            /*Onload file upload*/
             $("#loadData").click(function(){
@@ -118,7 +151,7 @@
 
                       name = cells[0].innerHTML? cells[0].innerHTML:"";
                       value= cells[1] ? cells[1].innerHTML : "";
-                        myMap.set([name], [value]);
+                        myMap.set(name, value);
 
                        }
 
@@ -153,24 +186,25 @@
 //    myJson= mapToObj(myMap);
 //  // var json = JSON.stringify(myJson);
 //
-//               $.post('http://localhost:5000/Risk_Quantification',results).done(function(data){
-//               res.innerHTML = data;
-//             })
+              $.post('{{ model.endpoint }}',myJson).done(function(data){
+                debugger;
+              res.innerHTML = data;
+            })
               //TO be deleted//
 
               data = JSON.parse(JSON.stringify(myJson))
               var a= JSON.stringify(myJson)
-              $.ajax({
-                  url:"http://127.0.0.1:5000/Risk_Quantification",
-                  type:"POST",
-                  data:JSON.stringify(results),
-                  contentType: 'application/json;charset=UTF-8',
-                  success:function(resp){
-                  debugger;
-                   table_data=resp;
-
-                     }
-                  });
+              // $.ajax({
+              //     url:{{ model.endpoint}},
+              //     type:"POST",
+              //     data:JSON.stringify(results),
+              //     contentType: 'application/json;charset=UTF-8',
+              //     success:function(resp){
+              //     debugger;
+              //      table_data=resp;
+              //
+              //        }
+              //     });
               });
 
 
@@ -248,16 +282,21 @@
   <section id="intro" onload="init()">
     <div class="container">
       <div class="row">
-        <div class="span6">
-          <h2><strong>Health Risk <span class="highlight primary">Quantification</span></strong></h2>
+        <div class="span">
+          <h2><strong><span class="highlight primary">{{model.name}}</span></strong></h2>
           <p class="lead">
-            Lorem ipsum dolor sit amet, qui corpora oportere cu. Usu et iudico maluisset, pro ut lobortis vituperatoribus, percipit aliquando efficiendi est ex.
+          <strong>{{model.summary}}</strong>
+
           </p>
-          <ul class="list list-ok strong bigger">
+
+
+          <pre>{{model.content}} </pre>
+          <!-- <ul class="list list-ok strong bigger">
             <li> Lorem ipsum dolor sit amet, qui corpora oportere cu</li>
             <li> Lorem ipsum dolor sit amet, qui corpora oportere cu</li>
             <li> Lorem ipsum dolor sit amet, qui corpora oportere cu</li>
-          </ul>
+          </ul> -->
+
 
           </div>
         </div>
@@ -380,6 +419,18 @@
   <div class="row">
     <div class="span12">
       <div class="blank10"></div>
+      <table>
+
+
+      {% for i in model.inputs_csv %}
+        <tr>
+           <td>{{ i.0 }}</td>
+           <!-- <td> <input type="text" name="" value="{{ i.1 }}">  </td> -->
+           <td>{{ i.1 }}</td>
+        </tr>
+      {% endfor %}
+
+      </table>
     </div>
   </div>
         <div class="col-xs-4"   style= " margin-bottom: 12px;">
@@ -406,22 +457,6 @@
   </div>
 </footer><!-- #footer -->
 <!-- JavaScript Libraries -->
-<script src="static/lib/jquery/jquery.min.js"></script>
-<script src="static/lib/jquery/jquery-migrate.min.js"></script>
-<script src="static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="static/lib/easing/easing.min.js"></script>
-<script src="static/lib/mobile-nav/mobile-nav.js"></script>
-<script src="static/lib/wow/wow.min.js"></script>
-<script src="static/lib/waypoints/waypoints.min.js"></script>
-<script src="static/lib/counterup/counterup.min.js"></script>
-<script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="static/lib/isotope/isotope.pkgd.min.js"></script>
-<script src="static/lib/lightbox/js/lightbox.min.js"></script>
-<!-- Contact Form JavaScript File -->
-<script src="static/js/contactform.js"></script>
-
-<!-- Template Main Javascript File -->
-<script src="/static/js/main.js"></script>
 
 </body>
 </html>

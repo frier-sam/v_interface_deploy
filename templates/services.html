@@ -5,7 +5,7 @@
 
 
   <meta charset="utf-8">
-  <title>Home</title>
+  <title>Services</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <script src="{% static 'lib/PapaParse/papaparse.js' %}"></script>
   <script src="{% static 'lib/PapaParse/papaparse.min.js'%}"></script>
@@ -55,22 +55,48 @@
 </head>
   <body>
 
-  <section id="services" class="section-bg">
+
+      <!--==========================
+      Header
+      ============================-->
+
+      <header id="header" class="fixed-top ">
+        <div class="container">
+
+          <div class="logo float-left ">
+
+           <a href="#intro" class="scrollto"><img src="static/images/logo.png"  alt="" class="img-fluid "></a>
+          </div>
+
+          <nav class="main-nav float-right d-none d-lg-block ">
+            <ul>
+              <li ><a href ="{%url 'index'%}">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="{%url 'services'%}">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+
+            </ul>
+          </nav>
+
+        </div>
+      </header>
+
+  <section id="services" class="section-bg  clearfix">
     <div class="container">
 
       <header class="section-header">
-        <h3>Services</h3>
-        <p>We believe success is all about getting something in the hands of a client. We have helped clients across the globe create new digital-native business models and services in collaboration with disruptive FinTechs, HealthTechs, TelecomTechs, and InsureTechs..</p>
+        <h3></h3>
+        <p></p>
       </header>
 
       <div class="row">
           {% if models %}
              {%  for item in models %}
              <div class="col-md-6 col-lg-4 mb-4 wow bounceInUp" data-wow-duration="1.4s">
-              <div class="card mb-3">
-                   <img class="card-img-top img-fluid" src="{{model.image.url}}" alt="">
+              <div class="card h-100 mb-3">
+                   <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="">
                    <div class="card-body">
-                       <h4 class="title"><a href="">{{item.title}}</a></h4>
+                       <h4 class="title"><a href="{%url 'model'%}?model={{ item.name }}">{{item.name}}</a></h4>
                        <p class="description">{{item.summary}}</p>
 
                    </div>
