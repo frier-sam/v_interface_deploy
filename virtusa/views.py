@@ -12,8 +12,12 @@ def services(request):
     c = request.GET.get('cat')
     if c is not None:
         k = models.Ml_models.objects.filter(category=c)
-        mlist = [{'name':i.name,'image':i.image,'summary':i.summary } for i in k]
-        return render(request,'services.html',{'models':mlist})
+        cats = models.category.objects.filter(maincategory=True)
+        mcatlist =  [{'name':i.name,'image':i.image,'summary':i.summary ,'id':i.id} for i in cats]
+        # mlist = [{'name':i.name,'image':i.image,'summary':i.summary } for i in k]
+        mlist = [{'name':i.name,'image':i.image,'summary':i.summary ,'category':[{'name':j.name} for j in models.Ml_models.objects.filter(category=i.id)]} for i in k]
+
+        return render(request,'services.html',{'models':mlist,'catList':mcatlist})
 
     k = models.Ml_models.objects.all()
     mlist = [{'name':i.name,'image':i.image,'summary':i.summary } for i in k]
