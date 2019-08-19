@@ -38,9 +38,14 @@
 
       margin: 0px 0;
     max-height: 40px;
-    width: 10rem;
+    width: 7rem;
 }
 
+.border{
+
+  border-radius: 1px solid #000;
+  
+}
 .back-to-top {
   position: fixed;
   display: none;
@@ -595,8 +600,8 @@ i.icon-bg-dark {
 #table-scroll {
   height:700px;
   overflow:auto;
-  margin-top:20px;
-background: pink;
+
+
 }
 
 #table_data table {
@@ -610,11 +615,20 @@ background: pink;
 }
 
 
+#table_data.fixed
 
+  { table-layout:fixed;
+}
 
 #table_data td, #table_data th {
+  table-layout:fixed;
+  width:323px;
+  overflow:hidden;
+  word-wrap:break-word;
   border: 1px solid #ddd;
   padding: 8px;
+   border: 1px solid black;
+
 }
 
 #table_data tr:nth-child(even){background-color: #f2f2f2;}

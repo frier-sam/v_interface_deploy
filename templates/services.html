@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>Services</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <script src="{% static 'lib/PapaParse/papaparse.js' %}"></script>
     <script src="{% static 'lib/PapaParse/papaparse.min.js'%}"></script>
@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/service.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/services.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -93,7 +93,7 @@
                 <li class="active">
                   {% if catList %}
                        {%  for item in catList %}
-                         <a href="#" >{{item.name}}</a>
+                         <a href="{%url 'services'%}?cat={{item.id}}" >{{item.name}}</a>
                           {% endfor %}
                            {% endif %}
 
@@ -116,10 +116,7 @@
               <div class="row">
                   {% if models %}
                      {%  for item in models %}
-                         {%  for category in item.category %}
-                               <h2>{{category.name}}</h2>
-                                 <div class="line"></div>
-                          {% endfor %}
+
                      <div class="col-md-6 col-lg-4 mb-4 wow bounceInUp" data-wow-duration="1.4s">
                       <div class="card h-100 mb-3">
                            <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="">
@@ -146,7 +143,7 @@
           </section>
 
 
-          
+
         </div>
     </div>
 
