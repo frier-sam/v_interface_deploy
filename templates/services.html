@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/services.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -52,7 +52,48 @@
     <!-- Template Main Javascript File -->
     <script src="{% static 'js/main.js' %}"></script>
 
+<script>
+ $(window).load(function(){
+   function getUrlVars() {
 
+       var vars = {};
+       var value_new;
+       var config;
+       var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+
+           value_new = value;
+       });
+       return value_new;
+   }
+
+
+
+   var a=  getUrlVars();
+   config = {{ catList | safe}};
+  for(var k=0;k<config.length;k++){
+
+      var catoList = config[k];
+      if(catoList.id == a){
+        // document.
+        var selector, elems, makeActive;
+
+selector = '#sidebar li';
+document.getElementById(catoList.id).classList.add('active');
+document.getElementById('h').innerHTML = catoList.name;
+
+}
+}
+
+$('#sidebarCollapse').on('click', function () {
+    $('#sidebar').toggleClass('active');
+    $(this).toggleClass('active');
+});
+
+});
+
+
+
+</script>
 
 </head>
 
@@ -68,12 +109,29 @@
 
       <nav class="main-nav float-right d-none d-lg-block ">
         <ul>
-          <li ><a href ="{%url 'index'%}">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="{%url 'services'%}">Services</a></li>
+          <li
+          {% if '/' == request.path %}
+              class= "nav-item active" {{request.path}}
+          {% else %}
+             class= "nav-item "
+          {% endif %}
+                   >
+            <a href ="{%url 'index'%}">Home</a></li>
+          <li><a href="{%url 'index'%}?#about">About Us</a></li>
+          <li
+          {% if '/services/' == request.path %}
+              class= "nav-item active "
+          {% else %}
+             class= "nav-item "
+
+          {% endif %}
+
+          >
+          <a href="{%url 'services'%}">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
 
         </ul>
+
       </nav>
 
     </div>
@@ -85,15 +143,15 @@
         <!-- Sidebar Holder -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Categories</h3>
+                <h3>Main categories</h3>
             </div>
 
-            <ul class="list-unstyled components">
+            <ul class="list-unstyled components" >
 
-                <li class="active">
-                  {% if catList %}
-                       {%  for item in catList %}
-                         <a href="{%url 'services'%}?cat={{item.id}}" >{{item.name}}</a>
+                <li >
+                        {% if catList %}
+                             {%  for item in catList %}
+                         <a href="{%url 'services'%}?cat={{item.id}}" id={{item.id}} >{{item.name}}</a>
                           {% endfor %}
                            {% endif %}
 
@@ -109,17 +167,21 @@
             <div class="container">
 
               <header class="section-header">
-                <h3></h3>
-                <p></p>
-              </header>
 
+
+                          <h3 id="h">Active Models</h3>
+                          <p>We believe success is all about getting something in the hands of a client. We have helped clients across the globe create new digital-native business models and services in collaboration with disruptive FinTechs, HealthTechs, TelecomTechs, and InsureTechs..</p>
+
+
+              </header>
+<div class="line"></div>
               <div class="row">
                   {% if models %}
                      {%  for item in models %}
 
                      <div class="col-md-6 col-lg-4 mb-4 wow bounceInUp" data-wow-duration="1.4s">
                       <div class="card h-100 mb-3">
-                           <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="">
+                           <img class="card-img-top img-fluid card-style" src="{{ item.image.url }}" alt="">
                            <div class="card-body">
 
                                <h4 class="title"><a href="{%url 'model'%}?model={{ item.name }}">{{item.name}}</a></h4>
@@ -148,14 +210,33 @@
     </div>
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-            });
-        });
-    </script>
+
+
+    <!-- #services -->
+    <!--==========================
+    Footer
+    ============================-->
+     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+     <!--==========================
+       Footer
+     ============================-->
+     <footer id="footer">
+
+
+       <div class="container">
+         <div class="copyright">
+           &copy; Copyright <strong>VirtusaCorp</strong>. All Rights Reserved
+         </div>
+         <div class="credits">
+
+           Designed by <a href="https://www.virtusa.com">xLabs</a>
+         </div>
+       </div>
+     </footer><!-- #footer -->
+
+
+
+
 </body>
 
 </html>

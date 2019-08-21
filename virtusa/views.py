@@ -12,16 +12,20 @@ def services(request):
     c = request.GET.get('cat')
     if c is not None:
         k = models.Ml_models.objects.filter(category=c,active=True)
+        # k=models.Ml_models.objects.select_related('category').filter(category=c,active=True).values()
         cats = models.category.objects.filter(maincategory=True)
-        mcatlist =  [{'name':i.name,'image':i.image,'summary':i.summary ,'id':i.id} for i in cats]
-        mlist = [{'name':i.name,'image':i.image,'summary':i.summary } for i in k]
+        mcatlist =  [{'name':i.name,'summary':i.summary ,'id':i.id} for i in cats]
+        mlist = [{'name':i.name,'image':i.image,'summary':i.summary,'id':i.id } for i in k]
+        # j=models.Ml_models.objects.select_related('category').filter(category=c)
         # mlist = [{'name':i.name,'image':i.image,'summary':i.summary ,'category':[{'name':j.name} for j in models.Ml_models.objects.filter(category=i.id)]} for i in k]
 
         return render(request,'services.html',{'models':mlist,'catList':mcatlist})
 
     k = models.Ml_models.objects.filter(active=True)
+    cats = models.category.objects.filter(maincategory=True)
+    mcatlist =  [{'name':i.name,'summary':i.summary ,'id':i.id} for i in cats]
     mlist = [{'name':i.name,'image':i.image,'summary':i.summary } for i in k]
-    return render(request,'services.html',{'models':mlist})
+    return render(request,'services.html',{'models':mlist,'catList':mcatlist})
 #
 # def modelsresult(request,item_url):
 #     return render(request,'models.html',{'models':mlist})

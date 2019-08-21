@@ -71,9 +71,25 @@
 
       <nav class="main-nav float-right d-none d-lg-block ">
         <ul>
-          <li ><a href ="#Home">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="{%url 'services'%}">Services</a></li>
+          <li
+          {% if '/' == request.path %}
+              class= "nav-item active"
+          {% else %}
+             class= "nav-item "
+          {% endif %}
+                   >
+            <a href ="#Home">Home</a></li>
+          <li>
+          <a href="#about">About Us</a></li>
+          <li
+          {% if '/services/' == request.path %}
+              class= "nav-item active"
+          {% else %}
+             class= "nav-item "
+          {% endif %}
+
+          >
+          <a href="{%url 'services'%}">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
 
         </ul>
@@ -175,8 +191,8 @@
             {% if models %}
                {%  for item in models %}
                <div class="col-md-6 col-lg-4 mb-4 wow bounceInUp" data-wow-duration="1.4s">
-                <div class="card mb-3">
-                     <img class="card-img-top img-fluid" src="{{item.image.url}}" alt="">
+                <div class="card mb-3 h-100">
+                     <img class="card-img-top img-fluid card-style" src="{{item.image.url}}" alt="">
                      <div class="card-body">
                          <h4 class="title"><a href="{%url 'services'%}?cat={{item.id}}">{{item.name}}</a></h4>
                          <p class="description">{{item.summary}}</p>

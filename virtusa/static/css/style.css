@@ -601,6 +601,10 @@ h6 {
   transition: all 0.3s ease-in-out;
 }
 
+#services .card-style {
+height:calc(100% - 50px);
+}
+
 #services .card:hover {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
