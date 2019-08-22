@@ -1,3 +1,5 @@
 db.sqlite3
 media
 vuienv
+migrations
+__pycache__

@@ -38,5 +38,6 @@ def model(request):
         for row in reader:
             inps.append({0:row[0],1:row[1]})
 
-    mlist = {'name':i.name,'image':i.image,'summary':i.summary,'content':i.content,'extras':i.extras,'endpoint':i.url,'inputs_csv':inps,'result':i.result_key }
+    mlist = {'name':i.name,'image':i.image,'summary':i.summary,'content':i.content,'extras':i.extras,'endpoint':i.url,'inputs_csv':inps,'result':i.result_key,'slide1':i.slide1,'slide2':i.slide2,'slide3':i.slide3 }
+
     return render(request,'indview.html',{'model':mlist})
