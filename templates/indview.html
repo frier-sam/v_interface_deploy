@@ -8,10 +8,19 @@
   <title>{{model.name}}</title>
   <!-- <meta id="my-data" data-name="" data-other={{model.inputs_csv}}> -->
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
   <script src="{% static 'lib/PapaParse/papaparse.js' %}"></script>
   <script src="{% static 'lib/PapaParse/papaparse.min.js'%}"></script>
   <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+<!--
+    <script  src="{% static 'js/jquery-1.11.3.min.js' %}"></script> -->
+  <!-- <script  src="{% static 'lib/pptX/pptxjs.min.js' %}"></script> -->
+
+
+
+
   <meta content="" name="keywords">
   <meta content="" name="description">
   <link href="{% static 'images/favicon.png'%}" rel="icon">
@@ -19,7 +28,8 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantifica.css' %}">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/pptxjs.css' %}"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -38,6 +48,13 @@
   <!-- JavaScript Libraries -->
   <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+    <!-- <script  src="{% static 'js/jszip.min.js' %}"></script>
+  <script  src="{% static 'js/filereader.js' %}"></script>
+
+  <script  src="{% static 'js/d3.min.js' %}"></script>
+  <script src="{% static 'js/nv.d3.min.js' %}"></script>
+  <script  src="{% static 'js/pptxjs.js' %}"></script> -->
+  <!-- <script  src="{% static 'js/ppt2png.js' %}"></script> -->
   <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'lib/easing/easing.min.js' %}"></script>
   <script src="{% static 'lib/mobile-nav/mobile-nav.js' %}"></script>
@@ -57,6 +74,7 @@
            function init(){
 
                document.getElementById('upload').addEventListener('change', handleFileSelect, false);
+
   }
 
            function arrayToTable(tableData) {
@@ -67,7 +85,8 @@
                     row = $('<tr />');
                for (j = 0; j < data[i].length; j = j + 1) {
                     if (i === 0) {
-                        row.append($('<th />').html(data["name"]["value"]));
+
+                        row.append($('<th />').html(data[i][j]));
                      } else {
                         row.append($('<td />').html(data[i][j]));
                     }
@@ -80,6 +99,8 @@
 
            $(window).load(function(){
               debugger;
+
+
 
            $("#Submit").click(function(){
 
@@ -98,7 +119,8 @@
                       }
 
                       name = cells[0].innerHTML? cells[0].innerHTML.trim():"";
-                      value= cells[1] ? parseInt(cells[1].innerHTML.trim()) : "";
+                      // value= cells[1] ? parseInt(cells[1].innerHTML.trim()) : "";
+                      value = cells[1].innerHTML.trim();
                         myMap.set(name, value);
               }
 
@@ -111,15 +133,48 @@
             }
            var myJson = {};
             myJson= mapToObj(myMap);
-            myJson=JSON.stringify(myJson)
-           var res = document.getElementById('result');
+
+             myJson=JSON.stringify(myJson)
+           //   var obj=JSON.parse(myJson)
+           //   var data = obj["text"]
+           // var res = document.getElementById('result');
             debugger;
-               $.post('{{ model.endpoint }}',myJson).done(function(data){
-                   debugger;
-                   res.innerHTML = data;
-              })
+
+            $.ajax({
+                type: "POST",
+              url: "{{ model.endpoint }}",
+
+          crossDomain : true,
+  xhrFields: {
+      withCredentials: true
+  },
+  data: data,
+        contentType: 'application/json; charset=utf-8',
+
+          dataType: "jsonp",
+    //       xhrFields: {
+    //    withCredentials: true
+    // },
+
+
+          success: function (response) {
+            debugger;
+              var resp = JSON.parse(response)
+              alert(resp.status);
+          },
+          error: function (xhr, status) {
+         debugger;
+              alert(status);
+          }
+});
+              //  $.post('{{ model.endpoint }}',obj["text"]).done(function(data){
+              //      debugger;
+              //      res.innerHTML = data;
+              // })
 
               });
+
+
 
 
                $('#table_data').on('click',"td",function(e){
@@ -150,6 +205,27 @@
                   }
                 });
               });
+
+
+
+
+    //           $("#pptResult").pptxToHtml({
+    //
+    //             pptxFileUrl:'{{model.slide}}',
+    //
+    // });
+
+//       var ppt2png = require('ppt2png');
+//     ppt2png('{{model.slide}}', './output/img', function( err ){
+//     if(err) {
+//         console.log(err);
+//     } else {
+//         console.log('convert successful.');
+//     }
+// });
+
+
+
           });
 
 
@@ -168,94 +244,148 @@
                var table_data='<table class="table table-bordered table-stripped" style="border:"1px solid black"; margin: "5px"; width: "290px"; border-collapse: separate; border-spacing: 4px;">';
                var data= event.target.result;
                }
+
+               function openNav() {
+               document.getElementById("sidebar").style.width = "350px";
+
+               }
+
+               function closeNav() {
+               document.getElementById("sidebar").style.width = "0";
+
+               }
   </script>
 
   </head>
    <body>
-  <header id="header" class="fixed-top ">
-    <div class="container">
+     <!--==========================
+     Header
+     ============================-->
 
-      <div class="logo float-left ">
+     <header id="header" class="fixed-top ">
+       <!-- <div class="container"> -->
 
-       <a href="#intro" class="scrollto"><img src="{% static 'images/logo.png' %}"  alt="" class="img-fluid "></a>
-      </div>
+         <div class="logo float-left ">
 
-      <nav class="main-nav float-right d-none d-lg-block ">
-        <ul>
-          <li
-          {% if '/' == request.path %}
-              class= "nav-item active"
-          {% else %}
-             class= "nav-item "
-          {% endif %}
-                   >
-            <a href ="{%url 'index'%}">Home</a></li>
-          <li>
-          <a href="#about">About Us</a></li>
-          <li
-          {% if '/services/' == request.path %}
-              class= "nav-item active"
-          {% else %}
-             class= "nav-item "
-          {% endif %}
+          <a href="#intro" class="scrollto"><img src="{% static 'images/logos.png'  %}"  alt="" class="img-fluid "></a>
+         </div>
+        <span style ="margin-bottom:0px"><h4 style ="margin-bottom:0px">
+                 The digital innovation hub within Virtusa</h4></span>
 
-          >
-          <a href="{%url 'services'%}">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+         <nav class="main-nav  d-none d-lg-block " style="margin-left:168px;">
+           <ul>
+             <li
+             <li
+             {% if '/' == request.path %}
+                 class= "nav-item active"
+             {% else %}
+                class= "nav-item "
+             {% endif %}
+                      >
+               <a href ="{%url 'index'%}">Home</a></li>
 
-        </ul>
-      </nav>
+             <li>
+             <a href="#about">Our Practices</a></li>
+             <li
+             {% if '/services/' == request.path %}
+                 class= "nav-item active"
+             {% else %}
+                class= "nav-item "
+             {% endif %}
 
-    </div>
-  </header>
+             >
+             <a href="{%url 'services' %}">Solutions</a></li>
+             <li><a href="#portfolio">Portfolio</a></li>
+
+           </ul>
+         </nav>
+
+
+
+
+       <div class="wrapper">
+          <div class="container-fluid ">
+             <button type="button" id="sidebarCollapse" class="btn btn-dark float-right" onclick="openNav()">
+                   <i class="fa fa-align-left"></i>
+                       <span></span>
+                           </button>
+                            </div>
+
+                   <div id="sidebar" class="sidebar">
+                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                     <div class="list-group panel">
+                               {%  for item in mlist %}
+                                     <!-- <a href="#">{{item.name}}</a> -->
+                                  <a href="#menu{{item.id}}" class=" collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><span class="hidden-sm-down">{{item.name}}</span> </a>
+                                       <div class="collapse p-3" id="menu{{item.id}}">
+                                          {%  for items in item.cats %}
+                                            <a href="#menu1sub{{items.id}}"  style="background-color:pink" data-toggle="collapse" aria-expanded="false"> {{ items.name}}</a>
+                                                      <div class="collapse" id="menu1sub{{items.id}}">
+                                                           {%  for item_new in items.category.all %}
+                                                                    <a href="{%url 'model'%}?model={{ item_new.name }}"class="list-group-item" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
+                                                           {%endfor%}
+                                                  <!-- <div class="collapse"> -->
+                                            </div>
+                                       {%endfor%}
+                                        </div>
+                                   {%endfor%}
+
+                   </div>
+                   </div>
+   </div>
+
+     </header>
+
+
+
+
+<!-- https://virtusaonline-my.sharepoint.com/:p:/r/personal/dipsikhadg_virtusa_com/_layouts/15/Doc.aspx?sourcedoc=%7B0943DE6F-B6BB-4199-8616-3F157AAB6AB8%7D&file=Bankia_Social%20Media%20Analytics_v0.2.pptx&action=edit&mobileredirect=true -->
+<!-- <iframe src='https://virtusaonline-my.sharepoint.com/:p:/r/personal/dipsikhadg_virtusa_com/_layouts/15/Doc.aspx?sourcedoc=%7B0943DE6F-B6BB-4199-8616-3F157AAB6AB8%7D&file=Bankia_Social%20Media%20Analytics_v0.2.pptx&action=edit&mobileredirect=true' </iframe> -->
+<!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{model.slide}}'width='962px' height='565px' frameborder='0'></iframe>
+<iframe src="https://virtusaonline-my.sharepoint.com/personal/dipsikhadg_virtusa_com/_layouts/15/Doc.aspx?sourcedoc={0943de6f-b6bb-4199-8616-3f157aab6ab8}"</iframe> -->
 
   <section id="intro" onload="init()">
     <div class="container">
       <div class="row">
-        <div class="span">
-          <!-- <h2><strong><span class="highlight primary">{{model.name}}</span></strong></h2>
-          <p class="lead">
-          <strong>{{model.summary}}</strong>
+        <!-- <div class="span"> -->
+        	<!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> -->
+              {% if model.slide %}
+          <iframe src="{{model.slide}}" width="100%" height="700px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+              {% else %}
 
-          </p>
 
+                     <div class="col-lg-6 content order-lg-1 order-2">
+                        <p>
+                         Virtusa Corporation is a global provider of Digital Buisness Transformation, Digital Engineering and Information Technology(IT) outsourcing services that accelerates our client's journey to Digital Future.
+                         We work with clients to accelerate and optimize their tech-enabled innovation programs, focusing on three stages:
+                        </p>
+                     </div>
 
-          <p>{{model.content}} </p> -->
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-      <div class="carousel-item active">
-
-        <img class="d-block w-100" src="{{model.slide1.url}}" alt="First slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="{{model.slide2.url}}" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="{{model.slide3.url}}" alt="Third slide">
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+                     {%endif%}
+            <!-- <div id ="pptResult"></div><iframe style="width:100%; height:500px;overflow:auto;">
+                  {% for i in model.slide %}
+                <div class="carousel-inner">
+                    {{i}}
+                    </div>
+{% endfor %}
+     Controls
+    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    		    	<span class="glyphicon glyphicon-chevron-left"></span>
+                 <span class="sr-only">Previous</span>
+    			</a>
+    			<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    		    	<span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">Next</span>
+    			</a>
   </div>
-
-
-          </div>
+-- >
+<!--
+          </div> -->
         </div>
       </div>
-          </div>
-  <!-- </section>
 
+ </section>
+<!--
   <section id="maincontent">
     <div class="container">
       <div class="row">

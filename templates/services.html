@@ -18,9 +18,10 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated06.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
+
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
 
 
@@ -69,20 +70,20 @@
 
 
    var a=  getUrlVars();
-   config = {{ catList | safe}};
-  for(var k=0;k<config.length;k++){
-
-      var catoList = config[k];
-      if(catoList.id == a){
-        // document.
-        var selector, elems, makeActive;
-
-selector = '#sidebar li';
-document.getElementById(catoList.id).classList.add('active');
-document.getElementById('h').innerHTML = catoList.name;
-
-}
-}
+//    config = {{ catList | safe}};
+//   for(var k=0;k<config.length;k++){
+//
+//       var catoList = config[k];
+//       if(catoList.id == a){
+//         // document.
+//         var selector, elems, makeActive;
+//
+// selector = '#sidebar li';
+// document.getElementById(catoList.id).classList.add('active');
+// document.getElementById('h').innerHTML = catoList.name;
+//
+// }
+// }
 
 $('#sidebarCollapse').on('click', function () {
     $('#sidebar').toggleClass('active');
@@ -91,7 +92,86 @@ $('#sidebarCollapse').on('click', function () {
 
 });
 
+$(document).ready(function() {
 
+	var showChar = 500;
+	var ellipsestext = "...";
+	var moretext = "more";
+	var lesstext = "less";
+	$('.more').each(function() {
+    debugger;
+		var content = $(this).html();
+
+		if(content.length > showChar) {
+
+			var c = content.substr(0, showChar);
+			var h = content.substr(showChar-1, content.length - showChar);
+
+			var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="#myModal" class="morelink">' + moretext + '</a></span>';
+
+			$(this).html(html);
+		}
+
+	});
+
+
+
+
+	$(".morelink").click(function(e){
+
+
+    e.preventDefault();
+    var href = jQuery(this).attr('href');
+    var myHeading = "<p>"+$(this).prev()[0].innerHTML+"</p>";
+    var x = new Date();
+    $("#modalBody").html(myHeading);
+
+    var modalTitle=$(this).parent().parent().prev().text()
+    $("#modalTitle").html(modalTitle)
+    $('#myModal').modal('show');
+// a.fn.init [div#myModal.modal.fade]
+//     jQuery(href).modal('toggle');
+	// 	if($(this).hasClass("less")) {
+	// 		$(this).removeClass("less");
+	// 		$(this).html(moretext);
+	// 	} else {
+  //       $('#myModal').modal('show');
+	// 		// $(this).addClass("less");
+	// 		// $(this).html(lesstext);
+	// 	}
+	// 	// $(this).parent().prev().toggle();
+	// 	// $(this).prev().toggle();
+	// 	// return false;
+	});
+});
+function openNav() {
+document.getElementById("sidebar").style.width = "350px";
+
+}
+
+function closeNav() {
+document.getElementById("sidebar").style.width = "0";
+
+}
+
+function likebutton() {
+  // debugger;
+  //   var catid;
+  //   catid = $(this).attr("data-catid");
+  //   $.ajax(
+  //   {
+  //       type:"GET",
+  //       url: "/likepost",
+  //       data:{
+  //                post_id: catid
+  //       },
+  //       success: function( data )
+  //       {
+  //           $( '#like'+ catid ).remove();
+  //           $( '#message' ).text(data);
+  //       }
+  //    })
+}
 
 </script>
 
@@ -99,98 +179,239 @@ $('#sidebarCollapse').on('click', function () {
 
 <body>
 
+  <div class="main-container">
+
   <header id="header" class="fixed-top ">
-    <div class="container">
+    <!-- <div class="container"> -->
 
       <div class="logo float-left ">
 
-       <a href="#intro" class="scrollto"><img src="{% static 'images/logo.png' %} "  alt="" class="img-fluid "></a>
+       <a href="#intro" class="scrollto"><img src="{% static 'images/logos.png'  %}"  alt="" class="img-fluid "></a>
       </div>
+     <span style ="margin-bottom:0px"><h4 style ="margin-bottom:0px">
+              The digital innovation hub within Virtusa</h4></span>
 
-      <nav class="main-nav float-right d-none d-lg-block ">
+      <nav class="main-nav  d-none d-lg-block " style="margin-left:168px;">
         <ul>
           <li
           {% if '/' == request.path %}
-              class= "nav-item active" {{request.path}}
+              class= "nav-item active"
           {% else %}
              class= "nav-item "
           {% endif %}
                    >
             <a href ="{%url 'index'%}">Home</a></li>
-          <li><a href="{%url 'index'%}?#about">About Us</a></li>
+          <li>
+          <li>
+          <a href="#about">Our Practices</a></li>
           <li
           {% if '/services/' == request.path %}
-              class= "nav-item active "
+              class= "nav-item active"
           {% else %}
              class= "nav-item "
-
           {% endif %}
 
           >
-          <a href="{%url 'services'%}">Services</a></li>
+          <a href="{%url 'services' %}">Solutions</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
 
         </ul>
-
       </nav>
 
-    </div>
-  </header>
+
+
 
     <div class="wrapper">
+       <div class="container-fluid ">
+          <button type="button" id="sidebarCollapse" class="btn btn-dark float-right" onclick="openNav()">
+                <i class="fa fa-align-left"></i>
+                    <span></span>
+                        </button>
+                         </div>
 
+                <div id="sidebar" class="sidebar">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                  <div class="list-group panel">
+                            {%  for item in mlist %}
+                                  <!-- <a href="#">{{item.name}}</a> -->
+                               <a href="#menu{{item.id}}" class=" collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><span class="hidden-sm-down">{{item.name}}</span> </a>
+                                    <div class="collapse p-3" id="menu{{item.id}}">
+                                       {%  for items in item.cats %}
+                                         <a href="#menu1sub{{items.id}}"  style="background-color:pink" data-toggle="collapse" aria-expanded="false"> {{ items.name}}</a>
+                                                   <div class="collapse" id="menu1sub{{items.id}}">
+                                                        {%  for item_new in items.category.all %}
+                                                                 <a href="{%url 'model'%}?model={{ item_new.name }}"class="list-group-item" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
+                                                        {%endfor%}
+                                               <!-- <div class="collapse"> -->
+                                         </div>
+                                    {%endfor%}
+                                     </div>
+                                {%endfor%}
 
-        <!-- Sidebar Holder -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Main categories</h3>
-            </div>
+                </div>
+</div>
 
-            <ul class="list-unstyled components" >
+  </header>
 
-                <li >
-                        {% if catList %}
-                             {%  for item in catList %}
-                         <a href="{%url 'services'%}?cat={{item.id}}" id={{item.id}} >{{item.name}}</a>
-                          {% endfor %}
-                           {% endif %}
-
-
-                </li>
-        </nav>
-
-        <!-- Page Content Holder -->
-        <div id="content"class="section-bg  clearfix" >
 
 
           <section id="services" >
             <div class="container">
 
               <header class="section-header">
+                 <h3 id="h">{{modulename}}</h3>
+                    <p></p>
+
+             </header>
+
+              <div class="line"></div>
+               <div class="row">
+                <div class="breadcrumb">
+                 <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
+                    {%for item in catList %}
+                   <li
+
+                       class= "nav-item "
 
 
-                          <h3 id="h">Active Models</h3>
-                          <p>We believe success is all about getting something in the hands of a client. We have helped clients across the globe create new digital-native business models and services in collaboration with disruptive FinTechs, HealthTechs, TelecomTechs, and InsureTechs..</p>
+                   >
+                    <a
+                       {% if  forloop.counter == 1 %}
+                                            class="nav-link show active" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
+                                        {% else %}
+                                            class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
+                                       {% endif %}
 
 
-              </header>
-<div class="line"></div>
+                        >{{item.name}}</a>
+                 </li>
+                 {%endfor%}
+
+               </ul>
+            <div class="tab-content  pt-5" id="myTabContentJust">
+              {%for item in catList %}
+                 <div
+                    {% if  forloop.counter == 1 %}
+                       class="tab-pane fade show active" id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
+                     {% else %}
+                       class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
+                   {% endif %}
+                    >
+                     <p class=" comment more" >{{item.summary}}</p>
+
+                     <h4 style ="text-align:center"><u>{{item.name}} models</u></h4>
+                    <div class="list-group">
+
+                    {% if item.inps|length >= 1 %}
+                        {% for items in item.inps %}
+
+                           <div class ="bg-info p-3 mb-2">
+                              <div class="d-flex w-100 justify-content-between">
+                                 <h5 class="mb-1"><a href="{%url 'model'%}?model={{ items.name }}"  style="Color:white" >{{items.name}}</a></h5>
+                                <small>3 days ago</small>
+                              </div>
+                              <p class="mb-3">{{items.summary}}</p>
+                              {% if items.category.all|length > 1 %}
+                              <p class="font-weight-bold">
+                               This model is also achieved by :
+                                {% for cat in items.category.all %}
+                                  {% if cat.id != item.id %}
+                                    <ul> {{cat.name}} - <a style ="color:white" href="{%url 'services'%}?cat={{cat.homeCategory.id}}"> {{ cat.homeCategory.name}}</a></ul>
+                                 {%endif%}
+                               {%endfor%}
+                               {%endif%}
+                            </p>
+
+                        </div>
+                         {%endfor%}
+                       {%else%}
+                          <div class ="bg-info p-3 mb-2">
+                              <div class="d-flex w-100 justify-content-between">
+                                <p class="mb-3">No model added</p>
+
+                              </div>
+                        </div>
+                   {%endif%}
+
+        </div>
+      </div>
+    {%endfor%}
+
+
+  <!-- <div class="tab-pane fade" id="kl2" role="tabpanel" aria-labelledby="profile-tab-just">
+    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1
+      labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
+      beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
+      vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar
+      helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes
+      anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party
+      scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+  </div>
+  <div class="tab-pane fade" id="contact-just" role="tabpanel" aria-labelledby="contact-tab-just">
+    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro
+      fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone
+      skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings
+      gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork
+      biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl
+      craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+  </div> -->
+</div>
+
+
+                        <!-- <ul class="nav nav-pills  md-pills nav-justified pills-warning mb-4">
+
+                          {% for item in catList %}
+                          <li class="nav-item">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                              aria-controls="pills-profile" aria-selected="false">{{item.name}}</a>
+                          </li>
+
+                       {% endfor %}
+
+                  </ul>
+
+
+                  <div class="tab-content pt-2 pl-1" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Consequat
+                      occaecat ullamco amet non eiusmod nostrud dolore irure incididunt est duis anim sunt officia. Fugiat
+                      velit proident aliquip nisi incididunt nostrud exercitation proident est nisi. Irure magna elit commodo
+                      anim ex veniam culpa eiusmod id nostrud sit cupidatat in veniam ad. Eiusmod consequat eu adipisicing
+                      minim anim aliquip cupidatat culpa excepteur quis. Occaecat sit eu exercitation irure Lorem incididunt
+                      nostrud.</div>
+
+
+                </div> -->
+                <!-- Grid column -->
+
+              </div>
+              <!-- Grid row -->
+
+
+
+<!--
               <div class="row">
+
                   {% if models %}
                      {%  for item in models %}
 
                      <div class="col-md-6 col-lg-4 mb-4 wow bounceInUp" data-wow-duration="1.4s">
-                      <div class="card h-100 mb-3">
+                      <div class="card h-85 mb-3">
                            <img class="card-img-top img-fluid card-style" src="{{ item.image.url }}" alt="">
                            <div class="card-body">
 
                                <h4 class="title"><a href="{%url 'model'%}?model={{ item.name }}">{{item.name}}</a></h4>
-                               <p class="description">{{item.summary}}</p>
+                               <p class="description comment more">{{item.summary}}</p>
 
                            </div>
+                           <div class="card-footer">
+                             <small class="text-muted">
+                                Updated on <cite title="Source Title">{{item.time}}</cite>
+                             </small>
+
+                          </div>
                        </div>
                      </div>
-                     {% endfor %}
+                 {% endfor %}
                      {% else %}
                      <div class="col-md-12">
                          <p>No Models</p>
@@ -198,16 +419,30 @@ $('#sidebarCollapse').on('click', function () {
                      </div>
                        {% endif %}
 
-          </div>
+          </div> -->
 
 
             </div>
           </section>
 
-
+          <div class="modal fade" id="myModal" role="dialog">
+             <div class="modal-dialog">
+              <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id ="modalTitle"></h4>
+              </div>
+              <div class="modal-body" id ="modalBody">
+                  <!-- <p>Some text in the modal.</p> -->
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+              </div>
+           </div>
+        </div>
+      </div>
 
         </div>
-    </div>
+
 
 
 
@@ -235,7 +470,7 @@ $('#sidebarCollapse').on('click', function () {
      </footer><!-- #footer -->
 
 
-
+</div>
 
 </body>
 

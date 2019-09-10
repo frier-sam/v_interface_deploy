@@ -11,6 +11,14 @@ a {
   transition: 0.5s;
 }
 
+.main-container {
+ min-height: 100vh; /* will cover the 100% of viewport */
+ overflow: hidden;
+ display: block;
+ position: relative;
+ padding-bottom: 100px; /* height of your footer */
+}
+
 a:hover,
 a:active,
 a:focus {
@@ -66,63 +74,15 @@ h6 {
     border-bottom: 1px dashed #ddd;
     margin: 40px 0;
 }
-.wrapper {
+/* .wrapper {
     display: flex;
-    width: 100%;
-    align-items: stretch;
-    perspective: 1500px;
-}
+    /* width: 100%; */
+    /* align-items: stretch;
+    perspective: 1500px; */
+/* }  */
 
 
-#sidebar {
-    margin-top: 80px;
-    min-width: 250px;
-    max-width: 250px;
-    background: #7386D5;
-    color: #fff;
-    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
-    transform-origin: bottom left;
-}
-
-#sidebar.active {
-    margin-left: -250px;
-    transform: rotateY(100deg);
-}
-
-#sidebar .sidebar-header {
-    padding: 20px;
-    background: #6d7fcc;
-}
-
-#sidebar ul.components {
-    /* padding: 20px 0;
-    border-bottom: 1px solid #47748b; */
-}
-
-#sidebar ul p {
-    color: #fff;
-    padding: 10px;
-}
-
-#sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
-        color: white;
-}
-#sidebar ul li a.active{
-    color: #fff;
-    background: #000;
-}
-#sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
-}
-
-#sidebar ul li a.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #000;
-}
+/* */
 
 
 a[data-toggle="collapse"] {
@@ -177,7 +137,7 @@ a.article, a.article:hover {
     transition: all 0.3s;
 }
 
-#sidebarCollapse {
+/* #sidebarCollapse {
     width: 40px;
     height: 40px;
     background: #f5f5f5;
@@ -209,13 +169,17 @@ a.article, a.article:hover {
     transform: none;
     opacity: 1;
     margin: 5px auto;
-}
+} */
 
 svg {width: 350px; height: 350px;}
 svg path {fill: #000 !important;}
 
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
 #header {
-  height: 80px;
+  height: 105px;
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
@@ -226,7 +190,7 @@ svg path {fill: #000 !important;}
 
 #header.header-scrolled,
 #header.header-pages {
-  height: 60px;
+  height: 95px;
   padding: 10px 0;
 }
 
@@ -246,14 +210,82 @@ svg path {fill: #000 !important;}
   text-decoration: none;
 }
 
-#header .logo img {
-  padding: 0;
-  margin: 7px 0;
+#header .logo img
+  {
+    padding: 0;
+    margin: 7px 0;
+    margin: 14px 29px;
+    max-height: 50px;
 
-      margin: 0px 0;
-    max-height: 40px;
-    width: 7rem;
+    max-height: 45px;
+    width: 130px;
 }
+
+.main-pages {
+  margin-top: 60px;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: rgb(0,0,0,0.70);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
 
 .main-pages {
   margin-top: 60px;
@@ -335,6 +367,95 @@ svg path {fill: #000 !important;}
   color: #fff;
 
 }
+
+/*--------------------------------------------------------------
+# Nav Bar
+--------------------------------------------------------------*/
+.nav-tab > li > a {
+  margin: 0;
+color:black;}
+.breadcrumb input[type="radio"] {
+  display: none;
+}
+
+.nav-tab .nav-link.active,
+.nav-tab .nav-item.show .nav-link {
+  color: white;
+  background-color: black;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.breadcrumb input[type="checkbox"] {
+  display: none;
+}
+
+.breadcrumb {
+   background: #e3bde69c;;
+   display: inline-block;
+   padding: 1px;
+   padding-right: 14px;
+}
+
+.tab-content {
+   padding: 15px;
+}
+
+.breadcrumb li {
+   display: inline-block;
+   background: white;
+   padding: 0;
+   position: relative;
+   min-width:50px;
+   text-decoration: none;
+   -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%, 15px 50%);
+   clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%, 15px 50%);
+    margin-right: -13px;
+}
+
+.breadcrumb li#last {
+   -webkit-clip-path: polygon(0 0, calc(100% - 0px) 0, 100% 50%, calc(100% - 0px) 100%, 0 100%, 15px 50%);
+   clip-path: polygon(0 0, calc(100% - 0px) 0, 100% 50%, calc(100% - 0px) 100%, 0 100%, 15px 50%);
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover { border-bottom: 2px solid #5cfeea;}
+
+.breadcrumb li:first-child {
+  -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+}
+
+@media (max-width: 408px) {
+  .breadcrumb li {
+    display: inline-block;
+    background: white;
+    padding: 5px 30px 5px 30px;
+    position: relative;
+    min-width:40%;
+    border:1px solid black;
+    text-decoration: none;
+    -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+    padding-left: 20px;
+    margin-right: -13px;
+  }
+  .breadcrumb li#last {
+    -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
+    padding-left: 20px;
+  }
+      .breadcrumb {
+        background: none;
+         -webkit-filter: drop-shadow(1px 1px 0px black)
+    drop-shadow(1px -1px 0px black)
+    drop-shadow(-1px 1px 0px black)
+    drop-shadow(-1px -1px 0px black);
+  filter: drop-shadow(1px 1px 0px black)
+    drop-shadow(1px -1px 0px black)
+    drop-shadow(-1px 1px 0px black)
+    drop-shadow(-1px -1px 0px black);
+        }
+}
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -559,7 +680,7 @@ svg path {fill: #000 !important;}
   text-align: center;
   margin: auto;
   font-size: 15px;
-  padding-bottom: 60px;
+  padding-bottom: 8px;
   color: #556877;
   width: 50%;
 }
@@ -569,6 +690,21 @@ svg path {fill: #000 !important;}
 
 .section-bg {
   background: #ecf5ff;
+}
+
+
+a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.morecontent span {
+	display: none;
+}
+.comment {
+
+
+      margin: 10px;
+    height: 100px;
 }
 
 /* About Us Section
@@ -678,9 +814,9 @@ svg path {fill: #000 !important;}
 --------------------------------*/
 
 #services {
-  padding: 60px 0 40px 0;
+  padding: 95px 0 40px 0;
   margin-top: 19px;
-
+/* background: #ecf5ff; */
 }
 
 #services .card {
@@ -886,6 +1022,7 @@ border-top-right-radius: calc(100% - 116px);
 #footer .credits a:hover {
   color: #f1f7ff;
 }
+
 /* #services .description {
   font-size: 14px;
   margin-left: 40px;
@@ -895,33 +1032,87 @@ border-top-right-radius: calc(100% - 116px);
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-@media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-        transform: rotateY(90deg);
-    }
-    #sidebar.active {
-        margin-left: 0;
-        transform: none;
-    }
-    #sidebarCollapse span:first-of-type,
-    #sidebarCollapse span:nth-of-type(2),
-    #sidebarCollapse span:last-of-type {
-        transform: none;
-        opacity: 1;
-        margin: 5px auto;
-    }
-    #sidebarCollapse.active span {
-        margin: 0 auto;
-    }
-    #sidebarCollapse.active span:first-of-type {
-        transform: rotate(45deg) translate(2px, 2px);
-    }
-    #sidebarCollapse.active span:nth-of-type(2) {
-        opacity: 0;
-    }
-    #sidebarCollapse.active span:last-of-type {
-        transform: rotate(-45deg) translate(1px, -1px);
-    }
+/*--------------------------------------------------------------
+# Responsive Media Queries
+--------------------------------------------------------------*/
 
+@media (min-width: 992px) {
+  #testimonials .testimonial-item p {
+    width: 80%;
+  }
+}
+
+@media (max-width: 991px) {
+  #header {
+    height: 60px;
+    padding: 10px 0;
+  }
+
+  #header .logo h1 {
+    font-size: 28px;
+    padding: 8px 0;
+  }
+
+  #intro {
+    padding: 140px 0 60px 0;
+  }
+
+  #intro .intro-img {
+    width: 80%;
+    float: none;
+    margin: 0 auto 25px auto;
+  }
+
+  #intro .intro-info {
+    width: 80%;
+    float: none;
+    margin: auto;
+    text-align: center;
+  }
+
+  #why-us .card {
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  #intro .intro-info {
+    width: 100%;
+  }
+
+  #intro .intro-info h2 {
+    font-size: 34px;
+    margin-bottom: 30px;
+  }
+
+  .section-header p {
+    width: 100%;
+  }
+
+  #testimonials .testimonial-item {
+    text-align: center;
+  }
+
+  #testimonials .testimonial-item .testimonial-img {
+    float: none;
+    margin: auto;
+  }
+
+  #testimonials .testimonial-item h3,
+  #testimonials .testimonial-item h4,
+  #testimonials .testimonial-item p {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 574px) {
+  #intro {
+    padding: 100px 0 20px 0;
+  }
 }

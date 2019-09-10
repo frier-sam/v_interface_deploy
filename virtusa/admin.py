@@ -20,8 +20,8 @@ class Ml_models_admin(admin.ModelAdmin):
 class category_admin(admin.ModelAdmin):
     list_display = ['name','summary']
 
-# class slides_admin(admin.ModelAdmin):
-#         list_display = ['name','image']
+class homeStack_admin(admin.ModelAdmin):
+        list_display = ['name','image']
 
 
 
@@ -31,4 +31,4 @@ class category_admin(admin.ModelAdmin):
 
 admin.site.register(models.Ml_models, Ml_models_admin)
 admin.site.register(models.category, category_admin)
-# admin.site.register(models.slides, slides_admin)
+admin.site.register(models.homeStack, homeStack_admin)
