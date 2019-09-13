@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from virtusa import models
 import csv
-from pptx import Presentation
+# from pptx import Presentation
 import pandas as pd
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse

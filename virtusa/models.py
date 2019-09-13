@@ -21,7 +21,7 @@ class category(models.Model):
     home = models.BooleanField(default=False)
     maincategory = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images/',default='images/default.jpg')
-    homeCategory= models.ForeignKey(homeStack,on_delete=models.CASCADE,related_name='homeCategory',null=False)
+    homeCategory= models.ForeignKey(homeStack,on_delete=models.CASCADE,related_name='homeCategory')
     date_time = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
