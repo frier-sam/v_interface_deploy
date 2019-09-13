@@ -19,12 +19,16 @@ from virtusa import views as vview
 from virtusa import urls as vu
 from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls import url
+
 urlpatterns = [
     path('',vview.home,name='index'),
     # path('services/',vview.modelview),
     path('admin/', admin.site.urls),
     path('services/', vview.services,name='services'),
     path('model/', vview.model,name='model'),
+    url('get_response/', vview.answer_me, name='get_response')
+
 ]
 if settings.DEBUG: # new
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

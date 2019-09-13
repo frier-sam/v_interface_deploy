@@ -101,83 +101,125 @@
               debugger;
 
 
+              var frm = $('#d');
+         frm.submit(function () {
+             $.ajax({
+                 type: frm.attr('method'),
+                 url: frm.attr('action'),
+                 data: frm.serialize(),
+                 success: function (data) {
+                     $("#SOME-DIV").html(data);
+                 },
+                 error: function(data) {
+                     $("#MESSAGE-DIV").html("Something went wrong!");
+                 }
+             });
+             return false;
+         });
 
            $("#Submit").click(function(){
 
-               var results = {
-                    data: []
-               };
+
                var table = document.querySelector('table'),
                    rows = table.getElementsByTagName('tr'),
-                   i, j, cells, customerId,obj={}, myMap = new Map();
+                    i, j, cells, customerId,obj={}, myMap = new Map();
 
-               for (i = 0, j = rows.length; i < j; ++i) {
-                   cells = rows[i].getElementsByTagName('td');
+                     for (i = 0, j = rows.length; i < j; ++i) {
+                           cells = rows[i].getElementsByTagName('td');
 
-                     if (!cells.length) {
+                       if (!cells.length) {
                         continue;
-                      }
+                         }
 
-                      name = cells[0].innerHTML? cells[0].innerHTML.trim():"";
-                      // value= cells[1] ? parseInt(cells[1].innerHTML.trim()) : "";
+                          name = cells[0].innerHTML? cells[0].innerHTML.trim():"";
+            // value= cells[1] ? parseInt(cells[1].innerHTML.trim()) : "";
                       value = cells[1].innerHTML.trim();
                         myMap.set(name, value);
-              }
+                   }
 
-             function mapToObj(map){
-                var obj = {}
-                map.forEach(function(v, k){
-                obj[k] = v
-              })
-              return obj
-            }
-           var myJson = {};
-            myJson= mapToObj(myMap);
+                         function mapToObj(map){
+                              var obj = {}
+                           map.forEach(function(v, k){
+                           obj[k] = v
+                            })
+                        return obj
+                       }
+                                     var myJson = {};
+                                      myJson= mapToObj(myMap);
 
-             myJson=JSON.stringify(myJson)
-           //   var obj=JSON.parse(myJson)
-           //   var data = obj["text"]
-           // var res = document.getElementById('result');
-            debugger;
+                                       myJson=JSON.stringify(myJson)
+                                       // var obj=JSON.parse(myJson)
+                                       // var data = obj["text"]
+                                     var res = document.getElementById('result');
+                                      debugger;
 
-            $.ajax({
-                type: "POST",
-              url: "{{ model.endpoint }}",
+           // debugger;
+           //      var $table = $("table")
+           //      rows = [],
+           //      header = [];
+           //      $table.find("thead th").each(function () {
+           //      // if($.trim($(this).text())!="")
+           //          header.push($.trim($(this).text()));
+           //      });
+           //      $table.find("tbody tr").each(function (j) {
+           //          var row = {};
+           //      $(this).find("td").each(function (i) {
+           //          var key = $.trim(header[i]),
+           //          value = $.trim($(this).text());
+           //          row[key] = value;
+           //          });
+           //      rows.push(row);
+           //    });
+           //
+           //  myMap = new Map();
+           //
+           //    for(var i=0;i<rows.length;i++)
+           //      {
+           //          myMap.set(rows[i])
+           //          }
+           //
+           //  function mapToObj(map){
+           //      var obj = {}
+           //      map.forEach(function(v, k){
+           //      obj[k] = v
+           //    })
+           //      return obj
+           //    }
+           //
+           // myJson= mapToObj(myMap);
+           //
+           //  myJson=JSON.stringify(myJson)
+           //  var obj=JSON.parse(myJson)
+           //    myJson= mapToObj(rows);
+           //      debugger;
+           //    myJson = JSON.stringify(myJson);
+           //
+           //  $.ajax({
+           //        url: '{% url 'get_response' %}',
+           //
+           //        data: {
+           //          'inputValue': myJson,
+           //          'csrfmiddlewaretoken': '{{ csrf_token }}',
+           //        },
+           //        dataType: 'json',
+           //        success: function (data) {
+           //          debugger;
+           //          // document.getElementById('p-text').innerHTML = data["respond"];
+           //        }
+           //      });
 
-          crossDomain : true,
-  xhrFields: {
-      withCredentials: true
-  },
-  data: data,
-        contentType: 'application/json; charset=utf-8',
 
-          dataType: "jsonp",
-    //       xhrFields: {
-    //    withCredentials: true
-    // },
-
-
-          success: function (response) {
-            debugger;
-              var resp = JSON.parse(response)
-              alert(resp.status);
-          },
-          error: function (xhr, status) {
-         debugger;
-              alert(status);
-          }
-});
-              //  $.post('{{ model.endpoint }}',obj["text"]).done(function(data){
-              //      debugger;
-              //      res.innerHTML = data;
-              // })
+                $.post('{{ model.endpoint }}',myJson).done(function(data){
+                    debugger;
+                    res.innerHTML = data;
+               })
 
               });
 
 
 
 
-               $('#table_data').on('click',"td",function(e){
+               $('.dataframe').on('click',"td",function(e){
                   debugger;
                   var OriginalContent = $(this).text();
                   $(this).addClass("cellEditing");
@@ -492,9 +534,19 @@
 
                       <div id="table-scroll">
 
-                              <table class="fixed" id ="table_data">
+
+                                <!-- <th>Name</th>
+                                <th>Value</th> -->
+               <!-- <form  action = '/get_response/'id='d' method="POST">
+
+                    {{model.inputs_csv | safe}}
+                      <input type="submit" value="OK">
+                  </form> -->
+                  <table class="fixed" id ="table_data">
+                    <thead>
                                 <th>Name</th>
                                 <th>Value</th>
+                         </thead>
                               {% for i in model.inputs_csv %}
 
 
@@ -511,6 +563,8 @@
                               {% endfor %}
 
                               </table>
+
+
 
                     </div>
               </div>
