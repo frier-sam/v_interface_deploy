@@ -19,7 +19,7 @@
 
     <!-- Bootstrap CSS File -->
         <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated06.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated07.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -235,12 +235,12 @@ function likebutton() {
                             {%  for item in mlist %}
                                   <!-- <a href="#">{{item.name}}</a> -->
                                <a href="#menu{{item.id}}" class=" collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><span class="hidden-sm-down">{{item.name}}</span> </a>
-                                    <div class="collapse p-3" id="menu{{item.id}}">
+                                    <div class="collapse" id="menu{{item.id}}" style="margin-left:33px">
                                        {%  for items in item.cats %}
-                                         <a href="#menu1sub{{items.id}}"  style="background-color:pink" data-toggle="collapse" aria-expanded="false"> {{ items.name}}</a>
-                                                   <div class="collapse" id="menu1sub{{items.id}}">
+                                         <a href="#menu1sub{{items.id}}"  data-toggle="collapse" aria-expanded="false"> {{ items.name}}</a>
+                                                   <div class="collapse" id="menu1sub{{items.id}}" style="margin-left:33px">
                                                         {%  for item_new in items.category.all %}
-                                                                 <a href="{%url 'model'%}?model={{ item_new.name }}"class="list-group-item" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
+                                                                 <a href="{%url 'model'%}?model={{ item_new.name }}" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
                                                         {%endfor%}
                                                <!-- <div class="collapse"> -->
                                          </div>
@@ -264,7 +264,7 @@ function likebutton() {
 
              </header>
 
-              <div class="line"></div>
+              <!-- <div class="line"></div> -->
                <div class="row">
                 <div class="breadcrumb">
                  <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">

@@ -36,7 +36,7 @@
   {
     padding: 0;
     margin: 7px 0;
-    margin: 14px 29px;
+    margin: 8px 29px;
     max-height: 50px;
 
     max-height: 45px;
@@ -811,6 +811,52 @@ i.icon-bg-dark {
   background-color: #4CAF50;
   color: white;
 }
+
+
+
+#cupFinals table {
+  border-collapse: collapse;
+
+}
+
+#cupFinals th, td {
+  text-align: left;
+    border: 1px solid black;
+}
+
+
+#cupFinals.fixed
+
+  { table-layout:fixed;
+}
+
+#cupFinals td, #tcupFinals th {
+  table-layout:fixed;
+  width:323px;
+  overflow:hidden;
+  word-wrap:break-word;
+  border: 1px solid #ddd;
+  padding: 8px;
+   border: 1px solid black;
+
+}
+
+#cupFinals tr:nth-child(even){background-color: #f2f2f2;}
+
+#cupFinals tr:hover {background-color: #ddd;}
+
+
+#cupFinals tr:nth-child(even)
+{background-color: #f2f2f2;}
+
+#cupFinals th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
 
 .scrollit {
     overflow:scroll;
