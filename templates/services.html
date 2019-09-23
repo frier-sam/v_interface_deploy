@@ -19,7 +19,7 @@
 
     <!-- Bootstrap CSS File -->
         <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated11.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated13.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -257,7 +257,8 @@ function likebutton() {
     <div class="container">
 
       <div class="intro-info">
-      <h1 class="caption">Fortifying your business with blockchain solutions</h1>
+      <h1 class="caption">{{modulename}}</h1>
+      <h3 class="tagline">Fortifying your business with blockchain solutions</h3>
 
       </div>
    </div>
@@ -265,20 +266,28 @@ function likebutton() {
   </section>
 </div>
 
-
+<div id="filter">
+  <div class="container-fluid">
+    <div class="custom_breadcrumb">
+      {% block breadcrumbs %}
+      <div class="breadcrumbs">
+          <a href="{% url 'admin:index' %}"></a>
+          {% block crumbs %}
+              {% if title %} &rsaquo; {{ title }}{% endif %}
+          {% endblock %}
+      </div>
+  {% endblock %}
+    </div>
+  </div>
+</div>
 
           <section id="services" >
             <div class="container">
 
-              <header class="section-header">
-                 <h3 id="h">{{modulename}}</h3>
-                    <p></p>
-
-             </header>
 
               <!-- <div class="line"></div> -->
                <div class="row">
-                <div>
+                <div class=" breadcrumb">
                  <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
                     {%for item in catList %}
                    <li
@@ -311,7 +320,7 @@ function likebutton() {
                     >
                      <p class=" comment more" >{{item.summary}}</p>
 
-                     <h4 style ="text-align:center"><u>{{item.name}} models</u></h4>
+                     <!-- <h4 style ="text-align:center"><u>{{item.name}} models</u></h4> -->
                     <div class="list-group">
 
                     {% if item.inps|length >= 1 %}

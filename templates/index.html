@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style_updated10.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style_updated15.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -186,7 +186,8 @@ document.getElementById("sidebar").style.width = "0";
 
   </div>
 
-
+  <div class="overlay d-flex align-items-center" style="background: url('{% static 'images/speed-xlabs.png' %}') no-repeat; background-size: cover;
+    ">
   <section id="intro" class="clearfix">
 
     <div class="container">
@@ -195,16 +196,18 @@ document.getElementById("sidebar").style.width = "0";
       </div>
 
       <div class="intro-info">
-        <h2>We provide<br><span>solutions</span><br>for your business!</h2>
+
+        <h1 class="title">We provide solutions for your business!</h1>
         <div>
           <a href="#about" class="btn-get-started scrollto">Get Started</a>
-          <a href="#services" class="btn-services scrollto">Our Services</a>
+
         </div>
 
       </div>
    </div>
 
   </section>
+</div>
    <!-- #intro -->
 
     <!--==========================
@@ -213,19 +216,43 @@ document.getElementById("sidebar").style.width = "0";
     <section id="about">
         <div class="container">
           <header class="section-header">
-            <h3>About Us</h3>
-            <p>xLabs: The digital innovation hub within Virtusa.</p>
-          </header>
+            <h2>About Us</h2>
+            <p style="text-align: center;"><strong>xLabs: The digital innovation hub within Virtusa.</strong></p>
 
-          <div class="row about-container">
-               <div class="col-lg-6 content order-lg-1 order-2">
+          </header>
+            <div class=" about-container">
                   <p>
                    Virtusa Corporation is a global provider of Digital Buisness Transformation, Digital Engineering and Information Technology(IT) outsourcing services that accelerates our client's journey to Digital Future.
-                   We work with clients to accelerate and optimize their tech-enabled innovation programs, focusing on three stages:
+                   We work with clients to accelerate and optimize their tech-enabled innovation programs, focusing on three stages
                   </p>
+             </div>
+                  <div class="row vn-row">
+                    <div class="vn-service-tile">
+                      <div class="vn-tile-coll text-center vn-tile-coll-even">
+                         <a  class="vn-service-link">
+                              <h3>Explore</h3>
+                                 <p class="hide-content">Horizon scanning, to identify relevant emerging technologies.Identify and track emerging technologies that are relevant and disruptive.</p>
+                               </a>
+                        </div>
+
+                      <div class="vn-tile-coll text-center vn-tile-coll-even">
+                         <a  class="vn-service-link">
+                           <h3>Experiment</h3>
+                             <p class="hide-content">Use a design thinking tool to ideate and prototype potential solutions.Focus on key tech and evaluate how your business could benefit.</p>
+                            </a>
+                          </div>
+
+                       <div class="vn-tile-coll text-center vn-tile-coll-even">
+                          <a class="vn-service-link">
+                            <h3>Exploit</h3>
+                            <p class="hide-content">Assure that good ideas are implemented and generate value.Transition prototypes into production and measure value delivery.</p>
+                           </a>
+                         </div>
+                       </div>
+                     </div>
 
 
-                  <div class="icon-box wow fadeInUp">
+                  <!-- <div class="icon-box wow fadeInUp">
                     <div class="icon"><i class="fa fa-search"></i></div>
                     <h4 class="title"><a href="">Explore</a></h4>
                     <p class="description">Horizon scanning, to identify relevant emerging technologies.Identify and track emerging technologies that are relevant and disruptive.</p>
@@ -241,10 +268,10 @@ document.getElementById("sidebar").style.width = "0";
                     <div class="icon"><i class="fa fa-thumbs-up"></i></div>
                     <h4 class="title"><a href="">Exploit</a></h4>
                     <p class="description">Assure that good ideas are implemented and generate value.Transition prototypes into production and measure value delivery.</p>
-                </div>
-             </div>
+                </div> -->
+             <!-- </div> -->
 
-             <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+             <!-- <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
                 <img src="static/images/intro.png" class="img-fluid" alt="">
             </div>
         </div>
@@ -260,7 +287,7 @@ document.getElementById("sidebar").style.width = "0";
           </p>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <!-- #about -->
@@ -272,7 +299,7 @@ document.getElementById("sidebar").style.width = "0";
       <div class="container">
 
         <header class="section-header">
-          <h3>Services</h3>
+          <h2>Services</h2>
           <p>We believe success is all about getting something in the hands of a client. We have helped clients across the globe create new digital-native business models and services in collaboration with disruptive FinTechs, HealthTechs, TelecomTechs, and InsureTechs..</p>
         </header>
 
@@ -297,8 +324,8 @@ document.getElementById("sidebar").style.width = "0";
                    </div>
                        </a>
                          <!-- <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #ff689b;"></i></div> -->
-                     <div class="card-body">
-                         <h4 class="title">{{item.name}}</h4>
+                     <div class="contain">
+                         <h2 class="title">{{item.name}}</h2>
                          <p class="card-text description comment more">{{item.summary}}</p>
 
                          <span class="morelink read-more-small">Read More</span>
@@ -356,7 +383,7 @@ document.getElementById("sidebar").style.width = "0";
      <!--==========================
        Footer
      ============================-->
-     <footer id="footer">
+     <!-- <footer id="footer">
 
 
        <div class="container">
@@ -398,9 +425,45 @@ document.getElementById("sidebar").style.width = "0";
                   </div>
 
        </div>
-     </footer><!-- #footer -->
-
-
+     </footer><!-->
+<footer id="colophons" class="site-footer vn-site-footer">
+     <div class="contact-form ">
+       <div class="container-fluid">
+         <div class="row vn-row">
+         <div class="col-lg-12">
+             <div class="contain">
+           <div class="footer-menu">
+            <div class="vn-row footer-logo text-left">
+          <div class="site-branding">
+<p class="site-title"> <a href="https://corpweb.virtusa.com" rel="home">
+<img src="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/virtusa-footer-logo.png" class="site-logo" alt="Virtusa Logo"> </a>
+</p>
+</div>
+</div>
+<div class="row vn-row" style="margin:0 !important;">
+<div class="col-md-6 col-sm-6">
+<ul class="soc">
+<li><a class="soc-facebook" href="https://www.facebook.com/VirtusaCorp" target="_blank"> <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i> </a></li>
+<li><a class="soc-twitter" href="https://twitter.com/VirtusaCorp" target="_blank"> <i class="fa fa-twitter fa-2x" aria-hidden="true"></i> </a></li>
+<li><a class="soc-linkedin" href="https://www.linkedin.com/companies/virtusa" target="_blank"> <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i> </a></li>
+<li><a class="soc-instagram" href="https://www.instagram.com/virtusacorp/" target="_blank"> <i class="fa fa-instagram fa-2x" aria-hidden="true"></i> </a></li>
+<li><a class="soc-youtube" href="https://www.youtube.com/user/VirtusaCorporation" target="_blank"> <i class="fa fa-youtube fa-2x" aria-hidden="true"></i> </a></li>
+</ul></div>
+<div class="col-md-3 hide-mob"></div>
+<div class="col-md-3 col-sm-6">
+<ul class="en privacy-links">
+<li><a href="/corporate-citizenship-compliance/">Compliance</a>|</li>
+<li><a href="/privacy-statement/">Privacy</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
 
   </body>
   </html>
