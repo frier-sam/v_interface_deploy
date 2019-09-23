@@ -924,148 +924,83 @@ border-top-right-radius: calc(100% - 116px);
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
 
-#footer {
-  background: rgba(127, 137, 161, 0.3);
-  padding: 0 0 30px 0;
-  color: #eee;
-  font-size: 14px;
+.vn-site-footer {
+    display: block !important;
 }
 
-#footer .footer-top {
-  background: rgba(127, 137, 161, 0.3);
-  padding: 60px 0 30px 0;
+.site-footer .contact-form {
+    background: #252525;
+    width: 100%;
+    padding: 50px 80px;
 }
 
-#footer .footer-top .footer-info {
-  margin-bottom: 30px;
+.site-footer .contact-form, .site-footer .contact-sec {
+	display: flex;
+	align-items: center;
 }
 
-#footer .footer-top .footer-info h3 {
-  font-size: 34px;
-  margin: 0 0 20px 0;
-  padding: 2px 0 2px 0;
-  line-height: 1;
-  font-family: "Montserrat", sans-serif;
-  color: #fff;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+.vn-site-footer .contact-form .col-lg-12, .vn-site-footer .contact-form .col-lg-12 .contain {
+    padding: 0;
 }
 
-#footer .footer-top .footer-info p {
-  font-size: 13px;
-  line-height: 24px;
-  margin-bottom: 0;
-  font-family: "Montserrat", sans-serif;
-  color: #ecf5ff;
+.footer-menu {
+    display: block;
+    margin: 0;
 }
 
-#footer .footer-top .social-links a {
-  font-size: 18px;
-  display: inline-block;
-  background: #007bff;
-  color: #fff;
-  line-height: 1;
-  padding: 8px 0;
-  margin-right: 4px;
-  border-radius: 50%;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  transition: 0.3s;
+.vn-site-footer .site-title {
+    margin: 0;
 }
 
-#footer .footer-top .social-links a:hover {
-  background: #0067d5;
-  color: #fff;
+#colophons .site-title img {
+    width: 140px;
+    margin-bottom: 6px;
 }
 
-#footer .footer-top h4 {
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  text-transform: uppercase;
-  position: relative;
-  padding-bottom: 10px;
+.footer-menu .site-branding img {
+    padding: 20px 15px;
 }
 
-#footer .footer-top .footer-links {
-  margin-bottom: 30px;
+.site-branding img {
+    max-width: 140px;
+    padding: 15px 0;
 }
 
-#footer .footer-top .footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.site-footer .soc {
+    margin: 15px 0 0;
+    padding-inline-start: 0px;
+
 }
 
-#footer .footer-top .footer-links ul li {
-  padding: 8px 0;
+.footer-menu ul li {
+    list-style: none;
+    text-align: left;
+}
+.soc li {
+    display: inline-block;
+    padding: 0 2% 0 0;
+}
+.footer-menu ul li a {
+    line-height: 2;
+    color: #666;
 }
 
-#footer .footer-top .footer-links ul li:first-child {
-  padding-top: 0;
+.vn-site-footer .privacy-links {
+    float: left;
 }
 
-#footer .footer-top .footer-links ul a {
-  color: #ecf5ff;
+.vn-site-footer .privacy-links li {
+    display: inline-block;
+    margin-right: 10px;
+    color: #666;
 }
 
-#footer .footer-top .footer-links ul a:hover {
-  color: #74b5fc;
-}
-
-#footer .footer-top .footer-contact {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-contact p {
-  line-height: 26px;
-}
-
-#footer .footer-top .footer-newsletter {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-newsletter input[type="email"] {
-  border: 0;
-  padding: 6px 8px;
-  width: 65%;
-}
-
-#footer .footer-top .footer-newsletter input[type="submit"] {
-  background: #007bff;
-  border: 0;
-  width: 35%;
-  padding: 6px 0;
-  text-align: center;
-  color: #fff;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-#footer .footer-top .footer-newsletter input[type="submit"]:hover {
-  background: #0062cc;
-}
-
-#footer .copyright {
-  text-align: center;
-  padding-top: 30px;
-}
-
-#footer .credits {
-  text-align: center;
-  font-size: 13px;
-  color: #f1f7ff;
-}
-
-#footer .credits a {
-  color: #bfddfe;
-}
-
-#footer .credits a:hover {
-  color: #f1f7ff;
+.vn-site-footer .privacy-links li:first-child a {
+    margin-right: 10px;
 }
 
 /* #services .description {
