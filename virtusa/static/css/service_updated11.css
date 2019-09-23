@@ -297,11 +297,23 @@ svg path {fill: #000 !important;}
 
 #intro {
   width: 100%;
+  height: 100%
   position: relative;
-  background: url("../images/intro-bg.jpg") center bottom no-repeat;
-  background-size: cover;
+background: rgba(0,254, 255, 0.8);
+  /* color: rgba(0,254, 255, 0.8); */
+   /* background-image: url("../images/intro-bg.jpg") center bottom no-repeat;  */
+  /* background-size: cover; */
   padding: 200px 0 120px 0;
 }
+
+#intro .caption {
+    font-size: 50px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+    font-family: 'Publico Headline Web', sans-serif;
+    margin: 15px 0;
+  }
 
 #intro .intro-img {
   width: 50%;
@@ -309,7 +321,7 @@ svg path {fill: #000 !important;}
 }
 
 #intro .intro-info {
-  width: 50%;
+
   float: left;
 }
 
@@ -866,6 +878,39 @@ a.morelink {
 height:calc(100% - 50px);
 border-top-right-radius: calc(100% - 116px);
 }
+
+.tip {
+		background: #fff;
+		border: 1px solid #ccc;
+		padding: 10px;
+		font-size: 1.2em;
+		position: relative;
+		width: 200px;
+	}
+
+	.tip:before {
+		position: absolute;
+		top: -14px;
+		left: 98px;
+		display: inline-block;
+		border-right: 14px solid transparent;
+		border-bottom: 14px solid #fff;
+		border-left: 14px solid transparent;
+		border-bottom-color: rgba(0, 0, 0, 0.2);
+		content: '';
+	}
+
+	.tip:after {
+		position: absolute;
+		top: -12px;
+		left: 99px;
+		display: inline-block;
+		border-right: 12px solid transparent;
+		border-bottom: 12px solid #fff;
+		border-left: 12px solid transparent;
+		content: '';
+	}
+
 
 #services .description {
   font-size: 14px;

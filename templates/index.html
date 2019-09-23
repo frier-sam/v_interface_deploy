@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style_updated.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style_updated10.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -57,8 +57,8 @@
 </head>
 <script>
 $(document).ready(function() {
-
-	var showChar = 100;
+debugger;
+	var showChar = 120;
 	var ellipsestext = "...";
 	var moretext = "more";
 	var lesstext = "less";
@@ -69,9 +69,9 @@ $(document).ready(function() {
 		if(content.length > showChar) {
 
 			var c = content.substr(0, showChar);
-			var h = content.substr(showChar-1, content.length - showChar);
+			var h = content.substr(showChar, content.length - showChar);
 
-			var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="#myModal" class="morelink">' + moretext + '</a></span>';
+			var html = c + '<span class="morecontent"><span>' + h + '</span></span>';
 
 			$(this).html(html);
 		}
@@ -80,10 +80,10 @@ $(document).ready(function() {
 
 	$(".morelink").click(function(e){
 
-
+debugger;
     e.preventDefault();
-    var href = jQuery(this).attr('href');
-    var myHeading = "<p>"+$(this).prev()[0].innerHTML+"</p>";
+    // var href = '#myModal';
+    var myHeading = "<p>"+$(this).prev()[0].innerHTML+$(this).prev()[0].getElementsByTagName('span')[1].innerHTML+"</p>";
     var x = new Date();
     $("#modalBody").html(myHeading);
 
@@ -184,9 +184,11 @@ document.getElementById("sidebar").style.width = "0";
   </header>
 
 
+  </div>
 
 
   <section id="intro" class="clearfix">
+
     <div class="container">
       <div class="intro-img">
         <img src="" alt="" class="img-fluid">
@@ -282,13 +284,27 @@ document.getElementById("sidebar").style.width = "0";
 
                <div class="col-md-6 col-lg-4 mb-4 wow bounceInUp " data-wow-duration="1.4s">
                 <div class="card mb-3 h-85 ">
-                  <div class="box">
-                     <img class="card-img-top img-fluid card-style  h-85 " src="{{item.image.url}}" alt="">
+                  <div class="card-block box">
+                      <a href="{%url 'services'%}?cat={{item.id}}">
+                        <div class="thumbnail">
+                     <img class="card-img-top img-fluid card-style " src="{{item.image.url}}" alt="">
+                     <div class="img__description_layer">
+
+                           <p class="img__description"> Fortifying your business with blockchain solutions</p>
+
+
+                       </div>
+                   </div>
+                       </a>
                          <!-- <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #ff689b;"></i></div> -->
                      <div class="card-body">
-                         <h4 class="title"><a href="{%url 'services'%}?cat={{item.id}}">{{item.name}}</a></h4>
-                         <p class="description comment more">{{item.summary}}</p>
+                         <h4 class="title">{{item.name}}</h4>
+                         <p class="card-text description comment more">{{item.summary}}</p>
+
+                         <span class="morelink read-more-small">Read More</span>
+
 </div>
+
 
                      </div>
 
@@ -302,6 +318,7 @@ document.getElementById("sidebar").style.width = "0";
                     </div> -->
                  </div>
                </div>
+
                {% endfor %}
                {% else %}
                <div class="col-md-12">
@@ -349,7 +366,37 @@ document.getElementById("sidebar").style.width = "0";
          <div class="credits">
 
            Designed by <a href="https://www.virtusa.com">xLabs</a>
-         </div>
+              </div>
+       <div class="col-md-6 col-sm-6">
+         <ul class="soc">
+           <li>
+             <a class="soc-facebook" href="https://www.facebook.com/VirtusaCorp" target="_blank">
+                <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+                  <a class="soc-twitter" href="https://twitter.com/VirtusaCorp" target="_blank">
+                     <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                   </a>
+                 </li>
+                 <li>
+                   <a class="soc-linkedin" href="https://www.linkedin.com/companies/virtusa" target="_blank">
+                      <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
+                     </a>
+                   </li>
+                   <li>
+                     <a class="soc-instagram" href="https://www.instagram.com/virtusacorp/" target="_blank">
+                       <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="soc-youtube" href="https://www.youtube.com/user/VirtusaCorporation" target="_blank">
+                         <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
        </div>
      </footer><!-- #footer -->
 

@@ -39,7 +39,7 @@ def services(request):
 
         mcatlist =  [{'name':i.name,'summary':i.summary ,'id':i.id,'inps':models.Ml_models.objects.filter(category=i.id)} for i in cats]
         mcatlist = sorted(mcatlist, key = lambda i: i['name'])
-        return render(request,'services.html',{'catList':mcatlist,'modulename': i.name,'mlist':mlist})
+        return render(request,'services.html',{'catList':mcatlist,'modulename': i.name,'moduleimage':i.image,'mlist':mlist})
 
 
     k = models.Ml_models.objects.filter(active=True)

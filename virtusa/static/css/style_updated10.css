@@ -1,26 +1,32 @@
 
 
+
+
+
+
+/*
+
 body {
     height:100%;
   background: #fff;
   color: #444;
   font-family: "Open Sans", sans-serif;
-}
+} */
 
-a {
+/* a {
   color: #007bff;
   transition: 0.5s;
-}
-
+} */
+/*
 a:hover,
 a:active,
 a:focus {
   color: s;
   outline: none;
   text-decoration: none;
-}
+} */
 
-p {
+/* p {
   padding: 0;
   margin: 0 0 30px 0;
 }
@@ -35,7 +41,7 @@ h6 {
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
-}
+} */
 
 /* Back to top button */
 
@@ -659,20 +665,72 @@ h6 {
   padding: 0px;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  card.style.cursor = 'pointer';
+  /* border-radius: 10px; */
   margin: 0 10px 40px 10px;
   background: #fff;
   box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
   transition: all 0.3s ease-in-out;
 }
 
+#services .thumbnail{
+    position: relative;
+  height:200px;
+    width:100%;
+
+}
+
+#services .img__description_layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,254, 255, 0.8);
+  /* color: #fff; */
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .2s, visibility .2s;
+
+
+}
+
+#services .thumbnail:hover .img__description_layer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.img__description {
+  transition: .2s;
+  transform: translateY(1em);
+  font-size: 25px;
+font-weight: 800;
+color: #000;
+margin: 0;
+font-family: 'Publico Headline Web', serif;
+text-align: center;;
+
+}
+
+
+
+
+#services .thumbnail:hover .img__description {
+  transform: translateY(0);
+}
+
+
 #services .card-style {
-height:calc(100% - 50px);
+height:200px;
 }
 
 #services .card:hover {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
+
 }
 
 #services .icon {
@@ -688,18 +746,24 @@ height:calc(100% - 50px);
 }
 
 #services .title {
-  margin-left: 40px;
+  /* margin-top: -48px; */
+  margin-left: 18px;
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
 }
 
-#services .title a {
+#services  a {
+  text-decoration: none;
+  list-style: none;
   color: #111;
 }
 
+
+
 #services .card:hover .title a {
   color: #007bff;
+  background: #00FEFF;
 }
 
 a.morelink {
@@ -718,15 +782,21 @@ a.morelink {
 
 #services .description {
   font-size: 14px;
-  margin-left: 40px;
+  margin-left: 18px;
   line-height: 24px;
   margin-bottom: 0;
+  border-bottom: 1px solid #d8d8d8;
 }
-#services .description {
-  font-size: 14px;
-  margin-left: 40px;
-  line-height: 24px;
-  margin-bottom: 0;
+
+
+#services .read-more-small {
+    font-size: 12px;
+    font-weight: 700;
+    margin-left:18px;
+    color: #00aae8;
+    text-transform: uppercase;
+    padding: 15px 0;
+    display: block;
 }
 
 #why-us {
