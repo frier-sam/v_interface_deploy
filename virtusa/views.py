@@ -52,8 +52,10 @@ def services(request):
 #model view is for  individual model
 def model(request):
     name = request.GET['model']
+    
     i = models.Ml_models.objects.get(name=name)
     cats = models.homeStack.objects.filter(home=True)
+    category = models.category.objects.get(id=i.id)
     mulist = [{'name':i.name,'image':i.image,'summary':i.summary ,'id':i.id,'time':i.date_time,'cats':models.category.objects.filter(homeCategory=i.id),'inps':models.Ml_models.objects.filter(category=i.id)} for i in cats]
     inps =[]
     print("i.inputs_csv.url: ",i.inputs_csv.url)
@@ -74,4 +76,4 @@ def model(request):
 
     mlist = {'name':i.name,'image':i.image,'summary':i.summary,'content':i.content,'extras':i.extras,'endpoint':i.url,'inputs_csv':inps,'result':i.result_key,'slide':i.slideUrl,'time':i.date_time}
 
-    return render(request,'indview.html',{'model':mlist,'mlist':mulist})
+    return render(request,'indview.html',{'model':mlist,'mlist':mulist,'category':category})

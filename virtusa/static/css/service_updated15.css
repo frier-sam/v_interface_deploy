@@ -10,7 +10,7 @@ body, button, input, select, optgroup, textarea {
  overflow: hidden;
  display: block;
  position: relative;
- padding-bottom: 100px; /* height of your footer */
+ /* padding-bottom: 100px; /* height of your footer */ */
 }
 
 
@@ -233,6 +233,11 @@ svg path {fill: #000 !important;}
   margin-left: 50px;
 }
 
+.custom_breadcrumb .breadcrumb{
+background: #fff;
+
+}
+
 .openbtn {
   font-size: 20px;
   cursor: pointer;
@@ -359,73 +364,66 @@ background: rgba(0,254, 255, 0.8);
 # Nav Bar
 --------------------------------------------------------------*/
 .nav-tab > li > a {
-  font-size: 16px;
-      font-family: 'Synthesis', sans-serif !important;
-      font-weight: 700;
-      color: #006AA5;
-      /* border: 1px solid #ccc; */
-      padding: 10px 58px;
-      display: block;
-  }}
+
+    padding: 10px 58px;
+    display: block;
+    font-size: 16px;
+    font-family: 'Synthesis', sans-serif !important;
+    font-weight: 700;
+    color: #006AA5;
+    border: 1px solid #ccc;
+    padding: 10px 58px;
+    display: block;
+  }
 
 
-.breadcrumb input[type="radio"] {
-  display: none;
+.nav-tabs>li>a.active,   .nav-tabs>li>a:focus,  .nav-tabs>li>a:hover
 
+ {
+	 border-bottom: 2px solid #5cfeea;
+	 font-size: 16px;
+    font-family: 'Synthesis', sans-serif !important;
+    font-weight: 700;
+    color: #006AA5;
+    border: 1px solid #ccc;
+    padding: 10px 58px;
+    display: block;
+ }
 
-
+.nav-tabs li.active:before, .nav-tabs li.active:after {
+	content: "";
+	width: 0;
+	height: 0;
+	border-style: solid;
+	position: absolute;
+	right: 0;
+	bottom: -42px;
+	left: 0;
+	margin: 0 auto;
+	z-index: 3;
 }
-
-.nav-tab .nav-link.active,
-.nav-tab .nav-item.show .nav-link {
-
-
-      background: #006AA5;
-border-color: #006AA5;
-color: #fff;
-text-decoration: none;
+.nav-tabs li.active:before {
+	bottom: -41px;
+	border-color: transparent transparent #ccc transparent;
+	border-width: 25px;
 }
-
-.breadcrumb input[type="checkbox"] {
-  display: none;
+.nav-tabs li.active:after {
+	border-color: transparent transparent #fff transparent;
+	border-width: 24px;
 }
-
-.breadcrumb {
-   background: #e3bde69c;;
-   display: inline-block;
-   padding: 1px;
-   padding-right: 14px;
+.nav-tabs li a:hover, .nav-tabs li.active a {
+	background: #006AA5;
+	border-color: #006AA5;
+	color: #fff;
+	text-decoration: none;
 }
-
-.tab-content {
-   padding: 15px;
-}
-
-.breadcrumb li {
-   display: inline-block;
-   background: white;
-   padding: 0;
-   position: relative;
-   min-width:50px;
-   text-decoration: none;
-   -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%, 15px 50%);
-   clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%, 15px 50%);
-    margin-right: -13px;
-}
-
-.breadcrumb li#last {
-   -webkit-clip-path: polygon(0 0, calc(100% - 0px) 0, 100% 50%, calc(100% - 0px) 100%, 0 100%, 15px 50%);
-   clip-path: polygon(0 0, calc(100% - 0px) 0, 100% 50%, calc(100% - 0px) 100%, 0 100%, 15px 50%);
-}
-
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover { border-bottom: 2px solid #5cfeea;}
-
+/*
 .breadcrumb li:first-child {
   -webkit-clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
   clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);
-}
+} */
 
-@media (max-width: 408px) {
+/* @media (max-width: 408px) {
   .breadcrumb li {
     display: inline-block;
     background: white;
@@ -456,7 +454,7 @@ text-decoration: none;
     drop-shadow(-1px -1px 0px black);
         }
 }
-
+ */
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -815,8 +813,8 @@ a.morelink {
  /*breadcrumb
  -----------------------------*/
  #filter {
-    padding: 10px 0 10px !important;
-    background: #f7f7f7;
+    padding: 10px 0 0px !important;
+    background: #fff;
 
     position: relative;
 }
@@ -828,7 +826,7 @@ a.morelink {
 #services {
   padding: 95px 0 40px 0;
   margin-top: 19px;
-/* background: #ecf5ff; */
+background: #f2f2f2;
 }
 
 #services .card {

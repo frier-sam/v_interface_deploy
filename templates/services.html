@@ -19,7 +19,7 @@
 
     <!-- Bootstrap CSS File -->
         <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated13.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated15.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -269,14 +269,16 @@ function likebutton() {
 <div id="filter">
   <div class="container-fluid">
     <div class="custom_breadcrumb">
-      {% block breadcrumbs %}
-      <div class="breadcrumbs">
-          <a href="{% url 'admin:index' %}"></a>
-          {% block crumbs %}
-              {% if title %} &rsaquo; {{ title }}{% endif %}
-          {% endblock %}
-      </div>
-  {% endblock %}
+    <nav>
+      <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{%url 'index'%}">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a>{{modulename}}</a>
+      </li>
+    </ol>
+  </nav>
     </div>
   </div>
 </div>
@@ -326,12 +328,12 @@ function likebutton() {
                     {% if item.inps|length >= 1 %}
                         {% for items in item.inps %}
 
-                           <div class ="bg-info p-3 mb-2">
+                           <div class ="p-3 mb-2" style="background: rgba(0,254, 255, 0.8);">
                               <div class="d-flex w-100 justify-content-between">
                                  <h5 class="mb-1"><a href="{%url 'model'%}?model={{ items.name }}"  style="Color:white" >{{items.name}}</a></h5>
                                 <small>3 days ago</small>
                               </div>
-                              <p class="mb-3">{{items.summary}}</p>
+                              <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p>
                               {% if items.category.all|length > 1 %}
                               <p class="font-weight-bold">
                                This model is also achieved by :
