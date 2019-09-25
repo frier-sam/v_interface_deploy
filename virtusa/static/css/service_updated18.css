@@ -20,7 +20,7 @@ body, button, input, select, optgroup, textarea {
 .back-to-top {
   position: fixed;
   display: none;
-  background: #007bff;
+  background: #00FEFF;;
   color: #fff;
   width: 44px;
   height: 44px;
@@ -376,8 +376,24 @@ background: rgba(0,254, 255, 0.8);
     display: block;
   }
 
+	.nav-tab .nav-link.active,
+	.nav-tab .nav-item.show .nav-link {
 
-.nav-tabs>li>a.active,   .nav-tabs>li>a:focus,  .nav-tabs>li>a:hover
+
+	      background: #006AA5;
+	border-color: #006AA5;
+	color: #fff;
+	text-decoration: none;
+	}
+
+	.nav-tab .nav-link:hover{
+	    background: #006AA5;
+	    border-color: #006AA5;
+	    color: #fff;
+	    text-decoration: none;
+	}
+
+/* .nav-tabs>.nav-item>.nav-link.active,   .nav-tabs>.nav-item>.nav-link:focus,  .nav-tabs>.nav-item>.nav-link:hover
 
  {
 	 border-bottom: 2px solid #5cfeea;
@@ -388,7 +404,13 @@ background: rgba(0,254, 255, 0.8);
     border: 1px solid #ccc;
     padding: 10px 58px;
     display: block;
- }
+ } */
+
+ .nav-tabs li.active:before {
+    bottom: -41px;
+    border-color: transparent transparent #ccc transparent;
+    border-width: 25px;
+}
 
 .nav-tabs li.active:before, .nav-tabs li.active:after {
 	content: "";
@@ -407,11 +429,11 @@ background: rgba(0,254, 255, 0.8);
 	border-color: transparent transparent #ccc transparent;
 	border-width: 25px;
 }
-.nav-tabs li.active:after {
+.nav-tabs li .nav-link.active:after {
 	border-color: transparent transparent #fff transparent;
 	border-width: 24px;
 }
-.nav-tabs li a:hover, .nav-tabs li.active a {
+.nav-tabs li .nav-link:hover, .nav-tabs li .nav-link.active {
 	background: #006AA5;
 	border-color: #006AA5;
 	color: #fff;
@@ -705,7 +727,30 @@ a.morelink {
   line-height: 1.7;
 
     height: 100px;
+		margin-bottom: 60px;
 }
+
+.tab-pane .overlay {
+	padding: 30px 30px;
+	height: 100%;
+	background: rgba(54, 59, 45, 0.3);
+}
+
+.tab-pane .story-link .overlay:before {
+	background: rgba(0, 170, 232, 0.75);
+}
+
+.tab-pane .story-link:hover {
+	text-decoration: none;
+	background:rgba(0, 170, 232, 0.75); 
+}
+
+.tab-pane .story-link .overlay:hover {
+    transform: translateY(0)
+
+
+}
+
 
 /* About Us Section
 --------------------------------*/
@@ -986,6 +1031,9 @@ border-top-right-radius: calc(100% - 116px);
     line-height: 2;
     color: #666;
 }
+.footer-menu ul li a:hover {
+	 color: #00FEFF;
+ }
 
 .vn-site-footer .privacy-links {
     float: left;

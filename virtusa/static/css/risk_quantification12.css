@@ -20,7 +20,7 @@ body, button, input, select, optgroup, textarea {
 .back-to-top {
   position: fixed;
   display: none;
-  background: #007bff;
+  background: #00FEFF;;
   color: #fff;
   width: 44px;
   height: 44px;
@@ -87,6 +87,13 @@ body, button, input, select, optgroup, textarea {
   margin-top: 60px;
 }
 
+#intro iframe{
+left:0;
+top:0;
+height:100%;
+width:100%;
+position:absolute;
+}
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -175,22 +182,7 @@ body, button, input, select, optgroup, textarea {
   border-radius: 1px solid #000;
 
 }
-.back-to-top {
-  position: fixed;
-  display: none;
-  background: #007bff;
-  color: #fff;
-  width: 44px;
-  height: 44px;
-  text-align: center;
-  line-height: 1;
-  font-size: 16px;
-  border-radius: 50%;
-  right: 15px;
-  bottom: 15px;
-  transition: background 0.5s;
-  z-index: 11;
-}
+
 
 .back-to-top i {
   padding-top: 12px;
@@ -931,6 +923,18 @@ table thead th {
           margin-left: 25px;
 }
 
+#dbtn{
+  background: #00FEFF;
+      display: inline-block;
+      border-radius: 50px;
+      padding: 11px 48px 10px 48px;
+      color: #000;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid #77dede;
+      font-family: 'Barlow', Arial;
+          margin-left: 25px;
+}
 
 #Submit {
 
@@ -953,17 +957,15 @@ table thead th {
   border-collapse: collapse;
 
 }
-
-#table_data th, td {
-  text-align: left;
-    /* border: 1px solid black;
-}
+*/
 
 
 #table_data.fixed
 
   { table-layout:fixed;
 }
+
+
 
 #table_data td, #table_data th {
   table-layout:fixed;
@@ -976,9 +978,11 @@ table thead th {
 
 }
 
+/*
+
 #table_data tr:nth-child(even){
 
-  /* background-color: #f2f2f2; */
+  /* background-color: #f2f2f2;
 
 }
 
@@ -1068,9 +1072,11 @@ table thead th {
              width:100%; border:0; background-color:rgb(255,253,210);
            }  */
 
-.cellEditing{
+.highlight{
 
-  background: red;
+  background: #00FEFF;
+	color: #000;
+	font-weight: 700;
 }
 
 
@@ -1142,6 +1148,10 @@ table thead th {
                line-height: 2;
                color: #666;
            }
+
+					 .footer-menu ul li a:hover {
+            	color: #00FEFF;
+            }
 
            .vn-site-footer .privacy-links {
                float: left;

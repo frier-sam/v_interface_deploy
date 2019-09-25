@@ -19,7 +19,7 @@
 
     <!-- Bootstrap CSS File -->
         <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated15.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated18.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -323,17 +323,25 @@ function likebutton() {
                      <p class=" comment more" >{{item.summary}}</p>
 
                      <!-- <h4 style ="text-align:center"><u>{{item.name}} models</u></h4> -->
-                    <div class="list-group">
+                    <div class="card list-group">
 
                     {% if item.inps|length >= 1 %}
                         {% for items in item.inps %}
+                          <a href="{%url 'model'%}?model={{ items.name }}" class="story-link " style="Color:white" >
+                           <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
 
-                           <div class ="p-3 mb-2" style="background: rgba(0,254, 255, 0.8);">
+
                               <div class="d-flex w-100 justify-content-between">
-                                 <h5 class="mb-1"><a href="{%url 'model'%}?model={{ items.name }}"  style="Color:white" >{{items.name}}</a></h5>
-                                <small>3 days ago</small>
+                                 <h5 class="mb-1">{{items.name}}</h5>
+                                <!-- <small>3 days ago</small> -->
                               </div>
                               <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p>
+ </div>
+                               </a>
+
+
+
+                               <div class ="card-footer">
                               {% if items.category.all|length > 1 %}
                               <p class="font-weight-bold">
                                This model is also achieved by :
@@ -345,10 +353,11 @@ function likebutton() {
                                {%endif%}
                             </p>
 
-                        </div>
+                          </div>
+
                          {%endfor%}
                        {%else%}
-                          <div class ="bg-info p-3 mb-2">
+                          <div class =" p-3 mb-2"style="background:#063455;color:#fff">
                               <div class="d-flex w-100 justify-content-between">
                                 <p class="mb-3">No model added</p>
 

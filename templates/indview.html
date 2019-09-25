@@ -29,7 +29,7 @@
 
   <!-- Bootstrap CSS File -->
   <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/pptxjs.css' %}"> -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification08.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification12.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -66,6 +66,7 @@
   <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
   <!-- Contact Form JavaScript File -->
   <script src="{% static 'js/contactform.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 
 
 
@@ -100,9 +101,8 @@
            $(window).load(function(){
               debugger;
 
+                $("#dbtn").attr("disabled", true);
 
-              $(document).find('.btn_save').hide();
-            	$(document).find('.btn_cancel').hide();
 
            $("#Submit").click(function(){
 
@@ -117,7 +117,7 @@
                          }
 
                           name = cells[0].innerHTML? cells[0].innerHTML.trim():"";
-                          value = cells[1].innerHTML ? cells[1].innerHTML.trim() : "";
+                          value = parseInt(cells[1].innerHTML ? cells[1].innerHTML.trim() : "");
                           myMap.set(name, value);
                       }
 
@@ -136,12 +136,9 @@
                             var res = document.getElementById('result');
                                       debugger;
 
-
-
-
-
                 $.post('{{ model.endpoint }}',myJson).done(function(data){
                     debugger;
+                    data = JSON.parse(data)
                         var tbody = document.getElementById("matchData");
                         var headerNames = Object.getOwnPropertyNames(data[0]);
                         var columnCount = headerNames.length;
@@ -186,14 +183,7 @@
                //         $(this).parent().removeClass("cellEditing");
                //       });
                //     });
-               $('table tbody tr td').change(function() {
-                 debugger;
-    var rowEdit = $(this).parents('tr');
-    console.log($(rowEdit));
-    $('.selected').removeClass('selected');
-    $(this).parents('tr').addClass('selected');
-    // $(rowEdit).children('.contenteditable').html('Success');
-})
+
 
               $("#upload").bind("change", function(evt) {
                 debugger;
@@ -212,48 +202,42 @@
 
               $('#cbtn').click(function () {
                 debugger;
-
+                      $("#cbtn").attr("disabled", true);
+                      $("#dbtn").attr("disabled", false);
                 var table = document.getElementById('table_data'),
-                    rows = table.getElementsByTagName('tr');
+                    rows = table.getElementsByTagName('td');
                     $.each(rows, function () {
-
-                      var OriginalContent = $(this).text();
-                      // $(this).addClass("contenteditable");
-                      // $(this).html("<input type='text' value='" + OriginalContent + "' />");
-                                   $(this).prop('contenteditable', true)
-                                   $('#table_data').on('click',"td",function(e){
-                                     // var OriginalContent = $(this).text();
-                                     // //    $(this).addClass("cellEditing");
-                                     // $(this).html("<input type='text' value='" + OriginalContent + "' />");
-                                     //    $(this).children().first().focus();
-                                     // $(this).addClass("cellEditing");
-                                   });
-                                    // $(this).prop('onkeyup',"javascript:dotest(this,event)");
-                               });
+                       $(this).prop('contenteditable', true)
+                        $(this).keyup(function(e) {
+                          debugger;
+                          if($(this).text()=="")
+                          alert("Values cannot be empty")
+                          else
+                          $(this).addClass("cellEditing");
 
 
-                           // var currentTD = $(this).parents('tr').find('td');
-                           // if ($(this).html() == 'Edit') {
-                           //     currentTD = $(this).parents('tr').find('td');
-                           //     $.each(currentTD, function () {
-                           //         $(this).prop('contenteditable', true)
-                           //     });
-                           // } else {
-                           //    $.each(currentTD, function () {
-                           //      debugger;
-                           //      if($(this).html()==""){
-                           //          alert("Please fill data")
-                           //          $('.selected').removeClass('selected');
-                           //    $(this).parents('tr').addClass('selected');
-                           //    }
-                           //      else
-                           //         $(this).prop('contenteditable', false)
-                           //     });
-                           // }
-                           //
-                           // $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+                           });
+                      });
+                });
 
-                       });
+
+         $('#dbtn').click(function () {
+           debugger;
+
+             $("#dbtn").attr("disabled", true);
+               $("#cbtn").attr("disabled", false);
+               var table = document.getElementById('table_data'),
+                  rows = table.getElementsByTagName('td');
+                   $.each(rows, function () {
+                      $(this).prop('contenteditable', false);
+                    });
+                $('#table_data td').each(function() {
+
+                   if( $(this).hasClass("cellEditing") )
+                        $(this).parent().addClass("highlight");
+
+                     });
+              })
 
 
   //
@@ -538,7 +522,7 @@
 
               <div class=" span5" data-wow-duration="1.4s">
                 <div id="table-scroll">
-                    <table class="table table-fixed table-striped table-dark" id ="table_data">
+                    <table class="table table-fixed table-dark" id ="table_data">
                        <thead>
                                 <th>Name</th>
                                 <th>Value</th>
@@ -574,7 +558,7 @@
 
 
 
-                        <h3>Result </h3>
+                        <h3>Try A Demo </h3>
 
 
 
@@ -605,6 +589,7 @@
                        <input type ="submit" class="btn btn-success  btn-md" id ="Submit" class="form-control">
                        <!-- <button type="button" class="btn btn-primary" id ="cbtn">Request a Demo</button> -->
                        <button type="button" class="btn btn-primary" id ="cbtn"><span class="fa fa-pencil"></span> Edit File</button>
+                       <button type="button" class="btn btn-primary" id ="dbtn"><span class="fa fa-pencil"></span> Done</button>
 
          </div>
 
@@ -628,7 +613,7 @@
      </div>
 </section>
 
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <!--==========================
   Footer
 ============================-->
