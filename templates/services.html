@@ -347,7 +347,7 @@ function likebutton() {
                                This model is also achieved by :
                                 {% for cat in items.category.all %}
                                   {% if cat.id != item.id %}
-                                    <ul> {{cat.name}} - <a style ="color:white" href="{%url 'services'%}?cat={{cat.homeCategory.id}}"> {{ cat.homeCategory.name}}</a></ul>
+                                    <ul> {{cat.name}} - <a style ="color:#006AA5" href="{%url 'services'%}?cat={{cat.homeCategory.id}}"> {{ cat.homeCategory.name}}</a></ul>
                                  {%endif%}
                                {%endfor%}
                                {%endif%}

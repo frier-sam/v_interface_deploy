@@ -52,7 +52,7 @@ def services(request):
 #model view is for  individual model
 def model(request):
     name = request.GET['model']
-    
+
     i = models.Ml_models.objects.get(name=name)
     cats = models.homeStack.objects.filter(home=True)
     category = models.category.objects.get(id=i.id)
