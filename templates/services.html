@@ -202,8 +202,16 @@ function likebutton() {
                    >
             <a href ="{%url 'index'%}">Home</a></li>
           <li>
-          <li>
-          <a href="#about">Our Practices</a></li>
+            <li
+
+            {% if '/practices/' == request.path %}
+                class= "nav-item active"
+            {% else %}
+               class= "nav-item "
+            {% endif %}
+
+            >
+            <a href="{%url 'practices' %}">Our Practices</a></li>
           <li
           {% if '/services/' == request.path %}
               class= "nav-item active"
@@ -213,7 +221,7 @@ function likebutton() {
 
           >
           <a href="{%url 'services' %}">Solutions</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#portfolio">Innovation</a></li>
 
         </ul>
       </nav>
@@ -327,7 +335,7 @@ function likebutton() {
 
                     {% if item.inps|length >= 1 %}
                         {% for items in item.inps %}
-                          <a href="{%url 'model'%}?model={{ items.name }}" class="story-link " style="Color:white" >
+                          <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
                            <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
 
 

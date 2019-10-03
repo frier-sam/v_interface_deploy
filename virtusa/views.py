@@ -39,7 +39,7 @@ def services(request):
 
         mcatlist =  [{'name':i.name,'summary':i.summary ,'id':i.id,'inps':models.Ml_models.objects.filter(category=i.id)} for i in cats]
         mcatlist = sorted(mcatlist, key = lambda i: i['name'])
-        return render(request,'services.html',{'catList':mcatlist,'modulename': i.name,'moduleimage':i.image,'mlist':mlist})
+        return render(request,'services.html',{'catList':mcatlist,'modulename': i.name,'moduleimage':i.image,'mlist':mlist,'homeId':c})
 
 
     k = models.Ml_models.objects.filter(active=True)
@@ -48,14 +48,24 @@ def services(request):
     mlist = [{'name':i.name,'content':i.content,'image':i.image,'summary':i.summary} for i in k]
     return render(request,'services.html',{'models':mlist,'catList':mcatlist,'mlist':mlist})
 
+#model view is for  practices
+def practices(request):
+    return render(request,'ourPractices.html')
+
+
+
+
 
 #model view is for  individual model
 def model(request):
     name = request.GET['model']
+    category= request.GET['cat']
+    home = request.GET['home']
 
     i = models.Ml_models.objects.get(name=name)
+
     cats = models.homeStack.objects.filter(home=True)
-    category = models.category.objects.get(id=i.id)
+    #category = models.category.objects.get(id=i.id)
     mulist = [{'name':i.name,'image':i.image,'summary':i.summary ,'id':i.id,'time':i.date_time,'cats':models.category.objects.filter(homeCategory=i.id),'inps':models.Ml_models.objects.filter(category=i.id)} for i in cats]
     inps =[]
     print("i.inputs_csv.url: ",i.inputs_csv.url)
@@ -74,6 +84,6 @@ def model(request):
         for row in reader:
             inps.append({0:row[0],1:row[1]})
 
-    mlist = {'name':i.name,'image':i.image,'summary':i.summary,'content':i.content,'extras':i.extras,'endpoint':i.url,'inputs_csv':inps,'result':i.result_key,'slide':i.slideUrl,'time':i.date_time}
+    mlist = {'name':i.name,'image':i.image,'summary':i.summary,'content':i.content,'extras':i.extras,'endpoint':i.url,'inputs_csv':inps,'result':i.result_key,'slide':i.slideUrl,'time':i.date_time,'category':category,'home':home}
 
-    return render(request,'indview.html',{'model':mlist,'mlist':mulist,'category':category})
+    return render(request,'indview.html',{'model':mlist,'mlist':mulist})

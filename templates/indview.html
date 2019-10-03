@@ -29,7 +29,7 @@
 
   <!-- Bootstrap CSS File -->
   <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/pptxjs.css' %}"> -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification12.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification13.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -132,38 +132,77 @@
                             var myJson = {};
                             myJson= mapToObj(myMap);
 
-                            myJson=JSON.stringify(myJson)
+                            // myJson=JSON.stringify(myJson)
                             var res = document.getElementById('result');
                                       debugger;
 
-                $.post('{{ model.endpoint }}',myJson).done(function(data){
-                    debugger;
-                    data = JSON.parse(data)
-                        var tbody = document.getElementById("matchData");
-                        var headerNames = Object.getOwnPropertyNames(data[0]);
-                        var columnCount = headerNames.length;
-//Add the header row.
-                        var row = tbody.insertRow(-1);
-                        for (var i = 0; i < columnCount; i++) {
-                             var headerCell = document.createElement("TH");
-                             headerCell.innerHTML = headerNames[i];
-                            row.appendChild(headerCell);
-                        }
-// loop through data source
-                        for (var i = 0; i < data.length; i++) {
-                        var tr = document.createElement("tr");
-                        for(var colName in data[i]) {
-                           var td = document.createElement("td");
-                           td.innerHTML = data[i][colName];
-                           if(colName=="Location")
-                               td.className = "centered";
-                           tr.appendChild(td);
-                        }
-                        tbody.appendChild(tr);
-                        }
 
-                      // res.innerHTML = data;
-               })
+                                      $.ajax({
+                                        url: '{{ model.endpoint }}',
+                                        type: 'post',
+                                        dataType: 'json',
+                                        contentType: 'text/plain',
+                                        success: function (data) {
+                                          debugger;
+
+                                              var tbody = document.getElementById("matchData");
+                                              var headerNames = Object.getOwnPropertyNames(data[0]);
+                                              var columnCount = headerNames.length;
+                      //Add the header row.
+                                              var row = tbody.insertRow(-1);
+                                              for (var i = 0; i < columnCount; i++) {
+                                                   var headerCell = document.createElement("TH");
+                                                   headerCell.innerHTML = headerNames[i];
+                                                  row.appendChild(headerCell);
+                                              }
+                      // loop through data source
+                                              for (var i = 0; i < data.length; i++) {
+                                              var tr = document.createElement("tr");
+                                              for(var colName in data[i]) {
+                                                 var td = document.createElement("td");
+                                                 td.innerHTML = data[i][colName];
+                                                 if(colName=="Location")
+                                                     td.className = "centered";
+                                                 tr.appendChild(td);
+                                              }
+                                              tbody.appendChild(tr);
+                                              }
+
+                                            // res.innerHTML = data;
+
+
+                                        },
+                                        data: JSON.stringify(myJson)
+                                    });
+
+//                 $.post('{{ model.endpoint }}',myJson).done(function(data){
+//                     debugger;
+//
+//                         var tbody = document.getElementById("matchData");
+//                         var headerNames = Object.getOwnPropertyNames(data[0]);
+//                         var columnCount = headerNames.length;
+// //Add the header row.
+//                         var row = tbody.insertRow(-1);
+//                         for (var i = 0; i < columnCount; i++) {
+//                              var headerCell = document.createElement("TH");
+//                              headerCell.innerHTML = headerNames[i];
+//                             row.appendChild(headerCell);
+//                         }
+// // loop through data source
+//                         for (var i = 0; i < data.length; i++) {
+//                         var tr = document.createElement("tr");
+//                         for(var colName in data[i]) {
+//                            var td = document.createElement("td");
+//                            td.innerHTML = data[i][colName];
+//                            if(colName=="Location")
+//                                td.className = "centered";
+//                            tr.appendChild(td);
+//                         }
+//                         tbody.appendChild(tr);
+//                         }
+//
+//                       // res.innerHTML = data;
+//                })
 
               });
 
@@ -420,7 +459,7 @@
 
              >
              <a href="{%url 'services' %}">Solutions</a></li>
-             <li><a href="#portfolio">Portfolio</a></li>
+             <li><a href="#portfolio">Innovation</a></li>
 
            </ul>
          </nav>
@@ -494,7 +533,7 @@
          <a href="{%url 'index'%}">Home</a>
        </li>
        <li class="breadcrumb-item">
-         <a href={%url 'services'%}?cat={{category.id}}>{{category.name}}</a>
+         <a href={%url 'services'%}?cat={{model.home}}>{{model.category}}</a>
        </li>
        <li class="breadcrumb-item">
          <a>{{model.name}}</a>
@@ -573,29 +612,30 @@
                 </div>
                  </div>
                  </div>
+                </div>
+
+                <div class=" wow bounceInUp col-sm-6" data-wow-duration="1.4s">
+                  <div class="cta-box">
+
+                 <button type="button" class="btn btn-primary" id ="cbtn"><span class="fa fa-pencil"></span> Edit </button>
+                 <button type="button" class="btn btn-primary" id ="dbtn"><span class="fa fa-pencil"></span> Done</button>
+             </div>
              </div>
 
+             <div class=" wow bounceInUp col-sm-6" data-wow-duration="1.4s">
+               <div class="cta-box">
+              <input type ="submit" class="btn btn-success  btn-md" id ="Submit" class="form-control">
+
+          </div>
+          </div>
 
 
 
          </div>
-         <div style="text-align:center">
-
-                 <label class="custom-upload">
-                     <span class="fa fa-eye"></span>
-                      Upload new file
-                       <input type ="file" id = "upload" name="inputfile" class="form-control">
-                       </label>
-                       <input type ="submit" class="btn btn-success  btn-md" id ="Submit" class="form-control">
-                       <!-- <button type="button" class="btn btn-primary" id ="cbtn">Request a Demo</button> -->
-                       <button type="button" class="btn btn-primary" id ="cbtn"><span class="fa fa-pencil"></span> Edit File</button>
-                       <button type="button" class="btn btn-primary" id ="dbtn"><span class="fa fa-pencil"></span> Done</button>
-
-         </div>
 
 
 
-     </div>
+
 
   <div class="row">
     <div class="span12">

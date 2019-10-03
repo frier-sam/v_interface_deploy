@@ -797,8 +797,8 @@ i.icon-bg-dark {
 
 	overflow:hidden;
 	margin-bottom:30px;
-  padding: 30px;
-  text-align: center;
+  /* padding: 30px; */
+
 }
 
 .cta-box h3{

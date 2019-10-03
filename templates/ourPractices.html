@@ -1,0 +1,556 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="utf-8">
+  <title>Our Practices</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="{% static 'lib/PapaParse/papaparse.js' %}"></script>
+  <script src="{% static 'lib/PapaParse/papaparse.min.js'%}"></script>
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <link href="{% static 'images/favicon.png'%}" rel="icon">
+  <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/practices03.css' %}">
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> -->
+ <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
+
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/mobile-nav/mobile-nav.js' %}"></script>
+  <script src="{% static 'lib/wow/wow.min.js'%}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js'%}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'js/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+
+</head>
+<script>
+$(document).ready(function() {
+debugger;
+	var showChar = 120;
+	var ellipsestext = "...";
+	var moretext = "more";
+	var lesstext = "less";
+	$('.more').each(function() {
+    debugger;
+		var content = $(this).html();
+
+		if(content.length > showChar) {
+
+			var c = content.substr(0, showChar);
+			var h = content.substr(showChar, content.length - showChar);
+
+			var html = c + '<span class="morecontent"><span>' + h + '</span></span>';
+
+			$(this).html(html);
+		}
+
+	});
+
+	$(".morelink").click(function(e){
+
+debugger;
+    e.preventDefault();
+    // var href = '#myModal';
+    var myHeading = "<p>"+$(this).prev()[0].innerHTML+$(this).prev()[0].getElementsByTagName('span')[1].innerHTML+"</p>";
+    var x = new Date();
+    $("#modalBody").html(myHeading);
+
+    var modalTitle=$(this).parent().parent().prev().text()
+    $("#modalTitle").html(modalTitle)
+    $('#myModal').modal('show');
+
+	});
+
+
+});
+
+function openNav() {
+document.getElementById("sidebar").style.width = "350px";
+
+}
+
+function closeNav() {
+document.getElementById("sidebar").style.width = "0";
+
+}
+</script>
+
+  <body>
+
+  <!--==========================
+  Header
+  ============================-->
+
+  <header id="header" class="fixed-top ">
+    <!-- <div class="container"> -->
+     <div class="logo float-left ">
+         <a href="#intro" class="scrollto"><img src="{% static 'images/logos.png'  %}"  alt="" class="img-fluid "></a>
+    </div>
+         <span style ="margin-bottom:0px"><h4 style ="margin-bottom:0px">
+              The digital innovation hub within Virtusa</h4></span>
+
+      <nav class="main-nav  d-none d-lg-block " style="margin-left:168px;">
+        <ul>
+          <li
+          {% if '/' == request.path %}
+              class= "nav-item active"
+          {% else %}
+             class= "nav-item "
+          {% endif %}
+                   >
+            <a href ="{%url 'index' %}" >Home</a>
+          <i ></i></li>
+          <li
+
+          {% if '/practices/' == request.path %}
+              class= "nav-item active"
+          {% else %}
+             class= "nav-item "
+          {% endif %}
+
+          >
+          <a href="{%url 'services' %}">Our Practices</a></li>
+          <li
+          {% if '/services/' == request.path %}
+              class= "nav-item active"
+          {% else %}
+             class= "nav-item "
+          {% endif %}
+
+          >
+          <a href="{%url 'services' %}">Solutions</a></li>
+          <li><a href="#portfolio">Innovation</a></li>
+
+        </ul>
+      </nav>
+
+
+
+
+    <div class="wrapper">
+       <div class="container-fluid ">
+          <button type="button" id="sidebarCollapse" class="btn btn-dark float-right" onclick="openNav()">
+                <i class="fa fa-align-left"></i>
+                    <span></span>
+                        </button>
+                         </div>
+
+                <div id="sidebar" class="sidebar">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+
+  <div class="list-group panel">
+            {%  for item in models %}
+                  <!-- <a href="#">{{item.name}}</a> -->
+               <a href="#menu{{item.id}}" class=" collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><span class="hidden-sm-down">{{item.name}}</span> </a>
+                    <div class="collapse" id="menu{{item.id}}" style="margin-left:33px">
+                       {%  for items in item.cats %}
+                         <a href="#menu1sub{{items.id}}"  data-toggle="collapse" aria-expanded="false"> {{ items.name}}</a>
+                                   <div class="collapse" id="menu1sub{{items.id}}" style="margin-left:33px" >
+                                        {%  for item_new in items.category.all %}
+                                                 <a href="{%url 'model'%}?model={{ item_new.name }}" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
+                                        {%endfor%}
+                               <!-- <div class="collapse"> -->
+                         </div>
+                    {%endfor%}
+                     </div>
+                {%endfor%}
+
+</div>
+
+  </header>
+
+
+
+  <div class="overlay d-flex align-items-center" style="background: url('/static/images/pega-team.jpg') no-repeat; background-size: cover;">
+  <section id="intro" class="clearfix">
+
+    <div class="container">
+      <div class="intro-img">
+        <img src="" alt="" class="img-fluid">
+      </div>
+
+      <div class="intro-info">
+
+        <h1 class="title">Our AI R&D continually explores and curates best of breed tools</h1>
+
+      </div>
+   </div>
+
+  </section>
+</div>
+
+<!--==========================
+  breadcrumb
+============================-->
+
+
+<div id="filter">
+  <div class="container-fluid">
+    <div class="custom_breadcrumb">
+    <nav>
+      <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{%url 'index'%}">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a>Practices</a>
+      </li>
+    </ol>
+  </nav>
+    </div>
+  </div>
+</div>
+
+
+   <!-- #intro -->
+
+    <!--==========================
+      About Us Section
+    ============================-->
+<section id="about">
+ <!-- <div class="container"> -->
+  <div >
+    <div class="col-lg-12">
+      <h3 class="title">Saas and API solutions</h3>
+          <ul class="vn-logo-list">
+              <li>
+                  <a>
+                    <img width="180" height="108" src="{% static 'images/abbyy-logo.jpg'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/abbyy-logo.jpg'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+               </li>
+
+               <li>
+         <a >
+           <img width="180" height="108" src="{% static 'images/logo-nuance.jpg'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/logo-nuance.jpg'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+       </li>
+
+       <li>
+        <a>
+          <img width="180" height="108" src="{% static 'images/apiai-730x283.jpg'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/apiai-730x283.jpg'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+       </li>
+       <li>
+        <a >
+          <img width="180" height="108" src="{% static 'images/anodot.png'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/anodot.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+       </li>
+       <li>
+        <a >
+          <img width="180" height="108" src="{% static 'images/sigopt.png'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/sigopt.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+       </li>
+       <li>
+        <a >
+          <img width="180" height="108" src="{% static 'images/nexo.jpg'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/nexo.jpg'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+       </li>
+
+           </ul>
+   </div>
+   <div class="col-lg-12">
+     <h3 class="title">Technology and Platforms</h3>
+         <ul class="vn-logo-list">
+             <li>
+                 <a>
+                   <img width="180" height="108" src="{% static 'images/bigml-logo.png'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/bigml-logo.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+              </li>
+
+              <li>
+        <a >
+          <img width="180" height="108" src="{% static 'images/logo-wit-ai.png'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/logo-wit-ai.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+      </li>
+
+      <li>
+       <a>
+         <img width="180" height="108" src="{% static 'images/dataRobot.jfif'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/dataRobot.jfif'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+      </li>
+      <li>
+       <a >
+       <img width="180" height="108" src="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/ibm-watson-inline-300x188.png" class="attachment-medium size-medium" alt="IBM Watson Partner" srcset="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/ibm-watson-inline-300x188.png 300w, https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/ibm-watson-inline.png 370w" sizes="(max-width: 300px) 100vw, 300px"></a>
+      </li>
+      <li>
+       <a >
+         <img width="180" height="108" src="{% static 'images/1402695.png'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/1402695.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+      </li>
+
+      <li>
+       <a >
+         <img width="180" height="108" src="{% static 'images/download.png'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/download.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+      </li>
+      <li>
+       <a >
+         <img width="180" height="108" src="{% static 'images/Dataiku_logo.png'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/Dataiku_logo.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+      </li>
+
+          </ul>
+  </div>
+  <div class="col-lg-12">
+    <h3 class="title">Data and Infrastructure Services</h3>
+        <ul class="vn-logo-list">
+            <li>
+                <a>
+                <img width="180" height="108" src="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/partners-logos-gcp-google-300x188.png" class="attachment-medium size-medium" alt="Google Cloud Partner" srcset="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/partners-logos-gcp-google-300x188.png 300w, https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/partners-logos-gcp-google.png 370w" sizes="(max-width: 300px) 100vw, 300px"></a>
+             </li>
+
+             <li>
+       <a >
+       <img width="180" height="108" src="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/aws-partner-300x188.png" class="attachment-medium size-medium" alt="AWS Partner" srcset="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/aws-partner-300x188.png 300w, https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/aws-partner.png 370w" sizes="(max-width: 300px) 100vw, 300px"></a>
+     </li>
+
+     <li>
+      <a>
+      <img width="180" height="108" src="{% static 'images/Sand+Hill+Angels-Portfolio-Trifacta.png'  %}" class="attachment-medium size-medium" alt="" srcset="{% static 'images/Sand+Hill+Angels-Portfolio-Trifacta.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+     </li>
+     <li>
+      <a >
+      <img width="180" height="108" src="{% static 'images/Cloudera_logo_v2.png'  %}" class="attachment-medium size-medium" alt="IBM Watson Partner" srcset="{% static 'images/Cloudera_logo_v2.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+     </li>
+
+     <li>
+      <a >
+      <img width="180" height="108" src="{% static 'images/croudFlower.jpg'  %}" class="attachment-medium size-medium" alt="IBM Watson Partner" srcset="{% static 'images/croudFlower.jpg'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+     </li>
+
+     <li>
+      <a >
+      <img width="180" height="108" src="{% static 'images/paxata_logo.png'  %}" class="attachment-medium size-medium" alt="IBM Watson Partner" srcset="{% static 'images/paxata_logo.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+     </li>
+
+     <li>
+      <a >
+      <img width="180" height="108" src="{% static 'images/alteryx_premier_partner_360.png'  %}" class="attachment-medium size-medium" alt="IBM Watson Partner" srcset="{% static 'images/alteryx_premier_partner_360.png'  %}" sizes="(max-width: 300px) 100vw, 300px"></a>
+     </li>
+     <li>
+      <a >
+        <img width="180" height="108" src="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/azure-partners-logos-sm-1-300x188.png" class="attachment-medium size-medium" alt="" srcset="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/azure-partners-logos-sm-1-300x188.png 300w, https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/azure-partners-logos-sm-1.png 370w" sizes="(max-width: 300px) 100vw, 300px"></a>
+     </li>
+
+         </ul>
+ </div>
+</div>
+      <!-- </div> -->
+
+
+
+    </section>
+
+
+          <div class="tiles global-tiles">
+          <div class="container">
+      	    <div class="row">
+      		  <div class="col-lg-12 coll">
+      		    <h2 class="title">We have curated a list of platform,technology,partner and custom build APIs</h2>
+      			  <div class="tiles-col" id="tiles-col1"><div class="row row-equal row-centered">
+      			    <div class="col-md-4 col-lg-4 coll col-centered">
+      				  <div class="tile"><h3 class="tile-title">OCR APIs</h3>
+      				    <div class="tile-info">
+                    <div class="summary">
+                      <ul>
+                      <li>Tesseract</li>
+                      <li>GoogleOCR</li>
+                      <li>OpenCV</li>
+                      <li>ABBY Fine Reader</li>
+                      <li>ImageMagick</li>
+                      </ul>
+
+
+
+
+                    </div>
+                  </div>
+      				  </div>
+      				</div>
+
+
+      				<div class="col-md-4 col-lg-4 coll col-centered">
+      				   <div class="tile"><h3 class="tile-title">Language Translation API</h3>
+      				   <div class="tile-info">
+
+                     <div class="summary">
+                       <ul>
+                       <li>Google Cloud Translation</li>
+                       <li>IBM Watson language translator</li>
+                       <li>LangId</li>
+                       <li>Microsoft Cognitive Service Translator</li>
+                       <li>MotaWord</li>
+                       <li>WritePathTranslation</li>
+                       </ul>
+
+
+
+
+                     </div>
+      				   </div>
+      				   </div>
+
+      				</div>
+
+              <div class="col-md-4 col-lg-4 coll col-centered">
+              <div class="tile"><h3 class="tile-title">Speech Recognition APIs</h3>
+                <div class="tile-info">
+
+                    <div class="summary">
+                      <ul>
+                      <li>CMU Sphinx</li>
+                      <li>Google Speech Recognition</li>
+                      <li>Wit.ai</li>
+                      <li>Microsoft Bing Voice Recognition</li>
+                      <li>Houndify API</li>
+                        <li>IBM Speech to Text</li>
+                          <li>SnowBoy Hotword detection</li>
+                      </ul>
+
+
+
+
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-lg-4 coll col-centered">
+            <div class="tile"><h3 class="tile-title">Text Analytics and NLP APIs</h3>
+              <div class="tile-info">
+
+                <div class="summary">
+                  <ul>
+                  <li>Google Cloud NL API</li>
+                  <li>IBM Watson Alchemy</li>
+                  <li>Meaning Cloud Text Classification</li>
+                  <li>Azure Text Analysis API</li>
+                  <li>GenSim</li>
+                  <li>StanfordNLP</li>
+                  </ul>
+
+
+              </div>
+            </div>
+          </div>
+          		</div>
+
+          <div class="col-md-4 col-lg-4 coll col-centered">
+          <div class="tile"><h3 class="tile-title">Image Recognition APIs</h3>
+            <div class="tile-info">
+              <div class="summary">
+                <ul>
+                <li>Amazon Rekoginition</li>
+                <li>Microsoft Computer Vision</li>
+                <li>IBM Watson Visual Recognition</li>
+                <li>Google Cloud Vision</li>
+                <li>Cloud Sight</li>
+                  <li>Clarif.ai</li>
+                </ul>
+
+            </div>
+          </div>
+        </div>
+        		</div>
+
+        <div class="col-md-4 col-lg-4 coll col-centered">
+        <div class="tile"><h3 class="tile-title">Representative Virtusa Smart AI</h3>
+          <div class="tile-info">
+            <div class="summary">
+              <ul>
+              <li>Commercial Recommendation System</li>
+              <li>Intelligence documnet Automation</li>
+              <li>Margin Call Analysis</li>
+              <li>Smart Appeal and grivances</li>
+              <li>Smart HCR</li>
+              <li>AI enabled email Mngmt.</li>
+              <li>Trade Finance Document Processing</li>
+              <li>AI enabled Sales</li>
+              <li>Claims Fraud Detection</li>
+
+
+              </ul>
+
+          </div>
+        </div>
+      </div>
+      		</div>
+
+      				  </div>
+      				  </div>
+      				  </div>
+      				  </div>
+      				  </div>
+      				  </div>
+
+
+    <!-- #services -->
+    <!--==========================
+    Footer
+    ============================-->
+     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+     <!--==========================
+       Footer
+     ============================-->
+
+<footer id="colophons" class="site-footer vn-site-footer">
+     <div class="contact-form ">
+       <div class="container-fluid">
+         <div class="row vn-row">
+         <div class="col-lg-12">
+             <div class="contain">
+           <div class="footer-menu">
+            <div class="vn-row footer-logo text-left">
+          <div class="site-branding">
+<p class="site-title"> <a href="https://corpweb.virtusa.com" rel="home">
+<img src="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/virtusa-footer-logo.png" class="site-logo" alt="Virtusa Logo"> </a>
+</p>
+</div>
+</div>
+<div class="row vn-row" style="margin:0 !important;">
+<div class="col-md-6 col-sm-6">
+<ul class="soc">
+<li><a class="soc-facebook" href="https://www.facebook.com/VirtusaCorp" target="_blank"> <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i> </a></li>
+<li><a class="soc-twitter" href="https://twitter.com/VirtusaCorp" target="_blank"> <i class="fa fa-twitter fa-2x" aria-hidden="true"></i> </a></li>
+<li><a class="soc-linkedin" href="https://www.linkedin.com/companies/virtusa" target="_blank"> <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i> </a></li>
+<li><a class="soc-instagram" href="https://www.instagram.com/virtusacorp/" target="_blank"> <i class="fa fa-instagram fa-2x" aria-hidden="true"></i> </a></li>
+<li><a class="soc-youtube" href="https://www.youtube.com/user/VirtusaCorporation" target="_blank"> <i class="fa fa-youtube fa-2x" aria-hidden="true"></i> </a></li>
+</ul></div>
+<div class="col-md-3 hide-mob"></div>
+<div class="col-md-3 col-sm-6">
+<ul class="en privacy-links">
+<li><a href="/corporate-citizenship-compliance/">Compliance</a>|</li>
+<li><a href="/privacy-statement/">Privacy</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+  </body>
+  </html>
