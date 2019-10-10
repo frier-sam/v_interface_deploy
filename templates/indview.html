@@ -486,7 +486,7 @@
                                             <a href="#menu1sub{{items.id}}" data-toggle="collapse" aria-expanded="false"> {{ items.name}}</a>
                                                       <div class="collapse" id="menu1sub{{items.id}}" style="margin-left:33px">
                                                            {%  for item_new in items.category.all %}
-                                                                    <a href="{%url 'model'%}?model={{ item_new.name }}" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
+                                                                    <a href="{%url 'model'%}?model={{ item_new.name }}&cat={{items.name}}&home={{item.id}}" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
                                                            {%endfor%}
                                                   <!-- <div class="collapse"> -->
                                             </div>
@@ -557,7 +557,7 @@
           <div class="wow bounceInUp col-sm-6" data-wow-duration="1.4s">
             <div class="cta-box">
                <div class="cta form-group">
-                  <h3>Uploaded CSV </h3>
+                  <h3>Input </h3>
 
               <div class=" span5" data-wow-duration="1.4s">
                 <div id="table-scroll">
@@ -597,7 +597,7 @@
 
 
 
-                        <h3>Try A Demo </h3>
+                        <h3>Output </h3>
 
 
 
@@ -617,8 +617,8 @@
                 <div class=" wow bounceInUp col-sm-6" data-wow-duration="1.4s">
                   <div class="cta-box">
 
-                 <button type="button" class="btn btn-primary" id ="cbtn"><span class="fa fa-pencil"></span> Edit </button>
-                 <button type="button" class="btn btn-primary" id ="dbtn"><span class="fa fa-pencil"></span> Done</button>
+                 <button type="button" class="btn btn-primary" id ="cbtn"> Edit </button>
+                 <button type="button" class="btn btn-primary" id ="dbtn">Save</button>
              </div>
              </div>
 

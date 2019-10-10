@@ -58,9 +58,9 @@ def practices(request):
 
 #model view is for  individual model
 def model(request):
-    name = request.GET['model']
-    category= request.GET['cat']
-    home = request.GET['home']
+    name = request.GET.get('model')
+    category= request.GET.get('cat')
+    home = request.GET.get('home')
 
     i = models.Ml_models.objects.get(name=name)
 

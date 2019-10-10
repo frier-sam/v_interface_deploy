@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style_updated16.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style_updated17.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -179,7 +179,7 @@ document.getElementById("sidebar").style.width = "0";
                          <a href="#menu1sub{{items.id}}"  data-toggle="collapse" aria-expanded="false"> {{ items.name}}</a>
                                    <div class="collapse" id="menu1sub{{items.id}}" style="margin-left:33px" >
                                         {%  for item_new in items.category.all %}
-                                                 <a href="{%url 'model'%}?model={{ item_new.name }}" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
+                                                 <a href="{%url 'model'%}?model={{ item_new.name }}&cat={{items.name}}&home={{item.id}}" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
                                         {%endfor%}
                                <!-- <div class="collapse"> -->
                          </div>
@@ -324,7 +324,7 @@ document.getElementById("sidebar").style.width = "0";
                      <img class="card-img-top img-fluid card-style " src="{{item.image.url}}" alt="">
                      <div class="img__description_layer">
 
-                           <p class="img__description"> Fortifying your business with blockchain solutions</p>
+                           <p class="img__description"> </p>
 
 
                        </div>
