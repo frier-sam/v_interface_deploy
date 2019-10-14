@@ -29,7 +29,7 @@
 
   <!-- Bootstrap CSS File -->
   <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/pptxjs.css' %}"> -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification13.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification21.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -100,6 +100,12 @@
 
            $(window).load(function(){
               debugger;
+
+
+        $('#button1').on('click', function(event) {
+             $('.iframe1').toggle('show');
+           });
+
 
                 $("#dbtn").attr("disabled", true);
 
@@ -279,6 +285,9 @@
               })
 
 
+
+
+
   //
   //                      $(document).on('click', '.btn_cancel', function(event)
 	// {
@@ -448,8 +457,16 @@
                       >
                <a href ="{%url 'index'%}">Home</a></li>
 
-             <li>
-             <a href="#about">Our Practices</a></li>
+               <li
+
+               {% if '/practices/' == request.path %}
+                   class= "nav-item active"
+               {% else %}
+                  class= "nav-item "
+               {% endif %}
+
+               >
+               <a href="{%url 'practices' %}">Our Practices</a></li>
              <li
              {% if '/services/' == request.path %}
                  class= "nav-item active"
@@ -508,11 +525,22 @@
 <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{model.slide}}'width='962px' height='565px' frameborder='0'></iframe>
 <iframe src="https://virtusaonline-my.sharepoint.com/personal/dipsikhadg_virtusa_com/_layouts/15/Doc.aspx?sourcedoc={0943de6f-b6bb-4199-8616-3f157aab6ab8}"</iframe> -->
 
-  <div class="overlay d-flex align-items-center" style="background: url('{{ model.image.url }}') no-repeat; background-size: cover;">
+  <div class="overlay d-flex align-items-center" style="background: url('{{ model.image.url }}') no-repeat; background-size: cover;margin-top:105px;">
       <section id="intro" class="clearfix" onload="init()">
 
               {% if model.slide %}
-                <iframe src="{{model.slide}}" width="100%" height="700px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+              <div class="intro-info">
+                    <h1 class='title'>{{model.name}}</h1>
+
+
+              <div>
+
+                <a href="#about" class="btn-get-started scrollto" id="button1">Check Slide</a>
+
+               <iframe class = "iframe1" src="{{model.slide}}" width="100%" height="700px" frameborder="0" style="border:0;display:none">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+
+      </div>
+              </div>
                    {% else %}
 
 

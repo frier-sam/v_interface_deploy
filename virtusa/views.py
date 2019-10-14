@@ -50,7 +50,10 @@ def services(request):
 
 #model view is for  practices
 def practices(request):
-    return render(request,'ourPractices.html')
+    cats = models.homeStack.objects.filter(home=True)
+    mlist = [{'name':i.name,'image':i.image,'summary':i.summary ,'id':i.id,'time':i.date_time,'cats':models.category.objects.filter(homeCategory=i.id),'inps':models.Ml_models.objects.filter(category=i.id)} for i in cats]
+
+    return render(request,'ourPractices.html',{'models':mlist})
 
 
 

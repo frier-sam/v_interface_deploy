@@ -42,8 +42,6 @@ class Ml_models(models.Model):
     slideUrl = models.URLField(null=True,blank=True)
     inputs_csv = models.FileField(upload_to="inputs/")
     result_key = models.CharField(max_length=50,null=True,blank=True)
-    showSlide = models.BooleanField(default=False)
-    input_ppt = models.FileField(default=False,upload_to="slide/")
     file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
     category = models.ManyToManyField(category,default=0,related_name='category')
