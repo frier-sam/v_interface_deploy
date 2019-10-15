@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('services/', vview.services,name='services'),
     path('practices/', vview.practices,name='practices'),
+    path('innovation/', vview.innovation,name='innovation'),
     path('model/', vview.model,name='model'),
     url('get_response/', vview.answer_me, name='get_response')
 

@@ -26,10 +26,13 @@
   <link href="{% static 'images/favicon.png'%}" rel="icon">
   <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="https://static.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+<script src="https://static.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
 
   <!-- Bootstrap CSS File -->
   <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/pptxjs.css' %}"> -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification23.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification26.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -81,6 +84,14 @@
 
   }
 
+//   anychart.onDocumentReady(function() {
+// debugger;
+//     // set the data
+//
+//
+//   });
+
+
            function arrayToTable(tableData) {
 
                data =tableData;
@@ -115,21 +126,37 @@
 
            $("#Submit").click(function(){
 
+debugger;
+myMap = new Map();
+$("input[class=form-control]").each(function() {
+debugger;
+    var id = $(this).attr("title");
+    var email = $(this).val();
 
-               var table = document.querySelector('table'),
-                   rows = table.getElementsByTagName('tr'),
-                      i, j, cells, customerId,obj={}, myMap = new Map();
-                    for (i = 0, j = rows.length; i < j; ++i) {
-                        cells = rows[i].getElementsByTagName('td');
-                        if (!cells.length) {
-                            continue;
-                         }
 
-                          name = cells[0].innerHTML? cells[0].innerHTML.trim():"";
-                          value = cells[1].innerHTML ? cells[1].innerHTML.trim() : "";
-                          myMap.set(name, value);
-                      }
+    name = id;
+    value = email;
 
+     myMap.set(name, value);
+});
+
+
+
+
+               // var table = document.querySelector('table'),
+               //     rows = table.getElementsByTagName('tr'),
+               //        i, j, cells, customerId,obj={}, myMap = new Map();
+               //      for (i = 0, j = rows.length; i < j; ++i) {
+               //          cells = rows[i].getElementsByTagName('td');
+               //          if (!cells.length) {
+               //              continue;
+               //           }
+               //
+               //            name = cells[0].innerHTML? cells[0].innerHTML.trim():"";
+               //            value = cells[1].innerHTML ? cells[1].innerHTML.trim() : "";
+               //            myMap.set(name, value);
+               //        }
+               //
                          function mapToObj(map){
                              var obj = {}
                              map.forEach(function(v, k){
@@ -141,8 +168,60 @@
                             var myJson = {};
                             myJson= mapToObj(myMap);
 
-                            // myJson=JSON.stringify(myJson)
-                            var res = document.getElementById('result');
+                            var data = [
+                                {x: "RUL", value: 193.43209071045},
+                                {x: "Time to an event", value: 239.8608903145},
+
+                            ];
+
+                            // create the chart
+                            var chart = anychart.pie();
+
+                            // set the chart title
+                            chart.title("Prediction");
+
+                            // add the data
+                            chart.data(data);
+
+                            // display the chart in the container
+                            chart.container('containers');
+                            chart.draw();
+
+
+
+//                             var chart = new CanvasJS.Chart("containers", {
+// 	animationEnabled: true,
+// 	exportEnabled: true,
+// 	theme: "light1", // "light1", "light2", "dark1", "dark2"
+// 	title:{
+// 		text: "Simple Column Chart with Index Labels"
+// 	},
+// 	data: [{
+// 		type: "column", //change type to bar, line, area, pie, etc
+// 		//indexLabel: "{y}", //Shows y value on all Data Points
+// 		indexLabelFontColor: "#5A5757",
+// 		indexLabelPlacement: "outside",
+// 		dataPoints: [
+// 			{ x: 10, y: 71 },
+// 			{ x: 20, y: 55 },
+// 			{ x: 30, y: 50 },
+// 			{ x: 40, y: 65 },
+// 			{ x: 50, y: 92, indexLabel: "Highest" },
+// 			{ x: 60, y: 68 },
+// 			{ x: 70, y: 38 },
+// 			{ x: 80, y: 71 },
+// 			{ x: 90, y: 54 },
+// 			{ x: 100, y: 60 },
+// 			{ x: 110, y: 36 },
+// 			{ x: 120, y: 49 },
+// 			{ x: 130, y: 21, indexLabel: "Lowest" }
+// 		]
+// 	}]
+// });
+// chart.render();
+
+               //              // myJson=JSON.stringify(myJson)
+               //              var res = document.getElementById('result');
                                       debugger;
 
 
@@ -608,13 +687,13 @@ New code-->
                   <li><a href="#profile" data-toggle="tab" title="profile">
                     <span class="round-tabs two">
                         <i class="icon icon-pencil"></i>02
-                  <h4>Approach</h4>     </span>
+                  <h4>Visualization</h4>     </span>
            </a>
                  </li>
                  <li><a href="#messages" data-toggle="tab" title="bootsnipp goodies">
                    <span class="round-tabs three">
                        <i class="icon icon-layers"></i>03
-                       <h4>Solution</h4>
+                       <h4>Demo</h4>
                    </span> </a>
                      </li>
 
@@ -640,25 +719,47 @@ New code-->
          </div>
                       </div>
                       <div class="tab-pane fade" id="profile">
-                          <h3 class="head text-center">Create a Bootsnipp<sup>™</sup> Profile</h3>
-                          <p class="narrow text-center">
-                              Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-                          </p>
-
-                          <p class="text-center">
-                    <a href="" class="btn btn-success btn-outline-rounded green"> create your profile <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
-                </p>
 
                       </div>
                       <div class="tab-pane fade" id="messages">
-                          <h3 class="head text-center">Bootsnipp goodies</h3>
-                          <p class="narrow text-center">
-                              Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-                          </p>
+                        <div class="card mb-3 h-85 ">
+      <div class="card-block box">
+<h2 class="title">Input</h2>
+             <!-- <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #ff689b;"></i></div> -->
+         <div class="contain">
 
-                          <p class="text-center">
-                    <a href="" class="btn btn-success btn-outline-rounded green"> start using bootsnipp <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
-                </p>
+           <form>
+   <div class="row">
+     {% for i in model.inputs_csv %}
+
+     <div class="col-md-6">
+       <label for="inputEmail4">{{i.0}}</label>
+       <input type="name" title={{i.0}} class="form-control" id="inputEmail4"  value={{i.1}}>
+
+     </div>
+
+
+{% endfor %}
+   </div>
+ </form>
+</br>
+<input type ="submit" class="btn btn-success  btn-md" id ="Submit" class="form-control">
+</div>
+<h2 class="title">Output</h2>
+<!-- <div id="containers"></div> -->
+
+<div class=" span5" data-wow-duration="1.4s">
+                             <div id="table-scroll">
+                               <table id="cupFinals" border=1 px class="fixed">
+                                         <tbody id="matchData"></tbody>
+                                  </table>
+
+
+                            </div>
+                      </div>
+</div>
+
+         </div>
                       </div>
                       <div class="tab-pane fade" id="settings">
                           <h3 class="head text-center">Drop comments!</h3>

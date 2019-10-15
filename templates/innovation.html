@@ -5,20 +5,19 @@
 
 
   <meta charset="utf-8">
-  <title>Home</title>
+  <title>Innovation</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <script src="{% static 'lib/PapaParse/papaparse.js' %}"></script>
-  <script src="{% static 'lib/PapaParse/papaparse.min.js'%}"></script>
+
   <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
   <meta content="" name="keywords">
   <meta content="" name="description">
   <link href="{% static 'images/favicon.png'%}" rel="icon">
   <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
 
   <!-- Bootstrap CSS File -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style_updated18.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/innovation01.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -29,6 +28,7 @@
   <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
   <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
 
   <!-- Uncomment below i you want to use a preloader -->
@@ -55,57 +55,7 @@
 
 
 </head>
-<script>
-$(document).ready(function() {
-debugger;
-	var showChar = 120;
-	var ellipsestext = "...";
-	var moretext = "more";
-	var lesstext = "less";
-	$('.more').each(function() {
-    debugger;
-		var content = $(this).html();
 
-		if(content.length > showChar) {
-
-			var c = content.substr(0, showChar);
-			var h = content.substr(showChar, content.length - showChar);
-
-			var html = c + '<span class="morecontent"><span>' + h + '</span></span>';
-
-			$(this).html(html);
-		}
-
-	});
-
-	$(".morelink").click(function(e){
-
-debugger;
-    e.preventDefault();
-    // var href = '#myModal';
-    var myHeading = "<p>"+$(this).prev()[0].innerHTML+$(this).prev()[0].getElementsByTagName('span')[1].innerHTML+"</p>";
-    var x = new Date();
-    $("#modalBody").html(myHeading);
-
-    var modalTitle=$(this).parent().parent().prev().text()
-    $("#modalTitle").html(modalTitle)
-    $('#myModal').modal('show');
-
-	});
-
-
-});
-
-function openNav() {
-document.getElementById("sidebar").style.width = "350px";
-
-}
-
-function closeNav() {
-document.getElementById("sidebar").style.width = "0";
-
-}
-</script>
 
   <body>
 
@@ -196,201 +146,81 @@ document.getElementById("sidebar").style.width = "0";
                      </div>
                 {%endfor%}
 
+                  </div>
+                  </div>
+
 </div>
 
   </header>
 
-
-  </div>
-
-  <div class="overlay d-flex align-items-center" style="background: url('{% static 'images/speed-xlabs.png' %}') no-repeat; background-size: cover;  ">
-  <section id="intro" class="clearfix">
-
-    <div class="container">
-      <div class="intro-img">
-        <img src="" alt="" class="img-fluid">
-      </div>
-
-      <div class="intro-info">
-
-        <h1 class="title">We provide solutions for your business!</h1>
-        <div>
-          <a href="#about" class="btn-get-started scrollto">Get Started</a>
-
-        </div>
-
-      </div>
-   </div>
-
-  </section>
-</div>
-   <!-- #intro -->
-
-    <!--==========================
-      About Us Section
-    ============================-->
-    <section id="about">
-        <div class="container">
-          <header class="section-header">
-            <h2>About Us</h2>
-            <p style="text-align: center;"><strong>xLabs: The digital innovation hub within Virtusa.</strong></p>
-
-          </header>
-            <div class=" about-container">
-                  <p>
-                   Virtusa Corporation is a global provider of Digital Buisness Transformation, Digital Engineering and Information Technology(IT) outsourcing services that accelerates our client's journey to Digital Future.
-                   We work with clients to accelerate and optimize their tech-enabled innovation programs, focusing on three stages
-                  </p>
-             </div>
-                  <div class="row vn-row">
-                    <div class="vn-service-tile">
-                      <div class="vn-tile-coll text-center vn-tile-coll-even">
-                         <a  class="vn-service-link">
-                              <h3>Explore</h3>
-                                 <p class="hide-content">Horizon scanning, to identify relevant emerging technologies.Identify and track emerging technologies that are relevant and disruptive.</p>
-                               </a>
-                        </div>
-
-                      <div class="vn-tile-coll text-center vn-tile-coll-even">
-                         <a  class="vn-service-link">
-                           <h3>Experiment</h3>
-                             <p class="hide-content">Use a design thinking tool to ideate and prototype potential solutions.Focus on key tech and evaluate how your business could benefit.</p>
-                            </a>
-                          </div>
-
-                       <div class="vn-tile-coll text-center vn-tile-coll-even">
-                          <a class="vn-service-link">
-                            <h3>Exploit</h3>
-                            <p class="hide-content">Assure that good ideas are implemented and generate value.Transition prototypes into production and measure value delivery.</p>
-                           </a>
-                         </div>
-                       </div>
-                     </div>
-
-
-                  <!-- <div class="icon-box wow fadeInUp">
-                    <div class="icon"><i class="fa fa-search"></i></div>
-                    <h4 class="title"><a href="">Explore</a></h4>
-                    <p class="description">Horizon scanning, to identify relevant emerging technologies.Identify and track emerging technologies that are relevant and disruptive.</p>
-                  </div>
-
-                  <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="icon"><i class="fa fa-flask"></i></div>
-                    <h4 class="title"><a href="">Experiment</a></h4>
-                    <p class="description">Use a design thinking tool to ideate and prototype potential solutions.Focus on key tech and evaluate how your business could benefit.</p>
-                  </div>
-
-                 <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="icon"><i class="fa fa-thumbs-up"></i></div>
-                    <h4 class="title"><a href="">Exploit</a></h4>
-                    <p class="description">Assure that good ideas are implemented and generate value.Transition prototypes into production and measure value delivery.</p>
-                </div> -->
-             <!-- </div> -->
-
-             <!-- <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-                <img src="static/images/intro.png" class="img-fluid" alt="">
-            </div>
-        </div>
-
-        <div class="row about-extra">
-          <div class="col-lg-6 wow fadeInUp">
-            <img src="static/images/about-extra-1.svg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
-          <p>
-            Virtusa xLabs is a unique blend of passionate designers and digital engineers.
-            We believe success is all about getting something in the hands of a client. We have helped clients across the globe create new digital-native business models and services in collaboration with disruptive FinTechs, HealthTechs, TelecomTechs, and InsureTechs. Applying first principles, we build our solutions from scratch. Our success relies on our clients' satisfaction.</h4>
-          </p>
-          </div>
-        </div>
-      </div> -->
-    </section>
-
-    <!-- #about -->
-
-    <!--==========================
-      Services Section
-    ============================-->
-    <section id="services" class="section-bg">
+  <section id="testimonials" class="section-bg">
       <div class="container">
 
         <header class="section-header">
-          <h2>Services</h2>
-          <p>We believe success is all about getting something in the hands of a client. We have helped clients across the globe create new digital-native business models and services in collaboration with disruptive FinTechs, HealthTechs, TelecomTechs, and InsureTechs..</p>
+          <h3>Testimonials</h3>
         </header>
 
-        <div class="row">
-            {% if models %}
-               {%  for item in models %}
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
 
+            <div class="owl-carousel testimonials-carousel wow fadeInUp">
 
+              <div class="testimonial-item">
 
-               <div class="col-md-6 col-lg-4 mb-4 wow bounceInUp " data-wow-duration="1.4s">
-                <div class="card mb-3 h-85 ">
-                  <div class="card-block box">
-                      <a href="{%url 'services'%}?cat={{item.id}}">
-                        <div class="thumbnail">
-                     <img class="card-img-top img-fluid card-style " src="{{item.image.url}}" alt="">
-                     <div class="img__description_layer">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
+                <p>
+                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                </p>
+              </div>
 
-                           <p class="img__description"> </p>
+              <div class="testimonial-item">
 
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+                <p>
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                </p>
+              </div>
 
-                       </div>
-                   </div>
-                       </a>
-                         <!-- <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #ff689b;"></i></div> -->
-                     <div class="contain">
-                         <h2 class="title">{{item.name}}</h2>
-                         <p class="card-text description comment more">{{item.summary}}</p>
+              <div class="testimonial-item">
 
-                         <span class="morelink read-more-small">Read More</span>
+                <h3>Jena Karlis</h3>
+                <h4>Store Owner</h4>
+                <p>
+                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                </p>
+              </div>
 
-</div>
+              <div class="testimonial-item">
 
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+                <p>
+                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                </p>
+              </div>
 
-                     </div>
+              <div class="testimonial-item">
 
+                <h3>John Larson</h3>
+                <h4>Entrepreneur</h4>
+                <p>
+                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                </p>
+              </div>
 
+            </div>
 
-                     <!-- <div class="card-footer">
-                       <small class="text-muted">
-                          Updated on <cite title="Source Title">{{item.time}}</cite>
-                       </small>
-
-                    </div> -->
-                 </div>
-               </div>
-
-               {% endfor %}
-               {% else %}
-               <div class="col-md-12">
-                   <p>No Models</p>
-
-               </div>
-                 {% endif %}
-
-    </div>
+          </div>
+        </div>
 
 
       </div>
-    </section>
+    </section><!-- #testimonials -->
 
-    <div class="modal fade" id="myModal" role="dialog">
-       <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title" id ="modalTitle"></h4>
-        </div>
-        <div class="modal-body" id ="modalBody">
-            <!-- <p>Some text in the modal.</p> -->
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-        </div>
-     </div>
-  </div>
-</div>
+
+
     <!-- #services -->
     <!--==========================
     Footer

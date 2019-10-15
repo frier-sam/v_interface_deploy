@@ -1,9 +1,9 @@
-body, button, input, select, optgroup, textarea {
+/* body, button, input, select, optgroup, textarea {
 	color: #333;
 	font-family: 'Synthesis', sans-serif !important;
 	font-size: 15px !important;
 	line-height: 1.2 !important;
-}
+} */
 
 .main-container {
  min-height: 100vh; /* will cover the 100% of viewport */
@@ -952,7 +952,7 @@ i.icon-bg-dark {
 .board{
     width: 100%;
 margin: 0px auto;
-height: 500px;
+
 
 /*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
 }
@@ -1155,6 +1155,11 @@ padding-top: 50px;
   background: #fff;
   box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
   transition: all 0.3s ease-in-out;
+}
+
+.tab-pane #containers{
+	width:100%;
+	height: 394px;
 }
 
 .tab-pane .thumbnail{
@@ -1465,16 +1470,15 @@ table thead th {
 
 #Submit {
 
-  background: #00FEFF;
-      display: inline-block;
-      border-radius: 50px;
-      padding: 11px 48px 10px 48px;
-      color: #000;
-      font-size: 15px;
-      font-weight: 600;
-      border: 1px solid #77dede;
-      font-family: 'Barlow', Arial;
-          margin-left: 25px;
+	background: #00FEFF;
+	    display: inline-block;
+	    border-radius: 50px;
+	    padding: 4px 40px 5px 40px;
+	    color: #000;
+	    font-size: 15px;
+	    font-weight: 600;
+	    border: 1px solid #77dede;
+	    font-family: 'Barlow', Arial;
   }
 
 
