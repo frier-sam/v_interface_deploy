@@ -94,6 +94,6 @@ def model(request):
         for row in reader:
             inps.append({0:row[0],1:row[1]})
 
-    mlist = {'name':i.name,'image':i.image,'summary':i.summary,'content':i.content,'extras':i.extras,'endpoint':i.url,'inputs_csv':inps,'result':i.result_key,'slide':i.slideUrl,'time':i.date_time,'category':category,'home':home}
+    mlist = {'name':i.name,'image':i.image,'summary':i.summary,'content':i.content,'extras':i.extras,'endpoint':i.url,'inputs_csv':inps,'result':i.result_key,'slide':i.slideUrl,'time':i.date_time,'category':category,'home':home,'problem':i.problem_statement,'graphImage':i.graphImage}
 
     return render(request,'indview.html',{'model':mlist,'mlist':mulist})

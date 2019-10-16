@@ -721,9 +721,9 @@ section#bottom {
   width: 50%; */
   font-size: 17px;
 line-height: 1.5em;
-text-align: center;
+text-align: justify;
 margin-bottom: 1.5em;
-
+margin-top: 19px;
 }
 
 .section-header .title {
@@ -1222,7 +1222,7 @@ text-align: center;
 
 
 .tab-pane .card-style {
-height:200px;
+margin-left: 286px;
 }
 
 .tab-pane .card:hover {
@@ -1258,6 +1258,23 @@ height:200px;
 	    margin: 0;
 	    font-weight: 400;
 
+}
+
+.tab-pane .contain .imgDes{
+       margin-bottom: 15px;
+      text-align: center;
+
+
+
+      /* color: #fff; */
+      padding: 15px 10px;
+
+
+      font-size: 32px;
+      font-family: 'Publico Headline Web', serif;
+      font-weight: 700;
+      color: #006AA5;
+      margin: 0 0 25px
 }
 
 .tab-pane .contain{
@@ -1438,8 +1455,14 @@ table thead th {
 
 
  #table-scroll {
-  height:700px;
-  overflow:auto;
+  /* height:700px;
+  overflow:auto; */
+  /* text-align: center; */
+margin: auto;
+width: 33%;
+/* margin: 33px 0px 51px 324px; */
+/* border: 3px solid #73AD21; */
+padding: 10px;
 }
 
 #cbtn{

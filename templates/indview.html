@@ -32,7 +32,7 @@
 
   <!-- Bootstrap CSS File -->
   <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/pptxjs.css' %}"> -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification26.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/risk_quantification30.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -524,7 +524,18 @@ debugger;
 
           <a href="#intro" class="scrollto"><img src="{% static 'images/logos.png'  %}"  alt="" class="img-fluid "></a>
          </div>
-        <span style ="margin-bottom:0px"><h4 style ="margin-bottom:0px">
+        <span style ="margin-bottom:0px"><h4 style="
+        margin-bottom:0px;
+        font-weight: 500;
+        margin-top: 0px;
+        line-height: 1.2;
+        color: inherit;
+        font-size: 24px;
+        font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        ">
+
+
+
                  The digital innovation hub within Virtusa</h4></span>
 
          <nav class="main-nav  d-none d-lg-block " style="margin-left:168px;">
@@ -668,10 +679,14 @@ New code-->
 <section style="background:#f2f2f2;">
         <div class="container">
             <div class="row">
+              <header class="section-header">
+                 <p>{{model.content}}</p>
 
+            <!-- <p>xLabs: The digital innovation hub within Virtusa.</p> -->
+          </header>
                <h2 class="stages">We work with clients to accelerate and optimize their tech-enabled innovation programs, focusing on three stages:</h2>
-                <div class="board">
-                    <!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
+                 <div class="board">
+
                     <div class="board-inner">
                     <ul class="nav nav-tabs" id="myTab">
                     <div class="liner"></div>
@@ -679,76 +694,69 @@ New code-->
                      <a href="#home" data-toggle="tab" title="welcome">
                        <span class="round-tabs one">
                            <i class="icon icon-profile-male"></i>01
-                                    <h4>Problem</h4>            </span>
-                  </a>
-
-                </li>
-
-                  <li><a href="#profile" data-toggle="tab" title="profile">
-                    <span class="round-tabs two">
-                        <i class="icon icon-pencil"></i>02
-                  <h4>Visualization</h4>     </span>
-           </a>
-                 </li>
-                 <li><a href="#messages" data-toggle="tab" title="bootsnipp goodies">
-                   <span class="round-tabs three">
-                       <i class="icon icon-layers"></i>03
-                       <h4>Demo</h4>
-                   </span> </a>
+                                    <h4>Problem</h4></span>
+                       </a>
                      </li>
 
+                  <li><a href="#profile" data-toggle="tab" title="profile">
+                        <span class="round-tabs two">
+                        <i class="icon icon-pencil"></i>02
+                        <h4>Visualization</h4></span>
+                      </a>
+                 </li>
+                 <li><a href="#messages" data-toggle="tab" title="bootsnipp goodies">
+                       <span class="round-tabs three">
+                       <i class="icon icon-layers"></i>03
+                       <h4>Demo</h4></span>
+                      </a>
+                </li>
 
-                     </ul></div>
+
+                </ul></div>
 
                      <div class="tab-content">
                       <div class="tab-pane fade in active" id="home">
-
                         <div class="card mb-3 h-85 ">
-      <div class="card-block box">
- <h2 class="title">Problem Statement</h2>
-             <!-- <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #ff689b;"></i></div> -->
-         <div class="contain">
-
-             <p class="card-text description comment more">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-             <span class="morelink read-more-small">Read More</span>
-
-</div>
-</div>
-
-         </div>
+                           <div class="card-block box">
+                             <h2 class="title">Problem Statement</h2>
+                               <div class="contain">
+                                 <p class="card-text description comment more">{{model.problem}}</p>
+                               </div>
+                          </div>
+                        </div>
+                     </div>
+                    <div class="tab-pane fade" id="profile">
+                      <div class="card mb-3 h-85 ">
+                         <div class="card-block box">
+                           <h2 class="title">Visualization</h2>
+                             <div class="contain">
+                               <h3 class ="imgDes">Major Contributing Factors</h3>
+                                <img class=" card-style " src="{{model.graphImage.url}}" alt="">
+                             </div>
+                        </div>
                       </div>
-                      <div class="tab-pane fade" id="profile">
-
                       </div>
-                      <div class="tab-pane fade" id="messages">
-                        <div class="card mb-3 h-85 ">
-      <div class="card-block box">
-<h2 class="title">Input</h2>
-             <!-- <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #ff689b;"></i></div> -->
-         <div class="contain">
 
-           <form>
-   <div class="row">
-     {% for i in model.inputs_csv %}
-
-     <div class="col-md-6">
-       <label for="inputEmail4">{{i.0}}</label>
-       <input type="name" title={{i.0}} class="form-control" id="inputEmail4"  value={{i.1}}>
-
-     </div>
-
-
-{% endfor %}
-   </div>
- </form>
-</br>
-<input type ="submit" class="btn btn-success  btn-md" id ="Submit" class="form-control">
-</div>
-<h2 class="title">Output</h2>
-<!-- <div id="containers"></div> -->
-
-<div class=" span5" data-wow-duration="1.4s">
+                    <div class="tab-pane fade" id="messages">
+                      <div class="card mb-3 h-85 ">
+                         <div class="card-block box">
+                           <h2 class="title">Input</h2>
+                            <div class="contain">
+                              <form>
+                               <div class="row">
+                                {% for i in model.inputs_csv %}
+                                   <div class="col-md-6">
+                                     <label for="inputEmail4">{{i.0}}</label>
+                                     <input type="name" title={{i.0}} class="form-control" id="inputEmail4"  value={{i.1}}>
+                                  </div>
+                                {% endfor %}
+                               </div>
+                              </form>
+                             </br>
+                       <input type ="submit" class="btn btn-success  btn-md" id ="Submit" class="form-control">
+             </div>
+                    <h2 class="title">Output</h2>
+                     <div  data-wow-duration="1.4s">
                              <div id="table-scroll">
                                <table id="cupFinals" border=1 px class="fixed">
                                          <tbody id="matchData"></tbody>
@@ -757,29 +765,11 @@ New code-->
 
                             </div>
                       </div>
-</div>
-
+                </div>
          </div>
-                      </div>
-                      <div class="tab-pane fade" id="settings">
-                          <h3 class="head text-center">Drop comments!</h3>
-                          <p class="narrow text-center">
-                              Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-                          </p>
+      </div>
 
-                          <p class="text-center">
-                    <a href="" class="btn btn-success btn-outline-rounded green"> start using bootsnipp <span style="margin-left:10px;" class="glyphicon glyphicon-send"></span></a>
-                </p>
-                      </div>
-                      <div class="tab-pane fade" id="doner">
-  <div class="text-center">
-    <i class="img-intro icon-checkmark-circle"></i>
-</div>
-<h3 class="head text-center">thanks for staying tuned! <span style="color:#f48260;">♥</span> Bootstrap</h3>
-<p class="narrow text-center">
-  Lorem ipsum dolor sit amet, his ea mollis fabellas principes. Quo mazim facilis tincidunt ut, utinam saperet facilisi an vim.
-</p>
-</div>
+
 <div class="clearfix"></div>
 </div>
 
