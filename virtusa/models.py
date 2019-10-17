@@ -15,6 +15,18 @@ class homeStack(models.Model):
     def __str__(self):
         return self.name
 
+
+class buisnessImperative(models.Model):
+    name = models.CharField(max_length=50,null=False,unique=True,blank=False)
+    summary = models.TextField(null=False,blank=False)
+    home = models.BooleanField(default=False)
+
+    image = models.ImageField(upload_to='images/',default='images/default.jpg')
+    date_time = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return self.name
+
 class category(models.Model):
     name = models.CharField(max_length=50,null=False,unique=True,blank=False)
     summary = models.TextField(null=False,blank=False)
@@ -22,6 +34,7 @@ class category(models.Model):
     maincategory = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images/',default='images/default.jpg')
     homeCategory= models.ForeignKey(homeStack,on_delete=models.CASCADE,related_name='homeCategory')
+    buisnessImperative= models.ForeignKey(buisnessImperative,on_delete=models.CASCADE,related_name='buisnessImperative')
     date_time = models.DateTimeField(default=datetime.now)
 
     def __str__(self):

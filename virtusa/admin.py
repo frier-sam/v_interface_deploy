@@ -24,6 +24,9 @@ class homeStack_admin(admin.ModelAdmin):
         list_display = ['name','image']
 
 
+class buisnessImperative_admin(admin.ModelAdmin):
+        list_display = ['name','image']
+
 
 
 
@@ -32,3 +35,4 @@ class homeStack_admin(admin.ModelAdmin):
 admin.site.register(models.Ml_models, Ml_models_admin)
 admin.site.register(models.category, category_admin)
 admin.site.register(models.homeStack, homeStack_admin)
+admin.site.register(models.buisnessImperative, buisnessImperative_admin)
