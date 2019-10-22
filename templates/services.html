@@ -13,13 +13,16 @@
     <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
     <meta content="" name="keywords">
     <meta content="" name="description">
-    <link href="{% static 'images/favicon.png'%}" rel="icon">
+    <!-- <link href="{% static 'images/favicon.png'%}" rel="icon"> -->
+
+     <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-32x32.png" sizes="32x32">
+     <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-192x192.png" sizes="192x192">
     <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
         <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated22.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated27.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -214,15 +217,15 @@ function likebutton() {
 
             >
             <a href="{%url 'practices' %}">Our Practices</a></li>
-          <li
-          {% if '/services/' == request.path %}
-              class= "nav-item active"
-          {% else %}
-             class= "nav-item "
-          {% endif %}
+            <li
+            {% if '/services/' == request.path %}
+                class= "nav-item active"
+            {% else %}
+               class= "nav-item "
+            {% endif %}
 
-          >
-          <a href="{%url 'services' %}">Solutions</a></li>
+            >
+            <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
           <li><a href="#portfolio">Innovation</a></li>
 
         </ul>
@@ -262,7 +265,7 @@ function likebutton() {
 </div>
 
   </header>
-  <div class="overlay d-flex align-items-center" style="background: url('{{ moduleimage.url }}') no-repeat; background-size: cover;">
+  <div class="overlay d-flex align-items-center" style="background:url('{% static 'images/solutions.png' %}') no-repeat; background-size: cover;margin-top: 105px;">
   <section id="intro" class="clearfix" >
     <div class="container">
 
@@ -285,7 +288,19 @@ function likebutton() {
         <a href="{%url 'index'%}">Home</a>
       </li>
       <li class="breadcrumb-item">
-        <a>{{modulename}}</a>
+        {%if buisnessImperative == 'True'%}
+        <a>
+
+          Solutions
+          </a>
+          {%else%}
+             <a>
+          {{modulename}}
+</a>
+          {%endif%}
+
+
+
       </li>
     </ol>
   </nav>
@@ -293,6 +308,192 @@ function likebutton() {
   </div>
 </div>
 
+
+         {%if buisnessImperative == 'True'%}
+         <section id="services" >
+           <div class="container">
+
+
+             <!-- <div class="line"></div> -->
+              <div class="row">
+
+               <div class=" breadcrumb">
+                 <h2 class ="parallel">Customer Experience</h2>
+                  <div class="col-sm">
+                    <!-- <img class='img-circle' src ="{% static 'images/default.jpg'  %}" /> -->
+                     <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
+                       {%for item in catList %}
+                       {%if 'Customer' == item.buisnessImperative.name%}
+                         <li class= "nav-item ">
+                         <a
+
+                            class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
+
+                          >{{item.name}}</a></li>
+
+                             {%endif%}
+                        {%endfor%}
+                      </ul>
+
+               <div class="tab-content  pt-5" id="myTabContentJust">
+                {%for item in catList %}
+                 {%if 'Customer' == item.buisnessImperative.name%}
+                  <div
+
+                      class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
+        >
+                    <p class=" comment more" >{{item.summary}}</p>
+                     <div class="row">
+                     {% if item.inps|length >= 1 %}
+                        {% for items in item.inps %}
+                                             <div class="col-md-6 col-lg-4 mb-4" >
+                          <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{item.homeCategory.id}}" class="story-link " style="Color:white" >
+                          <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
+                          <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">{{items.name}}</h5>
+                               <!-- <small>3 days ago</small> -->
+                        </div>
+                      <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
+                       </div>
+                      </a>
+                    </div>
+                 {%endfor%}
+
+                  {%endif%}
+
+        </div>
+     </div>
+     {%endif%}
+   {%endfor%}
+
+
+
+</div>
+
+
+
+</div> <!--col-sm -->
+</div>
+           <div class=" breadcrumb">
+             <h2 class ="parallel">Operational Efficiency</h2>
+<div class="col-sm">
+
+   <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
+     {%for item in catList %}
+     {%if 'Operational Efficiency' == item.buisnessImperative.name%}
+       <li class= "nav-item ">
+       <a
+
+          class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
+
+        >{{item.name}}</a></li>
+
+           {%endif%}
+      {%endfor%}
+    </ul>
+
+<div class="tab-content  pt-5" id="myTabContentJust">
+{%for item in catList %}
+{%if 'Operational Efficiency' == item.buisnessImperative.name%}
+<div
+
+    class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
+>
+  <p class=" comment more" >{{item.summary}}</p>
+  <div class="row">
+  {% if item.inps|length >= 1 %}
+     {% for items in item.inps %}
+                          <div class="col-md-6 col-lg-4 mb-4" >
+       <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
+       <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
+       <div class="d-flex w-100 justify-content-between">
+       <h5 class="mb-1">{{items.name}}</h5>
+            <!-- <small>3 days ago</small> -->
+     </div>
+   <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
+    </div>
+   </a>
+ </div>
+
+{%endfor%}
+
+{%endif%}
+
+</div>
+</div>
+{%endif%}
+{%endfor%}
+
+
+
+</div>
+
+
+
+</div> <!--col-sm -->
+</div>
+           <div class=" breadcrumb">
+             <h2 class ="parallel">Business Innovation</h2>
+<div class="col-sm">
+
+   <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
+     {%for item in catList %}
+     {%if 'Buisness Innovation' == item.buisnessImperative.name%}
+       <li class= "nav-item ">
+       <a
+
+          class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
+
+        >{{item.name}}</a></li>
+
+           {%endif%}
+      {%endfor%}
+    </ul>
+
+<div class="tab-content  pt-5" id="myTabContentJust">
+{%for item in catList %}
+{%if 'Buisness Innovation' == item.buisnessImperative.name%}
+<div class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just">
+  <p class=" comment more" >{{item.summary}}</p>
+  <div class="row">
+  {% if item.inps|length >= 1 %}
+     {% for items in item.inps %}
+                          <div class="col-md-6 col-lg-4 mb-4" >
+       <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
+       <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
+       <div class="d-flex w-100 justify-content-between">
+       <h5 class="mb-1">{{items.name}}</h5>
+            <!-- <small>3 days ago</small> -->
+     </div>
+   <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
+    </div>
+   </a>
+ </div>
+{%endfor%}
+
+{%endif%}
+
+</div>
+</div>
+{%endif%}
+{%endfor%}
+
+
+
+</div>
+
+
+
+</div> <!--col-sm -->
+
+             </div>
+
+
+           </div>
+         </section>
+
+
+      {%else%}
           <section id="services" >
             <div class="container">
 
@@ -302,6 +503,7 @@ function likebutton() {
                 <div class=" breadcrumb">
                  <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
                     {%for item in catList %}
+
                    <li
 
                        class= "nav-item "
@@ -357,7 +559,7 @@ function likebutton() {
                                This model is also achieved by :
                                 {% for cat in items.category.all %}
                                   {% if cat.id != item.id %}
-                                    <ul> {{cat.name}} - <a style ="color:#006AA5" href="{%url 'services'%}?cat={{cat.homeCategory.id}}"> {{ cat.homeCategory.name}}</a></ul>
+                                    <ul> {{cat.buisnessImperative.name}} - {{cat.name}} -  <a style ="color:#006AA5" href="{%url 'services'%}?cat={{cat.homeCategory.id}}"> {{ cat.homeCategory.name}}</a></ul>
                                  {%endif%}
                                {%endfor%}
                                {%endif%}
@@ -391,7 +593,7 @@ function likebutton() {
 
             </div>
           </section>
-
+{%endif%}
 
 
 

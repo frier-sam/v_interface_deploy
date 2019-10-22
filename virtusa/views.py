@@ -33,6 +33,7 @@ def services(request):
     cats = models.homeStack.objects.filter(home=True)
     mlist = [{'name':i.name,'image':i.image,'summary':i.summary ,'id':i.id,'time':i.date_time,'cats':models.category.objects.filter(homeCategory=i.id),'inps':models.Ml_models.objects.filter(category=i.id)} for i in cats]
     c = request.GET.get('cat')
+    buisnessImperative = request.GET.get('buisnessImperative')
     if c is not None:
         cats=models.category.objects.filter(homeCategory=c)
         i = models.homeStack.objects.get(id=c)
@@ -44,9 +45,9 @@ def services(request):
 
     k = models.Ml_models.objects.filter(active=True)
     cats = models.category.objects.filter(maincategory=True)
-    mcatlist =  [{'name':i.name,'summary':i.summary ,'id':i.id} for i in cats]
+    mcatlist =  [{'name':i.name,'summary':i.summary ,'id':i.id,'buisnessImperative':i.buisnessImperative,'homeCategory':i.homeCategory,'inps':models.Ml_models.objects.filter(category=i.id)} for i in cats]
     mlist = [{'name':i.name,'content':i.content,'image':i.image,'summary':i.summary} for i in k]
-    return render(request,'services.html',{'models':mlist,'catList':mcatlist,'mlist':mlist})
+    return render(request,'services.html',{'models':mlist,'catList':mcatlist,'mlist':mlist,'buisnessImperative':buisnessImperative})
 
 #model view is for  practices
 def practices(request):

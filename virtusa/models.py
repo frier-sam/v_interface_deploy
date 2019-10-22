@@ -34,7 +34,7 @@ class category(models.Model):
     maincategory = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images/',default='images/default.jpg')
     homeCategory= models.ForeignKey(homeStack,on_delete=models.CASCADE,related_name='homeCategory')
-    buisnessImperative= models.ForeignKey(buisnessImperative,on_delete=models.CASCADE,related_name='buisnessImperative')
+    buisnessImperative= models.ForeignKey(buisnessImperative,on_delete=models.CASCADE,related_name='buisnessImperative',default=1)
     date_time = models.DateTimeField(default=datetime.now)
 
     def __str__(self):

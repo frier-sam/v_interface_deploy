@@ -13,12 +13,13 @@
   <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
   <meta content="" name="keywords">
   <meta content="" name="description">
-  <link href="{% static 'images/favicon.png'%}" rel="icon">
+  <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-32x32.png" sizes="32x32">
+  <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-192x192.png" sizes="192x192">
   <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style_updated18.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style_updated20.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -150,7 +151,7 @@ document.getElementById("sidebar").style.width = "0";
           {% endif %}
 
           >
-          <a href="{%url 'services' %}">Solutions</a></li>
+          <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
           <li
 
           {% if '/innovation/' == request.path %}
@@ -203,7 +204,7 @@ document.getElementById("sidebar").style.width = "0";
 
   </div>
 
-  <div class="overlay d-flex align-items-center" style="background: url('{% static 'images/speed-xlabs.png' %}') no-repeat; background-size: cover;  ">
+  <div class="overlay d-flex align-items-center" style="background: url('{% static 'images/speed-xlabs.png' %}') no-repeat; background-size: cover;margin-top: 105px;  ">
   <section id="intro" class="clearfix">
 
     <div class="container">

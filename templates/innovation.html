@@ -12,7 +12,8 @@
   <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
   <meta content="" name="keywords">
   <meta content="" name="description">
-  <link href="{% static 'images/favicon.png'%}" rel="icon">
+  <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-32x32.png" sizes="32x32">
+  <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-192x192.png" sizes="192x192">
   <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
 
 
@@ -100,7 +101,7 @@
           {% endif %}
 
           >
-          <a href="{%url 'services' %}">Solutions</a></li>
+          <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
           <li
 
           {% if '/innovation/' == request.path %}

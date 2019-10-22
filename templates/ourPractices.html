@@ -13,7 +13,9 @@
   <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
   <meta content="" name="keywords">
   <meta content="" name="description">
-  <link href="{% static 'images/favicon.png'%}" rel="icon">
+  <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-32x32.png" sizes="32x32">
+  <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-192x192.png" sizes="192x192">
+
   <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
@@ -118,8 +120,15 @@ document.getElementById("sidebar").style.width = "0";
      <div class="logo float-left ">
          <a href="#intro" class="scrollto"><img src="{% static 'images/logos.png'  %}"  alt="" class="img-fluid "></a>
     </div>
-         <span style ="margin-bottom:0px"><h4 style ="margin-bottom:0px">
-              The digital innovation hub within Virtusa</h4></span>
+         <span style ="margin-bottom:0px"><h4 style ="
+        margin-bottom:0px;
+        font-weight: 500;
+        margin-top: 0px;
+        line-height: 1.2;
+        color: inherit;
+        font-size: 24px;
+        font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        "> The digital innovation hub within Virtusa</h4></span>
 
       <nav class="main-nav  d-none d-lg-block " style="margin-left:168px;">
         <ul>
@@ -150,7 +159,7 @@ document.getElementById("sidebar").style.width = "0";
           {% endif %}
 
           >
-          <a href="{%url 'services' %}">Solutions</a></li>
+          <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
           <li><a href="#portfolio">Innovation</a></li>
 
         </ul>

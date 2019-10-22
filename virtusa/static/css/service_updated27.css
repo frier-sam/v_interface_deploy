@@ -282,7 +282,8 @@ background: rgba(0,254, 255, 0.8);
   /* color: rgba(0,254, 255, 0.8); */
    /* background-image: url("../images/intro-bg.jpg") center bottom no-repeat;  */
   /* background-size: cover; */
-  padding: 200px 0 120px 0;
+  padding: 95px 0 120px 0;
+height: 500px;
 }
 
 #intro .caption {
@@ -732,8 +733,25 @@ a.morelink {
   font-size: 17px;
   line-height: 1.7;
 
-    height: 100px;
+    /* height: 100px; */
 		margin-bottom: 60px;
+    text-align: justify;
+}
+
+.img-circle{
+
+width: 50%;
+}
+
+.parallel{
+
+  font-weight: 700;
+    width: 100%;
+    margin: 20px auto;
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Publico Headline Web';
+    display: inline-block;;
 }
 
 .tab-pane .overlay {

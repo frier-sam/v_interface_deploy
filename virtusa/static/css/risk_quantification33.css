@@ -724,7 +724,7 @@ section#bottom {
 }
 
 .section-header p {
-  
+
   text-align: justify;
   margin-bottom: 1.5em;
   margin-top: 19px;
@@ -1033,6 +1033,7 @@ li.active span.round-tabs.one{
 
 span.round-tabs.two{
     color: #D3D3D3;border: 2px solid #D3D3D3;background: #D3D3D3;
+    cursor: pointer;
 }
 
 li.active span.round-tabs.two{
@@ -1229,7 +1230,10 @@ text-align: center;
 
 
 .tab-pane .card-style {
-margin-left: 286px;
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .tab-pane .card:hover {
