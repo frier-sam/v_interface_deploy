@@ -902,16 +902,19 @@ background: #f2f2f2;
   padding: 0px;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
-  margin: 0 10px 40px 10px;
-  background: #fff;
+  /* border-radius: 10px; */
+  margin: 0 0px 26px 0px;
+  /* background: #006aa4;  */
   box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
   transition: all 0.3s ease-in-out;
+  color: black;
 }
 
 #services .card:hover {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
+  color: #006aa4;
+  background: #fff;
 }
 
 #services .icon {
@@ -927,10 +930,16 @@ background: #f2f2f2;
 }
 
 #services .title {
-  margin-left: 40px;
   font-weight: 700;
-  margin-bottom: 15px;
+
   font-size: 18px;
+
+  font-family: 'Publico Headline Web';
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 6px auto;
+  text-align: center;
 }
 
 #services .title a {

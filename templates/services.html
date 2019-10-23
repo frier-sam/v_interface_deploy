@@ -22,7 +22,7 @@
 
     <!-- Bootstrap CSS File -->
         <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated27.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated30.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -265,7 +265,13 @@ function likebutton() {
 </div>
 
   </header>
+
+   {%if buisnessImperative == 'True'%}
   <div class="overlay d-flex align-items-center" style="background:url('{% static 'images/solutions.png' %}') no-repeat; background-size: cover;margin-top: 105px;">
+  {%else%}
+  <div class="overlay d-flex align-items-center" style="background:url('{{moduleimage.url}}') no-repeat; background-size: cover;margin-top: 105px;">
+    {%endif%}
+
   <section id="intro" class="clearfix" >
     <div class="container">
 
@@ -348,9 +354,10 @@ function likebutton() {
                         {% for items in item.inps %}
                                              <div class="col-md-6 col-lg-4 mb-4" >
                           <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{item.homeCategory.id}}" class="story-link " style="Color:white" >
-                          <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
-                          <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">{{items.name}}</h5>
+                          <div class ="card card-block box overlay d-flex  flex-wrap ">
+                          <div class="d-flex w-100">
+                            <h2 class="title">{{items.name}}</h2>
+                          <!-- <h5 class="mb-1">{{items.name}}</h5> -->
                                <!-- <small>3 days ago</small> -->
                         </div>
                       <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
@@ -405,9 +412,9 @@ function likebutton() {
      {% for items in item.inps %}
                           <div class="col-md-6 col-lg-4 mb-4" >
        <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
-       <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
-       <div class="d-flex w-100 justify-content-between">
-       <h5 class="mb-1">{{items.name}}</h5>
+       <div class ="card card-block box overlay d-flex  flex-wrap ">
+       <div class="d-flex w-100">
+           <h2 class="title">{{items.name}}</h2>
             <!-- <small>3 days ago</small> -->
      </div>
    <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
@@ -460,9 +467,9 @@ function likebutton() {
      {% for items in item.inps %}
                           <div class="col-md-6 col-lg-4 mb-4" >
        <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
-       <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
-       <div class="d-flex w-100 justify-content-between">
-       <h5 class="mb-1">{{items.name}}</h5>
+       <div class ="card card-block box overlay d-flex  flex-wrap ">
+       <div class="d-flex w-100 ">
+           <h2 class="title">{{items.name}}</h2>
             <!-- <small>3 days ago</small> -->
      </div>
    <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
@@ -490,6 +497,7 @@ function likebutton() {
 
 
            </div>
+              </div>
          </section>
 
 
