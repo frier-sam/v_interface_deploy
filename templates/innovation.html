@@ -18,7 +18,7 @@
 
 
   <!-- Bootstrap CSS File -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/innovation01.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/innovation02.css' %}">
   <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -72,50 +72,41 @@
          <span style ="margin-bottom:0px"><h4 style ="margin-bottom:0px">
               The digital innovation hub within Virtusa</h4></span>
 
-      <nav class="main-nav  d-none d-lg-block " style="margin-left:168px;">
-        <ul>
-          <li
-          {% if '/' == request.path %}
-              class= "nav-item active"
-          {% else %}
-             class= "nav-item "
-          {% endif %}
-                   >
-            <a href ="#Home" >Home</a>
-          <i ></i></li>
-          <li
+              <nav class="main-nav  d-none d-lg-block " style="margin-left:168px;">
+                <ul>
+                  <li
+                  <li
+                  {% if '/' == request.path %}
+                      class= "nav-item active"
+                  {% else %}
+                     class= "nav-item "
+                  {% endif %}
+                           >
+                    <a href ="{%url 'index'%}">Home</a></li>
 
-          {% if '/practices/' == request.path %}
-              class= "nav-item active"
-          {% else %}
-             class= "nav-item "
-          {% endif %}
+                    <li
 
-          >
-          <a href="{%url 'practices' %}">Our Practices</a></li>
-          <li
-          {% if '/services/' == request.path %}
-              class= "nav-item active"
-          {% else %}
-             class= "nav-item "
-          {% endif %}
+                    {% if '/practices/' == request.path %}
+                        class= "nav-item active"
+                    {% else %}
+                       class= "nav-item "
+                    {% endif %}
 
-          >
-          <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
-          <li
+                    >
+                    <a href="{%url 'practices' %}">Our Practices</a></li>
+                    <li
+                    {% if '/services/' == request.path %}
+                        class= "nav-item active"
+                    {% else %}
+                       class= "nav-item "
+                    {% endif %}
 
-          {% if '/innovation/' == request.path %}
-              class= "nav-item active"
-          {% else %}
-             class= "nav-item "
-          {% endif %}
+                    >
+                    <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
+                  <li><a href="#portfolio">Innovation</a></li>
 
-          >
-          <a href="{%url 'innovation' %}">Innovation</a></li>
-
-        </ul>
-      </nav>
-
+                </ul>
+              </nav>
 
 
 
@@ -220,6 +211,80 @@
       </div>
     </section><!-- #testimonials -->
 
+    <section id="about">
+    <div class="container">
+
+      <header class="section-header">
+        <h3>About Us</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </header>
+
+
+
+      <div class="row about-extra">
+        <div class="col-lg-8 wow fadeInUp">
+          <video controls autoplay reload="none" style="width:694px;">
+          <source src="{% static 'images/pp.mp4' %}" type="video/mp4" />
+          </video>
+
+        </div>
+        <div class="col-lg-4 wow fadeInUp pt-5 pt-lg-0">
+          <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
+          <p>
+            Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati possimus ea. Quas molestiae perspiciatis occaecati qui rerum. Deleniti quod porro sed quisquam saepe. Numquam mollitia recusandae non ad at et a.
+          </p>
+          <p>
+            Ad vitae recusandae odit possimus. Quaerat cum ipsum corrupti. Odit qui asperiores ea corporis deserunt veritatis quidem expedita perferendis. Qui rerum eligendi ex doloribus quia sit. Porro rerum eum eum.
+          </p>
+        </div>
+      </div>
+
+      <div class="row about-extra">
+        <div class="col-lg-8 wow fadeInUp order-1 order-lg-2">
+          <video controls autoplay reload="none" style="width:694px;">
+          <source src="{% static 'images/pp.mp4' %}" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="col-lg-4 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
+          <h4>Neque saepe temporibus repellat ea ipsum et. Id vel et quia tempora facere reprehenderit.</h4>
+          <p>
+           Delectus alias ut incidunt delectus nam placeat in consequatur. Sed cupiditate quia ea quis. Voluptas nemo qui aut distinctio. Cumque fugit earum est quam officiis numquam. Ducimus corporis autem at blanditiis beatae incidunt sunt.
+          </p>
+          <p>
+            Voluptas saepe natus quidem blanditiis. Non sunt impedit voluptas mollitia beatae. Qui esse molestias. Laudantium libero nisi vitae debitis. Dolorem cupiditate est perferendis iusto.
+          </p>
+          <p>
+            Eum quia in. Magni quas ipsum a. Quis ex voluptatem inventore sint quia modi. Numquam est aut fuga mollitia exercitationem nam accusantium provident quia.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="row about-extra">
+        <div class="col-lg-8 wow fadeInUp">
+          <video controls autoplay reload="none" style="width:694px;">
+          <source src="{% static 'images/pp.mp4' %}" type="video/mp4" />
+          </video>
+
+        </div>
+        <div class="col-lg-4 wow fadeInUp pt-5 pt-lg-0">
+          <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
+          <p>
+            Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati possimus ea. Quas molestiae perspiciatis occaecati qui rerum. Deleniti quod porro sed quisquam saepe. Numquam mollitia recusandae non ad at et a.
+          </p>
+          <p>
+            Ad vitae recusandae odit possimus. Quaerat cum ipsum corrupti. Odit qui asperiores ea corporis deserunt veritatis quidem expedita perferendis. Qui rerum eligendi ex doloribus quia sit. Porro rerum eum eum.
+          </p>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section><!-- #about -->
+
 
 
     <!-- #services -->
@@ -311,6 +376,23 @@
 </div>
 </div>
 </footer>
+
+<script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/mobile-nav/mobile-nav.js' %}"></script>
+  <script src="{% static 'lib/wow/wow.min.js'%}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js'%}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'js/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'js/main.js' %}"></script>
 
   </body>
   </html>
