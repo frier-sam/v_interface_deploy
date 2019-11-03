@@ -5,7 +5,7 @@
 
 
   <meta charset="utf-8">
-  <title>Innovation</title>
+  <title>Our Practices</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
@@ -14,13 +14,14 @@
   <meta content="" name="description">
   <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-32x32.png" sizes="32x32">
   <link rel="icon" href="https://mhgbtcuwzn-2-flywheel.netdna-ssl.com/wp-content/uploads/2019/08/cropped-virtusa-icon-512px-192x192.png" sizes="192x192">
-  <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
 
+  <link href="{% static 'images/apple-touch-icon.png'%}" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/innovation02.css' %}">
-  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/innovation12.css' %}">
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> -->
+ <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
 
 
@@ -29,7 +30,6 @@
   <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-
   <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
 
   <!-- Uncomment below i you want to use a preloader -->
@@ -56,7 +56,57 @@
 
 
 </head>
+<script>
+$(document).ready(function() {
+debugger;
+	var showChar = 120;
+	var ellipsestext = "...";
+	var moretext = "more";
+	var lesstext = "less";
+	$('.more').each(function() {
+    debugger;
+		var content = $(this).html();
 
+		if(content.length > showChar) {
+
+			var c = content.substr(0, showChar);
+			var h = content.substr(showChar, content.length - showChar);
+
+			var html = c + '<span class="morecontent"><span>' + h + '</span></span>';
+
+			$(this).html(html);
+		}
+
+	});
+
+	$(".morelink").click(function(e){
+
+debugger;
+    e.preventDefault();
+    // var href = '#myModal';
+    var myHeading = "<p>"+$(this).prev()[0].innerHTML+$(this).prev()[0].getElementsByTagName('span')[1].innerHTML+"</p>";
+    var x = new Date();
+    $("#modalBody").html(myHeading);
+
+    var modalTitle=$(this).parent().parent().prev().text()
+    $("#modalTitle").html(modalTitle)
+    $('#myModal').modal('show');
+
+	});
+
+
+});
+
+function openNav() {
+document.getElementById("sidebar").style.width = "350px";
+
+}
+
+function closeNav() {
+document.getElementById("sidebar").style.width = "0";
+
+}
+</script>
 
   <body>
 
@@ -69,44 +119,60 @@
      <div class="logo float-left ">
          <a href="#intro" class="scrollto"><img src="{% static 'images/logos.png'  %}"  alt="" class="img-fluid "></a>
     </div>
-         <span style ="margin-bottom:0px"><h4 style ="margin-bottom:0px">
-              The digital innovation hub within Virtusa</h4></span>
+         <span style ="margin-bottom:0px"><h4 style ="
+        margin-bottom:0px;
+        font-weight: 500;
+        margin-top: 0px;
+        line-height: 1.2;
+        color: inherit;
+        font-size: 24px;
+        font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+        "> The digital innovation hub within Virtusa</h4></span>
 
-              <nav class="main-nav  d-none d-lg-block " style="margin-left:168px;">
-                <ul>
-                  <li
-                  <li
-                  {% if '/' == request.path %}
-                      class= "nav-item active"
-                  {% else %}
-                     class= "nav-item "
-                  {% endif %}
-                           >
-                    <a href ="{%url 'index'%}">Home</a></li>
+      <nav class="main-nav  d-none d-lg-block " style="margin-left:168px;">
+        <ul>
+          <li
+          {% if '/' == request.path %}
+              class= "nav-item active"
+          {% else %}
+             class= "nav-item "
+          {% endif %}
+                   >
+            <a href ="{%url 'index' %}" >Home</a>
+          <i ></i></li>
+          <li
 
-                    <li
+          {% if '/practices/' == request.path %}
+              class= "nav-item active"
+          {% else %}
+             class= "nav-item "
+          {% endif %}
 
-                    {% if '/practices/' == request.path %}
-                        class= "nav-item active"
-                    {% else %}
-                       class= "nav-item "
-                    {% endif %}
+          >
+          <a href="{%url 'services' %}">Our Practices</a></li>
+          <li
+          {% if '/services/' == request.path %}
+              class= "nav-item active"
+          {% else %}
+             class= "nav-item "
+          {% endif %}
 
-                    >
-                    <a href="{%url 'practices' %}">Our Practices</a></li>
-                    <li
-                    {% if '/services/' == request.path %}
-                        class= "nav-item active"
-                    {% else %}
-                       class= "nav-item "
-                    {% endif %}
+          >
+          <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
+          <li
 
-                    >
-                    <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
-                  <li><a href="#portfolio">Innovation</a></li>
+          {% if '/innovation/' == request.path %}
+              class= "nav-item active"
+          {% else %}
+             class= "nav-item "
+          {% endif %}
 
-                </ul>
-              </nav>
+          >
+          <a href="{%url 'innovation' %}">Innovation</a></li>
+
+        </ul>
+      </nav>
+
 
 
 
@@ -130,7 +196,7 @@
                          <a href="#menu1sub{{items.id}}"  data-toggle="collapse" aria-expanded="false"> {{ items.name}}</a>
                                    <div class="collapse" id="menu1sub{{items.id}}" style="margin-left:33px" >
                                         {%  for item_new in items.category.all %}
-                                                 <a href="{%url 'model'%}?model={{ item_new.name }}&cat={{items.name}}&home={{item.id}}" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
+                                        <a href="{%url 'model'%}?model={{ item_new.name }}&cat={{items.name}}&home={{item.id}}" data-parent="#menu1sub1{{items.id}}">{{ item_new.name}}</a>
                                         {%endfor%}
                                <!-- <div class="collapse"> -->
                          </div>
@@ -138,12 +204,10 @@
                      </div>
                 {%endfor%}
 
-                  </div>
-                  </div>
-
 </div>
 
   </header>
+
 
   <section id="testimonials" class="section-bg">
       <div class="container">
@@ -216,38 +280,33 @@
 
       <header class="section-header">
         <h3>About Us</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p style="text-align:center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </header>
 
 
 
       <div class="row about-extra">
         <div class="col-lg-8 wow fadeInUp">
-          <video controls autoplay reload="none" style="width:694px;">
-          <source src="{% static 'images/pp.mp4' %}" type="video/mp4" />
-          </video>
+          <iframe src="https://virtusaonline.sharepoint.com/sites/Xlabs-bangalore/_layouts/15/Doc.aspx?sourcedoc={5421f189-4434-4ebb-85e5-3b36e7e34ad0}&amp;action=embedview&amp;wdAr=1.7777777777777776" width="694px" height="412px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+
 
         </div>
         <div class="col-lg-4 wow fadeInUp pt-5 pt-lg-0">
-          <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
+          <h4>Manufacturing</h4>
           <p>
             Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati possimus ea. Quas molestiae perspiciatis occaecati qui rerum. Deleniti quod porro sed quisquam saepe. Numquam mollitia recusandae non ad at et a.
-          </p>
-          <p>
-            Ad vitae recusandae odit possimus. Quaerat cum ipsum corrupti. Odit qui asperiores ea corporis deserunt veritatis quidem expedita perferendis. Qui rerum eligendi ex doloribus quia sit. Porro rerum eum eum.
           </p>
         </div>
       </div>
 
       <div class="row about-extra">
-        <div class="col-lg-8 wow fadeInUp order-1 order-lg-2">
-          <video controls autoplay reload="none" style="width:694px;">
-          <source src="{% static 'images/pp.mp4' %}" type="video/mp4" />
-          </video>
+        <div class="col-lg-4 wow fadeInUp order-1 order-lg-2">
+          <iframe src="https://virtusaonline.sharepoint.com/sites/Xlabs-bangalore/_layouts/15/Doc.aspx?sourcedoc={c5f3553c-dc23-4435-a728-5b5a8410a777}&amp;action=embedview&amp;wdAr=1.7777777777777776" width="694px" height="412" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+
         </div>
 
-        <div class="col-lg-4 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
-          <h4>Neque saepe temporibus repellat ea ipsum et. Id vel et quia tempora facere reprehenderit.</h4>
+        <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
+          <h4>Digital Insurance</h4>
           <p>
            Delectus alias ut incidunt delectus nam placeat in consequatur. Sed cupiditate quia ea quis. Voluptas nemo qui aut distinctio. Cumque fugit earum est quam officiis numquam. Ducimus corporis autem at blanditiis beatae incidunt sunt.
           </p>
@@ -264,13 +323,12 @@
 
       <div class="row about-extra">
         <div class="col-lg-8 wow fadeInUp">
-          <video controls autoplay reload="none" style="width:694px;">
-          <source src="{% static 'images/pp.mp4' %}" type="video/mp4" />
-          </video>
+          <iframe src="https://virtusaonline.sharepoint.com/sites/Xlabs-bangalore/_layouts/15/Doc.aspx?sourcedoc={12825f57-1b54-432f-afc2-bfd7b28a6f40}&amp;action=embedview&amp;wdAr=1.7777777777777776" width="694px" height="412px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+
 
         </div>
         <div class="col-lg-4 wow fadeInUp pt-5 pt-lg-0">
-          <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
+          <h4>Lifescience</h4>
           <p>
             Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati possimus ea. Quas molestiae perspiciatis occaecati qui rerum. Deleniti quod porro sed quisquam saepe. Numquam mollitia recusandae non ad at et a.
           </p>

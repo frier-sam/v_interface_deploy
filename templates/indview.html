@@ -87,6 +87,7 @@ $(window).load(function(){
         $("#dbtn").attr("disabled", true);
         $("#Submit").click(function(){
           debugger;
+           $('.spinner-grow').show();
            myMap = new Map();
            $("input[class=form-control]").each(function() {
            debugger;
@@ -117,7 +118,7 @@ $(window).load(function(){
                                         contentType: 'text/plain',
                                         success: function (data) {
                                           debugger;
-
+                                                 $('.spinner-grow').hide();
                                               var tbody = document.getElementById("matchData");
                                               var headerNames = Object.getOwnPropertyNames(data[0]);
                                               var columnCount = headerNames.length;
@@ -145,6 +146,10 @@ $(window).load(function(){
 
 
                                         },
+                                        error: function(data){
+			                                      	$(".spinner-grow").hide();
+			                                      	alert("Please try again later");
+		                                      	},
                                         data: JSON.stringify(myJson)
                                     });
 
@@ -296,7 +301,16 @@ $(window).load(function(){
 
                >
                <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
-             <li><a href="#portfolio">Innovation</a></li>
+               <li
+
+               {% if '/innovation/' == request.path %}
+                   class= "nav-item active"
+               {% else %}
+                  class= "nav-item "
+               {% endif %}
+
+               >
+               <a href="{%url 'innovation' %}">Innovation</a></li>
 
            </ul>
          </nav>
@@ -486,6 +500,9 @@ New code-->
                               </form>
                              </br>
                        <input type ="submit" class="btn btn-success  btn-md" id ="Submit" class="form-control">
+                       <div class="spinner-grow" id ="spinner-grow" role="status" style ="display:none">
+                             <span class="sr-only">Loading...</span>
+                          </div>
              </div>
                     <h2 class="title">Output</h2>
                      <div  data-wow-duration="1.4s">

@@ -225,7 +225,16 @@ function likebutton() {
 
             >
             <a href="{%url 'services' %}?buisnessImperative=True">Solutions</a></li>
-          <li><a href="#portfolio">Innovation</a></li>
+            <li
+
+            {% if '/innovation/' == request.path %}
+                class= "nav-item active"
+            {% else %}
+               class= "nav-item "
+            {% endif %}
+
+            >
+            <a href="{%url 'innovation' %}">Innovation</a></li>
 
         </ul>
       </nav>
@@ -263,6 +272,7 @@ function likebutton() {
                 </div>
 </div>
 
+
   </header>
 
    {%if buisnessImperative == 'True'%}
@@ -273,12 +283,20 @@ function likebutton() {
 
   <section id="intro" class="clearfix" >
     <div class="container">
+{%if buisnessImperative == 'True'%}
+<div class="intro-info">
+<h1 class="caption">Buisness Imperative</h1>
+<h3 class="tagline"></h3>
 
+      </div>
+      {%else%}
       <div class="intro-info">
       <h1 class="caption">{{modulename}}</h1>
       <h3 class="tagline"></h3>
 
+
       </div>
+      {%endif%}
    </div>
 
   </section>

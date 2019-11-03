@@ -1,18 +1,63 @@
+ body, button, input, select, optgroup, textarea {
+	color: #333;
+	font-family: 'Synthesis', sans-serif !important;
+	font-size: 15px !important;
+	line-height: 1.2 !important;
+}
+
+/*
+h3 {
+	font-size: 1.75rem;
+	color: #000;
+	font-weight: 400;
+	font-family: 'Publico Headline Web', sans-serif;
+} */
+/* h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	letter-spacing:0.5px;
+} */
+
+
+/*
+
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    height:100%;
+  background: #fff;
+  color: #444;
+  font-family: "Open Sans", sans-serif;
+} */
+
+/* a {
+  color: #007bff;
+  transition: 0.5s;
+} */
+/*
+a:hover,
+a:active,
+a:focus {
+  color: s;
+  outline: none;
+  text-decoration: none;
+} */
+
+/* p {
+  padding: 0;
+  margin: 0 0 30px 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  padding: 0;
+} */
 
-.main-container {
- min-height: 100vh; /* will cover the 100% of viewport */
- overflow: hidden;
- display: block;
- position: relative;
- padding-bottom: 100px; /* height of your footer */
-}
-
-
+/* Back to top button */
 
 .back-to-top {
   position: fixed;
@@ -85,64 +130,6 @@ body {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
-
-
-
-#testimonials {
-  padding: 60px 0;
-  box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
-margin-top:105px;
-}
-
-#testimonials .section-header {
-  margin-bottom: 40px;
-}
-
-#testimonials .testimonial-item .testimonial-img {
-  width: 120px;
-  border-radius: 50%;
-  border: 4px solid #fff;
-  float: left;
-}
-
-#testimonials .testimonial-item h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px 0 5px 0;
-  color: #111;
-  margin-left: 140px;
-}
-
-#testimonials .testimonial-item h4 {
-  font-size: 14px;
-  color: #999;
-  margin: 0 0 15px 0;
-  margin-left: 140px;
-}
-
-#testimonials .testimonial-item p {
-  font-style: italic;
-  margin: 0 0 15px 140px;
-}
-
-#testimonials .owl-nav,
-#testimonials .owl-dots {
-  margin-top: 5px;
-  text-align: center;
-}
-
-#testimonials .owl-dot {
-  display: inline-block;
-  margin: 0 5px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #ddd;
-}
-
-#testimonials .owl-dot.active {
-  background-color: #007bff;
 }
 
 /*--------------------------------------------------------------
@@ -219,12 +206,10 @@ margin-top:105px;
   color: #fff;
   display: block;
   transition: 0.3s;
-	font-size: 22px;
+  font-size: 22px;
 line-height: 20px;
 font-weight: 700;
 }
-
-
 
 .sidebar a:hover {
   color: #f1f1f1;
@@ -271,7 +256,7 @@ font-weight: 700;
   width: 100%;
   position: relative;
   /* background: url("../images/intro-bg.jpg") center bottom no-repeat; */
-  background:rgba(0,106, 165, 0.8);
+  background:rgba(0,254, 255, 0.8) !important;
   background-size: cover;
   padding: 200px 0 120px 0;
 }
@@ -290,10 +275,10 @@ font-weight: 700;
 #intro .intro-info .title{
 font-size: 68px;
 font-weight: 700;
-color: #fff;
+color: #000;
 margin-top: 0;
 margin-bottom: 25px;
-    font-family: 'Publico Headline Web';
+  font-family: 'Publico Headline Web';
 }
 
 #intro .intro-info h2 {
@@ -343,6 +328,26 @@ margin-bottom: 25px;
   background: #000;
   color: #fff;
 
+}
+
+#filter {
+   padding: 10px 0 0px !important;
+   background: #fff;
+
+   position: relative;
+}
+
+
+#architecture {
+  width: 100%;position: relative;background:#f2f2f2;background-size: cover;padding: 63px 0 120px 0;
+}
+#architecture .intro-info {
+  text-align: center;
+}
+
+#architecture .intro-info h1 {
+
+  margin-bottom: 40px;font-size: 48px;font-weight: 700;
 }
 
 /*--------------------------------------------------------------
@@ -587,11 +592,16 @@ margin-bottom: 25px;
   background: #f2f2f2;
 }
 
+.custom_breadcrumb .breadcrumb{
+background: #fff;
+
+}
+
 /* About Us Section
 --------------------------------*/
 
 #about {
-  background: #fff;
+  /* background: #f2f2f2; */
   padding: 60px 0;
 }
 
@@ -601,7 +611,7 @@ margin-bottom: 25px;
       margin: 20px auto;
       font-size: 40px;
       text-align: center;
-      font-family: 'Publico Headline Web';
+      font-family: 'Publico Headline Web', sans-serif;
   }
 #about p {
   font-size: 17px;
@@ -711,6 +721,203 @@ margin-bottom: 25px;
 	font-weight: 700;
 }
 
+.vn-logo-list {
+    margin: 20px 0;
+    padding: 0;
+    text-align: center;
+}
+
+.vn-logo-list {
+    margin: 20px 0;
+    padding: 0;
+    text-align: center;
+}
+  .vn-logo-list li {
+      list-style-type: none;
+       display: -webkit-inline-box;
+      padding: 10px;
+  }
+.vn-logo-list li a {
+    border: 1px #ddd solid;
+    display: block;
+}
+.vn-logo-list li img {
+    -webkit-transition: 0.6s ease;
+    transition: 0.6s ease;
+    padding: 20px;
+}
+
+.vn-logo-list li a:hover img {
+    border: 0;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.vn-logo-list li a:hover {
+    border: 0;
+    border: 1px #f2f2f2X solid;
+}
+.vn-loading-image {
+	left: 24px;
+    position: absolute;
+	z-index:1000;
+}
+.vn-loading-image div {
+	padding:6px;
+}
+.vn-loading-image div i {
+	color:#00aae8;
+}
+.tiles .coll {
+	width:100%;
+}
+
+.global-tiles {
+	padding: 80px 0;
+	text-align: center;
+  background: #f2f2f2;
+}
+.global-tiles .coll {
+	position: static;
+	margin-top: 25px;
+}
+.global-tiles .title, .practice-page .tiles .title, .practice-page .services .title {
+	font-size: 32px;
+	font-weight: 800;
+	color: #333;
+	width: 80%;
+	margin: 0 auto;
+	    font-family: 'Publico Headline Web', serif;
+}
+.row-equal {
+	display: flex;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+}
+.global-tiles .tile-arrow {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.global-tiles .tile-arrow-up {
+	top: -30px;
+}
+.global-tiles .active-tile .tile-arrow {
+	display: block;
+}
+.global-tiles .tiles-col {
+	margin: 25px 0;
+}
+.global-tiles .tiles-col .tile {
+	border: 1px solid #dbd9d6;
+	position: relative;
+	height: 100%;
+	/*min-height:320px; */
+}
+.global-tiles .tiles-col .tile.board-of-directors {
+	padding: 30px;
+}
+.global-tiles .tile-arrow:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 0;
+	height: 0;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	border-bottom: 30px solid #f2f2f2;
+}
+.global-tiles .tile-arrow-up:before {
+	border-bottom: none;
+	border-top: 30px solid #f2f2f2;
+}
+.global-tiles .tiles-col .tile-title {
+	background: #053354;
+	font-size: 18px;
+	font-family: 'Publico Headline Web', serif;
+	color: #fff;
+	padding: 15px 10px;
+	margin: 0;
+	font-weight:400;
+}
+.global-tiles .tiles-col .tile-info {
+	padding: 25px;
+	/*min-height: 242px;*/
+}
+.global-tiles .tiles-col .summary {
+	font-size: 16px;
+	color: #333333;
+	/* padding-bottom: 35px; */
+	min-height:73px;
+}
+
+.global-tiles .tiles-col li {
+    /* list-style-type: none; */
+     /* display: -webkit-inline-box; */
+    padding: 10px;
+    text-align: left;
+}
+.global-tiles .tiles-col .readmore {
+	border-top: 1px solid #d8d8d8;
+	line-height: 1;
+	position: absolute;
+	bottom: 0;
+	width: 85%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.global-tiles .tiles-col .readmore a, .perspective-grid .read-more-small, .vcard-perspective .read-more-small {
+	font-size: 12px;
+	font-weight: 700;
+	color: #00aae8;
+	text-transform: uppercase;
+	padding: 15px 0;
+	display: block;
+}
+.global-tiles .tiles-summary {
+	background: #f2f2f2;
+	padding: 50px;
+	text-align: left;
+	margin-top: 25px;
+	display: none;
+}
+
+
+.global-tiles .tiles-summary-show {
+	width: 100%;
+	z-index: 99999;
+}
+.global-tiles .s-title {
+	margin: 0;
+	font-size: 32px;
+	font-family: 'Publico Headline Web', serif;
+	font-weight: 800;
+	color: #333;
+}
+.global-tiles .tiles-summary .thumbnail {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+.global-tiles .tiles-summary .close {
+	position: absolute;
+	top: 33px;
+	right: 25px;
+	font-size: 2em;
+	cursor: pointer;
+	z-index: 99980;
+}
+.global-tiles .tiles-summary-column {
+	display: none;
+}
+
 #about .about-container .icon-box .icon {
   float: left;
   background: #fff;
@@ -746,6 +953,16 @@ margin-bottom: 25px;
 
 #about .about-container .icon-box:hover .icon {
   background: rgb(232, 9, 161);
+}
+
+#about .title{
+
+  font-size: 20px;
+    color: #006aa5;
+    /* font-weight: 800; */
+    margin: 0;
+    font-family: 'Publico Headline Web', sans-serif !important;
+    text-align: center;
 }
 
 #about .about-container .icon-box:hover .icon i {
@@ -953,7 +1170,6 @@ line-height: 1.7;
     display: block;
         margin-top: 10px;
     border-top: 1px solid #d8d8d8;
-		cursor: pointer;
 
 }
 

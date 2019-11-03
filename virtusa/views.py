@@ -46,8 +46,8 @@ def services(request):
     k = models.Ml_models.objects.filter(active=True)
     cats = models.category.objects.filter(maincategory=True)
     mcatlist =  [{'name':i.name,'summary':i.summary ,'id':i.id,'buisnessImperative':i.buisnessImperative,'homeCategory':i.homeCategory,'inps':models.Ml_models.objects.filter(category=i.id)} for i in cats]
-    mlist = [{'name':i.name,'content':i.content,'image':i.image,'summary':i.summary} for i in k]
-    return render(request,'services.html',{'models':mlist,'catList':mcatlist,'mlist':mlist,'buisnessImperative':buisnessImperative})
+    mclist = [{'name':i.name,'content':i.content,'image':i.image,'summary':i.summary} for i in k]
+    return render(request,'services.html',{'models':mclist,'catList':mcatlist,'mlist':mlist,'buisnessImperative':buisnessImperative})
 
 #model view is for  practices
 def practices(request):
