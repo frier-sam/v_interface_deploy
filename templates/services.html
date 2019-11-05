@@ -21,7 +21,7 @@
 
     <!-- Bootstrap CSS File -->
         <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated30.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/service_updated31.css' %}">
     <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/css/bootstrap-responsive.css' %}">
@@ -118,7 +118,16 @@ $(document).ready(function() {
 
 	});
 
+  $(".collapse.show").each(function(){
+         	$(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+         });
 
+         // Toggle plus minus icon on show hide of collapse element
+         $(".collapse").on('show.bs.collapse', function(){
+         	$(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+         }).on('hide.bs.collapse', function(){
+         	$(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+         });
 
 
 	$(".morelink").click(function(e){
@@ -332,16 +341,21 @@ function likebutton() {
 </div>
 
 
-         {%if buisnessImperative == 'True'%}
-         <section id="services" >
-           <div class="container">
+{%if buisnessImperative == 'True'%}
+<div class="bs-example">
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne" style="background:#063455;">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link" style="font-weight: 700;  width: 100%;margin: 20px auto;font-size:
+                     35px;text-align: center;color: #fff;font-family: 'Publico Headline Web'; display: inline-block;"
+                    data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-plus"></i>Customer Experience</button>
+                </h2>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+               <div class=" breadcrumb" style="margin-bottom:0px;">
+                <div class="card-body">
 
-
-             <!-- <div class="line"></div> -->
-              <div class="row">
-
-               <div class=" breadcrumb">
-                 <h2 class ="parallel">Customer Experience</h2>
                   <div class="col-sm">
                     <!-- <img class='img-circle' src ="{% static 'images/default.jpg'  %}" /> -->
                      <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
@@ -398,231 +412,257 @@ function likebutton() {
 
 </div> <!--col-sm -->
 </div>
-           <div class=" breadcrumb">
-             <h2 class ="parallel">Operational Efficiency</h2>
-<div class="col-sm">
-
-   <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
-     {%for item in catList %}
-     {%if 'Operational Efficiency' == item.buisnessImperative.name%}
-       <li class= "nav-item ">
-       <a
-
-          class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
-
-        >{{item.name}}</a></li>
-
-           {%endif%}
-      {%endfor%}
-    </ul>
-
-<div class="tab-content  pt-5" id="myTabContentJust">
-{%for item in catList %}
-{%if 'Operational Efficiency' == item.buisnessImperative.name%}
-<div
-
-    class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
->
-  <p class=" comment more" >{{item.summary}}</p>
-  <div class="row">
-  {% if item.inps|length >= 1 %}
-     {% for items in item.inps %}
-                          <div class="col-md-6 col-lg-4 mb-4" >
-       <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
-       <div class ="card card-block box overlay d-flex  flex-wrap ">
-       <div class="d-flex w-100">
-           <h2 class="title">{{items.name}}</h2>
-            <!-- <small>3 days ago</small> -->
-     </div>
-   <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
-    </div>
-   </a>
- </div>
-
-{%endfor%}
-
-{%endif%}
-
-</div>
-</div>
-{%endif%}
-{%endfor%}
-
-
-
-</div>
-
-
-
-</div> <!--col-sm -->
-</div>
-           <div class=" breadcrumb">
-             <h2 class ="parallel">Business Innovation</h2>
-<div class="col-sm">
-
-   <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
-     {%for item in catList %}
-     {%if 'Buisness Innovation' == item.buisnessImperative.name%}
-       <li class= "nav-item ">
-       <a
-
-          class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
-
-        >{{item.name}}</a></li>
-
-           {%endif%}
-      {%endfor%}
-    </ul>
-
-<div class="tab-content  pt-5" id="myTabContentJust">
-{%for item in catList %}
-{%if 'Buisness Innovation' == item.buisnessImperative.name%}
-<div class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just">
-  <p class=" comment more" >{{item.summary}}</p>
-  <div class="row">
-  {% if item.inps|length >= 1 %}
-     {% for items in item.inps %}
-                          <div class="col-md-6 col-lg-4 mb-4" >
-       <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
-       <div class ="card card-block box overlay d-flex  flex-wrap ">
-       <div class="d-flex w-100 ">
-           <h2 class="title">{{items.name}}</h2>
-            <!-- <small>3 days ago</small> -->
-     </div>
-   <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
-    </div>
-   </a>
- </div>
-{%endfor%}
-
-{%endif%}
-
-</div>
-</div>
-{%endif%}
-{%endfor%}
-
-
-
-</div>
-
-
-
-</div> <!--col-sm -->
-
              </div>
-
-
-           </div>
-              </div>
-         </section>
-
-
-      {%else%}
-          <section id="services" >
-            <div class="container">
-
-
-              <!-- <div class="line"></div> -->
-               <div class="row">
-                <div class=" breadcrumb">
-                 <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
-                    {%for item in catList %}
-
-                   <li
-
-                       class= "nav-item "
-
-
-                   >
-                    <a
-                       {% if  forloop.counter == 1 %}
-                                            class="nav-link show active" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
-                                        {% else %}
-                                            class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
-                                       {% endif %}
-
-
-                        >{{item.name}}</a>
-                 </li>
-                 {%endfor%}
-
-               </ul>
-            <div class="tab-content  pt-5" id="myTabContentJust">
-              {%for item in catList %}
-                 <div
-                    {% if  forloop.counter == 1 %}
-                       class="tab-pane fade show active" id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
-                     {% else %}
-                       class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
-                   {% endif %}
-                    >
-                     <p class=" comment more" >{{item.summary}}</p>
-
-                     <!-- <h4 style ="text-align:center"><u>{{item.name}} models</u></h4> -->
-                    <div class="card list-group">
-
-                    {% if item.inps|length >= 1 %}
-                        {% for items in item.inps %}
-                          <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
-                           <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
-
-
-                              <div class="d-flex w-100 justify-content-between">
-                                 <h5 class="mb-1">{{items.name}}</h5>
-                                <!-- <small>3 days ago</small> -->
-                              </div>
-                              <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p>
- </div>
-                               </a>
-
-
-
-                               <div class ="card-footer">
-                              {% if items.category.all|length > 1 %}
-                              <p class="font-weight-bold">
-                               This model is also achieved by :
-                                {% for cat in items.category.all %}
-                                  {% if cat.id != item.id %}
-                                    <ul> {{cat.buisnessImperative.name}} - {{cat.name}} -  <a style ="color:#006AA5" href="{%url 'services'%}?cat={{cat.homeCategory.id}}"> {{ cat.homeCategory.name}}</a></ul>
-                                 {%endif%}
-                               {%endfor%}
-                               {%endif%}
-                            </p>
-
-                          </div>
-
-                         {%endfor%}
-                       {%else%}
-                          <div class =" p-3 mb-2"style="background:#063455;color:#fff">
-                              <div class="d-flex w-100 justify-content-between">
-                                <p class="mb-3">No model added</p>
-
-                              </div>
-                        </div>
-                   {%endif%}
-
+            </div>
         </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo" style="background:#063455;">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" style="font-weight: 700;  width: 100%;margin: 20px auto;font-size:
+                     35px;text-align: center; color: #fff; font-family: 'Publico Headline Web'; display: inline-block;"
+          data-toggle="collapse" data-target="#collapseTwo"><i class="fa fa-plus"></i>Operational Efficiency</button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class=" breadcrumb" style="margin-bottom:0px;">
+                <div class="card-body">
+
+
+       <div class="col-sm">
+
+          <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
+            {%for item in catList %}
+            {%if 'Operational Efficiency' == item.buisnessImperative.name%}
+              <li class= "nav-item ">
+              <a
+
+                 class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
+
+               >{{item.name}}</a></li>
+
+                  {%endif%}
+             {%endfor%}
+           </ul>
+
+       <div class="tab-content  pt-5" id="myTabContentJust">
+       {%for item in catList %}
+       {%if 'Operational Efficiency' == item.buisnessImperative.name%}
+       <div
+
+           class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
+       >
+         <p class=" comment more" >{{item.summary}}</p>
+         <div class="row">
+         {% if item.inps|length >= 1 %}
+            {% for items in item.inps %}
+                                 <div class="col-md-6 col-lg-4 mb-4" >
+              <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
+              <div class ="card card-block box overlay d-flex  flex-wrap ">
+              <div class="d-flex w-100">
+                  <h2 class="title">{{items.name}}</h2>
+                   <!-- <small>3 days ago</small> -->
+            </div>
+          <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
+           </div>
+          </a>
+        </div>
+
+       {%endfor%}
+
+       {%endif%}
+
+       </div>
+       </div>
+       {%endif%}
+       {%endfor%}
+
+
+
+       </div>
+
+
+
+       </div> <!--col-sm -->
+       </div>
+                     </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree" style="background:#063455;">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" style="font-weight: 700;  width: 100%;margin: 20px auto;font-size:
+                     35px;text-align: center;font-family: 'Publico Headline Web'; color:#fff; display: inline-block;" data-toggle="collapse"
+                     data-target="#collapseThree"><i class="fa fa-plus"></i>Business Innovation</button>
+
+
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class=" breadcrumb" style="margin-bottom:0px;">
+                <div class="card-body">
+
+
+       <div class="col-sm">
+
+          <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
+            {%for item in catList %}
+            {%if 'Buisness Innovation' == item.buisnessImperative.name%}
+              <li class= "nav-item ">
+              <a
+
+                 class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
+
+               >{{item.name}}</a></li>
+
+                  {%endif%}
+             {%endfor%}
+           </ul>
+
+       <div class="tab-content  pt-5" id="myTabContentJust">
+       {%for item in catList %}
+       {%if 'Buisness Innovation' == item.buisnessImperative.name%}
+       <div class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just">
+         <p class=" comment more" >{{item.summary}}</p>
+         <div class="row">
+         {% if item.inps|length >= 1 %}
+            {% for items in item.inps %}
+                                 <div class="col-md-6 col-lg-4 mb-4" >
+              <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
+              <div class ="card card-block box overlay d-flex  flex-wrap ">
+              <div class="d-flex w-100 ">
+                  <h2 class="title">{{items.name}}</h2>
+                   <!-- <small>3 days ago</small> -->
+            </div>
+          <!-- <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p> -->
+           </div>
+          </a>
+        </div>
+       {%endfor%}
+
+       {%endif%}
+
+       </div>
+       </div>
+       {%endif%}
+       {%endfor%}
+
+
+
+       </div>
+
+
+
+       </div> <!--col-sm -->
+
+                    </div>
+                                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%else%}
+
+<section id="services" >
+          <div class="container">
+
+
+            <!-- <div class="line"></div> -->
+             <div class="row">
+              <div class=" breadcrumb">
+               <ul class="nav nav-tab nav-justified md-tabs indigo" id="myTabJust" style="width:100%" role="tablist">
+                  {%for item in catList %}
+
+                 <li
+
+                     class= "nav-item "
+
+
+                 >
+                  <a
+                     {% if  forloop.counter == 1 %}
+                                          class="nav-link show active" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
+                                      {% else %}
+                                          class="nav-link" id="home-tab-just" data-toggle="tab" href="#home-just{{item.id}}" role="tab" aria-controls="home-just"
+                                     {% endif %}
+
+
+                      >{{item.name}}</a>
+               </li>
+               {%endfor%}
+
+             </ul>
+          <div class="tab-content  pt-5" id="myTabContentJust">
+            {%for item in catList %}
+               <div
+                  {% if  forloop.counter == 1 %}
+                     class="tab-pane fade show active" id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
+                   {% else %}
+                     class="tab-pane fade " id="home-just{{item.id}}" role="tabpanel" aria-labelledby="home-tab-just"
+                 {% endif %}
+                  >
+                   <p class=" comment more" >{{item.summary}}</p>
+
+                   <!-- <h4 style ="text-align:center"><u>{{item.name}} models</u></h4> -->
+                  <div class="card list-group">
+
+                  {% if item.inps|length >= 1 %}
+                      {% for items in item.inps %}
+                        <a href="{%url 'model'%}?model={{ items.name }}&cat={{item.name}}&home={{homeId}}" class="story-link " style="Color:white" >
+                         <div class ="card-block box overlay d-flex align-content-center flex-wrap ">
+
+
+                            <div class="d-flex w-100 justify-content-between">
+                               <h5 class="mb-1">{{items.name}}</h5>
+                              <!-- <small>3 days ago</small> -->
+                            </div>
+                            <p class="mb-3" style="font-size: 17px;line-height: 1.7;">{{items.summary}}</p>
+</div>
+                             </a>
+
+
+
+                             <div class ="card-footer">
+                            {% if items.category.all|length > 1 %}
+                            <p class="font-weight-bold">
+                             This model is also achieved by :
+                              {% for cat in items.category.all %}
+                                {% if cat.id != item.id %}
+                                  <ul> {{cat.buisnessImperative.name}} - {{cat.name}} -  <a style ="color:#006AA5" href="{%url 'services'%}?cat={{cat.homeCategory.id}}"> {{ cat.homeCategory.name}}</a></ul>
+                               {%endif%}
+                             {%endfor%}
+                             {%endif%}
+                          </p>
+
+                        </div>
+
+                       {%endfor%}
+                     {%else%}
+                        <div class =" p-3 mb-2"style="background:#063455;color:#fff">
+                            <div class="d-flex w-100 justify-content-between">
+                              <p class="mb-3">No model added</p>
+
+                            </div>
+                      </div>
+                 {%endif%}
+
       </div>
-    {%endfor%}
+    </div>
+  {%endfor%}
 
 
 
 </div>
 
 
-
-
-              </div>
 
 
             </div>
-          </section>
+
+
+          </div>
+        </section>
 {%endif%}
-
-
-
-
 
 
     <!-- #services -->
